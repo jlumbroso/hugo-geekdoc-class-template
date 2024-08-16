@@ -1,6 +1,6 @@
 ---
-baseURL: https://jlumbroso.github.io/hugo-geekdoc-github-example
-title: Hugo Geekdoc Example
+baseURL: https://jlumbroso.github.io/hugo-geekdoc-class-sandbox
+title: Hugo Geekdoc Class Sandbox
 theme: hugo-geekdoc
 
 pygmentsUseClasses: true
