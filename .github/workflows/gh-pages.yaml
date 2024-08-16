@@ -1,0 +1,62 @@
+name: 🏗️ Build and Deploy GitHub Pages
+
+on:
+  push:
+    branches:
+      - main # Set a branch to deploy
+
+jobs:
+  deploy:
+    runs-on: ubuntu-22.04
+    permissions:
+      actions: write
+      checks: write
+      contents: write
+      deployments: write
+      pull-requests: write
+      repository-projects: write
+
+    steps:
+      - name: 🔄 Check Out Source Repository
+        uses: actions/checkout@v4.1.1
+        with:
+          submodules: true # Fetch Hugo themes (true OR recursive)
+          fetch-depth: 0 # Fetch all history for .GitInfo and .Lastmod
+
+      - name: 🛠️ Initialize Hugo Environment
+        uses: peaceiris/actions-hugo@v3
+        with:
+          hugo-version: "0.132.0"
+          extended: true
+      
+      - name: 📦 Install Asciidoctor
+        run: sudo apt-get install -y asciidoctor
+
+      - name: 🌐 Configure Node.js Environment
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      
+      - name: "🛠️ Build Geekdoc Theme (Step 1: Setup Packages)"
+        working-directory: ./themes/hugo-geekdoc
+        run: npm install
+  
+      - name: "🏗️ Build Geekdoc Theme (Step 2: Build Template)"
+        working-directory: ./themes/hugo-geekdoc
+        run: npm run build
+
+      - name: 📦 Generate Hugo Static Files
+        run: hugo -D --gc --minify
+
+      - name: 🔐 Secure Content with Encryption
+        run: curl -L -o hugo-encrypt "https://github.com/Izumiko/hugo-encrypt/releases/download/v0.1.0/hugo-encrypt-linux-64" && chmod 755 hugo-encrypt && ./hugo-encrypt
+
+      - name: 🚀 Publish to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3.9.3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
+          user_name: "github-actions[bot]"
+          user_email: "github-actions[bot]@users.noreply.github.com"
+          ## NOTE: uncomment below if using a custom domain
+          ## cname: mydomain.com
