@@ -1,67 +1,14 @@
 ---
-title: Welcome to the documentation
-geekdocNav: false
-#geekdocAlign: center
-geekdocAnchor: false
+title: "CIS 1002"
+geekdocBreadcrumb: false
+# geekdocNav: false
+# geekdocAnchor: false
 ---
 
-<!-- markdownlint-capture -->
-<!-- markdownlint-disable MD033 -->
+{{< announcement title="Announcement Title" date="2023-01-01" >}}
+**Lorem** ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at maximus elit. Curabitur vel rhoncus erat. Aenean non odio tristique, sagittis nunc in, porta arcu. Fusce finibus venenatis arcu, in auctor magna mattis id. Fusce sed tellus ante. Cras ac condimentum nulla, at blandit mi. Vivamus cursus sapien urna, ut dignissim quam posuere vitae. Nunc lacinia dui lacus. Vivamus vitae urna non ex eleifend mattis. Mauris eu ipsum mauris. Morbi sed est at dolor feugiat suscipit. Aliquam ut ligula et magna pellentesque vestibulum.
 
-<span class="badge-placeholder">[![Build Status](https://ci.thegeeklab.de/api/badges/thegeeklab/hugo-geekdoc/status.svg)](https://ci.thegeeklab.de/repos/thegeeklab/hugo-geekdoc)</span>
-<span class="badge-placeholder">[![Hugo Version](https://img.shields.io/badge/hugo-0.112-blue.svg)](https://gohugo.io)</span>
-<span class="badge-placeholder">[![GitHub release](https://img.shields.io/github/v/release/thegeeklab/hugo-geekdoc)](https://github.com/thegeeklab/hugo-geekdoc/releases/latest)</span>
-<span class="badge-placeholder">[![GitHub contributors](https://img.shields.io/github/contributors/thegeeklab/hugo-geekdoc)](https://github.com/thegeeklab/hugo-geekdoc/graphs/contributors)</span>
-<span class="badge-placeholder">[![License: MIT](https://img.shields.io/github/license/thegeeklab/hugo-geekdoc)](https://github.com/thegeeklab/hugo-geekdoc/blob/main/LICENSE)</span>
+**Donec** id ligula iaculis, venenatis neque in, tincidunt felis. Donec et turpis et tortor pellentesque rutrum sed id tortor. Ut vel ante sit amet diam auctor vulputate. Praesent mattis aliquam sem, eu suscipit dui lobortis non. Etiam quis purus id libero vehicula ultricies. Nullam aliquet mi at enim eleifend elementum. Suspendisse potenti. Nulla cursus ultricies blandit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Pellentesque ut porttitor justo, nec convallis sem. Aenean sed luctus lectus, quis accumsan felis. Quisque a fermentum eros, eget fermentum eros.
 
-{{< announcement title="Announcement Title" date="2023-01-01" >}}Announcement content goes here.{{< /announcement >}}
-
-{{< schedule path="class_schedule" >}}
-
-<!-- markdownlint-restore -->
-
-Geekdoc is a simple Hugo theme for documentations. It is intentionally designed as a fast and lean theme and may not fit the requirements of complex projects. If a more feature-complete theme is required there are a lot of got alternatives out there.
-
-{{< button size="large" relref="usage/getting-started/" >}}Getting Started{{< /button >}}
-
-## Feature overview
-
-{{< columns >}}
-
-### Clean and simple design
-
-Stay focused on exploring the content and don't get overwhelmed by a complex design.
-
-<--->
-
-### Light and mobile-friendly
-
-The theme is powered by less than 1 MB and looks impressive on mobile devices as well as on a regular Desktop.
-
-<--->
-
-### Easy customization
-
-The look and feel can be easily customized by CSS custom properties (variables), features can be adjusted by Hugo parameters.
-
-{{< /columns >}}
-
-{{< columns >}}
-
-### Zero initial configuration
-
-Getting started in minutes. The theme is shipped with a default configuration and works out of the box.
-
-<--->
-
-### Handy shortcodes
-
-We included some (hopefully) useful custom shortcodes so you don't have to and can focus on writing amazing docs.
-
-<--->
-
-### Dark mode
-
-Powerful dark mode that detects your system preferences or can be controlled by a toggle switch.
-
-{{< /columns >}}
+**Maecenas** aliquam cursus porttitor. Pellentesque volutpat velit at ex suscipit convallis. Proin fringilla lectus varius diam hendrerit, at fermentum mi laoreet. Nulla pellentesque libero vitae aliquam facilisis. Donec eget massa ex. Pellentesque interdum malesuada vestibulum. Quisque ultricies id massa accumsan pulvinar. Suspendisse id nisi a mauris maximus bibendum. Pellentesque sit amet nunc feugiat, porta erat et, placerat leo. Sed at lacus eget erat mattis feugiat in non dolor. Quisque interdum euismod urna, sed porta massa varius eget. In ligula magna, tempor vel nisl at, placerat aliquam libero. Maecenas porttitor erat sit amet fringilla malesuada. Aenean id cursus sapien.
+{{< /announcement >}}
