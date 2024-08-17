@@ -3,21 +3,25 @@ baseURL: https://jlumbroso.github.io/hugo-geekdoc-class-sandbox
 title: "CS 1002"
 theme: hugo-geekdoc
 
+# Required to get well formatted code blocks
 pygmentsUseClasses: true
 pygmentsCodeFences: true
+disablePathToLower: true
+enableGitInfo: true
+
 timeout: 180000
 pluralizeListTitles: false
 
 defaultContentLanguage: en
 
-disablePathToLower: true
-enableGitInfo: true
-
+# Required if you want to render robots.txt template
 enableRobotsTXT: true
 
 markup:
   goldmark:
     renderer:
+      # Needed for mermaid shortcode or when nesting shortcodes (e.g. img within
+      # columns or tabs)
       unsafe: true
   tableOfContents:
     startLevel: 1
