@@ -1,6 +1,6 @@
 ---
 baseURL: https://jlumbroso.github.io/hugo-geekdoc-class-sandbox
-title: Hugo Geekdoc Class Sandbox
+title: "CS 1002"
 theme: hugo-geekdoc
 
 pygmentsUseClasses: true
