@@ -1,4 +1,5 @@
 {{- $minutes := div (countwords .Inner) 180.0 -}}
+{{- $roundedMinutes := math.Round $minutes -}}
 <div class="announcement">
   <h2>{{ .Get "title" }}</h2>
   <span class="announcement-meta">
@@ -6,9 +7,9 @@
       {{ dateFormat "Jan 2" . }}
       &middot;
     {{ end }}
-    {{ $minutes }} min read
+    {{ $roundedMinutes }} min read
   </span>
   <div>
-    {{ .Inner }}
+    {{ .Inner | markdownify }}
   </div>
 </div>

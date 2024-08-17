@@ -1,7 +1,7 @@
 {{ $dataPath := .Get "path" }}
 {{ $schedule := index site.Data $dataPath }}
 {{ $startTime := index $schedule.timeline 0 }}
-{{ $offset := partial "findMinutes" $startTime }}
+{{ $offset := partial "functions/findMinutes" $startTime }}
 
 <div class="schedule">
   <ul class="schedule-timeline" style="min-width: {{ mul (len $schedule.timeline) 120 }}px">
@@ -16,8 +16,8 @@
         {{ if .events }}
         <ul class="schedule-events" style="height: {{ mul (len $schedule.timeline) 40 }}px">
           {{ range .events }}
-            {{ $startMinutes := partial "findMinutes" .start }}
-            {{ $endMinutes := partial "findMinutes" .end }}
+            {{ $startMinutes := partial "functions/findMinutes" .start }}
+            {{ $endMinutes := partial "functions/findMinutes" .end }}
             {{ $top := div (mul (sub $startMinutes $offset) 40) 30 }}
             {{ $height := div (mul (sub $endMinutes $startMinutes) 40) 30 }}
             <li class="schedule-event {{ if .class }}{{ .class }}{{ else }}{{ .name | urlize | lower }}{{ end }}"
