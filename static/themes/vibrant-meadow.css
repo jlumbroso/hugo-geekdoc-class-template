@@ -1,0 +1,150 @@
+/* Light mode theming */
+:root,
+:root[color-theme="light"] {
+  --header-background: #5ADA3A; /* Apple Granny Smith Green */
+  --header-font-color: #ffffff;
+
+  --body-background: #ffffff;
+  --body-font-color: #343a40;
+
+  --mark-color: #ff9500; /* Bolder pastel orange */
+
+  --button-background: #76E37A; /* Lighter Lime Green */
+  --button-border-color: #5ADA3A; /* Apple Granny Smith Green */
+
+  --link-color: #5ADA3A; /* Pastel green */
+  --link-color-visited: #8e3b75; /* Pastel dark purple */
+
+  --code-background: #f5f6f8;
+  --code-accent-color: #e3e7eb;
+  --code-accent-color-lite: #eff1f3;
+  --code-font-color: #5f5f5f;
+
+  --code-copy-background: #f5f6f8;
+  --code-copy-font-color: #6b7784;
+  --code-copy-border-color: #adb4bc;
+  --code-copy-success-color: #5ADA3A; /* Apple Granny Smith Green */
+
+  --accent-color: #e9ecef;
+  --accent-color-lite: #f8f9fa;
+
+  --control-icons: #8e3b75; /* Pastel dark purple */
+
+  --footer-background: #5ADA3A; /* Apple Granny Smith Green */
+  --footer-font-color: #ffffff;
+  --footer-link-color: #ff9500; /* Bolder pastel orange */
+  --footer-link-color-visited: #ff9500;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --header-background: #5ADA3A;
+    --header-font-color: #ffffff;
+
+    --body-background: #ffffff;
+    --body-font-color: #343a40;
+
+    --mark-color: #ff9500;
+
+    --button-background: #76E37A;
+    --button-border-color: #5ADA3A;
+
+    --link-color: #5ADA3A;
+    --link-color-visited: #8e3b75;
+
+    --code-background: #f5f6f8;
+    --code-accent-color: #e3e7eb;
+    --code-accent-color-lite: #eff1f3;
+    --code-font-color: #5f5f5f;
+
+    --code-copy-background: #f5f6f8;
+    --code-copy-font-color: #6b7784;
+    --code-copy-border-color: #adb4bc;
+    --code-copy-success-color: #5ADA3A;
+
+    --accent-color: #e9ecef;
+    --accent-color-lite: #f8f9fa;
+
+    --control-icons: #8e3b75;
+
+    --footer-background: #5ADA3A;
+    --footer-font-color: #ffffff;
+    --footer-link-color: #ff9500;
+    --footer-link-color-visited: #ff9500;
+  }
+}
+
+/* Dark mode theming */
+:root[color-theme="dark"] {
+  --header-background: #5ADA3A; /* Apple Granny Smith Green */
+  --header-font-color: #ffffff;
+
+  --body-background: #343a40;
+  --body-font-color: #ced3d8;
+
+  --mark-color: #ff8c00; /* Darker orange */
+
+  --button-background: #76E37A; /* Lighter Lime Green */
+  --button-border-color: #5ADA3A; /* Apple Granny Smith Green */
+
+  --link-color: #76E37A; /* Lighter green */
+  --link-color-visited: #c27a9e; /* Light purple */
+
+  --code-background: #2f353a;
+  --code-accent-color: #262b2f;
+  --code-accent-color-lite: #2b3035;
+  --code-font-color: #b9b9b9;
+
+  --code-copy-background: #343a40;
+  --code-copy-font-color: #6b7784;
+  --code-copy-border-color: #6b7784;
+  --code-copy-success-color: #5ADA3A; /* Apple Granny Smith Green */
+
+  --accent-color: #2b3035;
+  --accent-color-lite: #2f353a;
+
+  --control-icons: #6a2757; /* Dark purple */
+
+  --footer-background: #5ADA3A; /* Apple Granny Smith Green */
+  --footer-font-color: #ffffff;
+  --footer-link-color: #ff8c00; /* Darker orange */
+  --footer-link-color-visited: #ff8c00;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --header-background: #5ADA3A;
+    --header-font-color: #ffffff;
+
+    --body-background: #343a40;
+    --body-font-color: #ced3d8;
+
+    --mark-color: #ff8c00;
+
+    --button-background: #76E37A;
+    --button-border-color: #5ADA3A;
+
+    --link-color: #76E37A;
+    --link-color-visited: #c27a9e;
+
+    --code-background: #2f353a;
+    --code-accent-color: #262b2f;
+    --code-accent-color-lite: #2b3035;
+    --code-font-color: #b9b9b9;
+
+    --code-copy-background: #343a40;
+    --code-copy-font-color: #6b7784;
+    --code-copy-border-color: #6b7784;
+    --code-copy-success-color: #5ADA3A;
+
+    --accent-color: #2b3035;
+    --accent-color-lite: #2f353a;
+
+    --control-icons: #6a2757;
+
+    --footer-background: #5ADA3A;
+    --footer-font-color: #ffffff;
+    --footer-link-color: #ff8c00;
+    --footer-link-color-visited: #ff8c00;
+  }
+}
