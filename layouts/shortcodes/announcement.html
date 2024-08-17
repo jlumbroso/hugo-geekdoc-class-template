@@ -1,0 +1,14 @@
+{{- $minutes := div (countwords .Inner) 180.0 -}}
+<div class="announcement">
+  <h2>{{ .Get "title" }}</h2>
+  <span class="announcement-meta">
+    {{ with .Get "date" }}
+      {{ dateFormat "Jan 2" . }}
+      &middot;
+    {{ end }}
+    {{ $minutes }} min read
+  </span>
+  <div>
+    {{ .Inner }}
+  </div>
+</div>

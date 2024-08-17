@@ -1,0 +1,17 @@
+<!-- layouts/partials/findMinutes.html -->
+{{ $timeString := . }}
+{{ $parts := split $timeString " " }}
+{{ $time := index $parts 0 }}
+{{ $period := index $parts 1 }}
+{{ $timeParts := split $time ":" }}
+{{ $hours := int (index $timeParts 0) }}
+{{ $minutes := int (index $timeParts 1) }}
+
+{{ if and (eq $period "PM") (ne $hours 12) }}
+  {{ $hours = add $hours 12 }}
+{{ else if and (eq $period "AM") (eq $hours 12) }}
+  {{ $hours = 0 }}
+{{ end }}
+
+{{ $totalMinutes := add (mul $hours 60) $minutes }}
+{{ return $totalMinutes }}

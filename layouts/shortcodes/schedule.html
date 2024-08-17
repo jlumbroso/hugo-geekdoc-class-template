@@ -1,0 +1,37 @@
+{{ $dataPath := .Get "path" }}
+{{ $schedule := index site.Data $dataPath }}
+{{ $startTime := index $schedule.timeline 0 }}
+{{ $offset := partial "findMinutes" $startTime }}
+
+<div class="schedule">
+  <ul class="schedule-timeline" style="min-width: {{ mul (len $schedule.timeline) 120 }}px">
+    {{ range $schedule.timeline }}
+      <li class="schedule-time">{{ . }}</li>
+    {{ end }}
+  </ul>
+  <ul class="schedule-group">
+    {{ range $schedule.schedule }}
+      <li class="schedule-day">
+        <h2 class="schedule-header no_anchor">{{ .name }}</h2>
+        {{ if .events }}
+        <ul class="schedule-events" style="height: {{ mul (len $schedule.timeline) 40 }}px">
+          {{ range .events }}
+            {{ $startMinutes := partial "findMinutes" .start }}
+            {{ $endMinutes := partial "findMinutes" .end }}
+            {{ $top := div (mul (sub $startMinutes $offset) 40) 30 }}
+            {{ $height := div (mul (sub $endMinutes $startMinutes) 40) 30 }}
+            <li class="schedule-event {{ if .class }}{{ .class }}{{ else }}{{ .name | urlize | lower }}{{ end }}"
+                style="top: {{ $top }}px; height: {{ $height }}px;">
+              <div class="name">{{ .name }}</div>
+              <div class="time">{{ .start }}–{{ .end }}</div>
+              {{ if .location }}
+                <div class="location">{{ .location }}</div>
+              {{ end }}
+            </li>
+          {{ end }}
+        </ul>
+        {{ end }}
+      </li>
+    {{ end }}
+  </ul>
+</div>
