@@ -1,0 +1,150 @@
+/* Light mode theming */
+:root,
+:root[color-theme="light"] {
+  --header-background: #2b5a36; /* Darker forest green */
+  --header-font-color: #ffffff;
+
+  --body-background: #ffffff;
+  --body-font-color: #343a40;
+
+  --mark-color: #ff8c00; /* Darker orange */
+
+  --button-background: #4ec58a; /* Lighter forest green */
+  --button-border-color: #2b5a36; /* Darker forest green */
+
+  --link-color: #518169; /* Muted green */
+  --link-color-visited: #6a2757; /* Dark purple */
+
+  --code-background: #f5f6f8;
+  --code-accent-color: #e3e7eb;
+  --code-accent-color-lite: #eff1f3;
+  --code-font-color: #5f5f5f;
+
+  --code-copy-background: #f5f6f8;
+  --code-copy-font-color: #6b7784;
+  --code-copy-border-color: #adb4bc;
+  --code-copy-success-color: #2b5a36; /* Darker forest green */
+
+  --accent-color: #e9ecef;
+  --accent-color-lite: #f8f9fa;
+
+  --control-icons: #6a2757; /* Dark purple */
+
+  --footer-background: #2b5a36; /* Forest green */
+  --footer-font-color: #ffffff;
+  --footer-link-color: #ff8c00; /* Darker orange */
+  --footer-link-color-visited: #ff8c00;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --header-background: #2b5a36;
+    --header-font-color: #ffffff;
+
+    --body-background: #ffffff;
+    --body-font-color: #343a40;
+
+    --mark-color: #ff8c00;
+
+    --button-background: #4ec58a;
+    --button-border-color: #2b5a36;
+
+    --link-color: #518169;
+    --link-color-visited: #6a2757;
+
+    --code-background: #f5f6f8;
+    --code-accent-color: #e3e7eb;
+    --code-accent-color-lite: #eff1f3;
+    --code-font-color: #5f5f5f;
+
+    --code-copy-background: #f5f6f8;
+    --code-copy-font-color: #6b7784;
+    --code-copy-border-color: #adb4bc;
+    --code-copy-success-color: #2b5a36;
+
+    --accent-color: #e9ecef;
+    --accent-color-lite: #f8f9fa;
+
+    --control-icons: #6a2757;
+
+    --footer-background: #2b5a36;
+    --footer-font-color: #ffffff;
+    --footer-link-color: #ff8c00;
+    --footer-link-color-visited: #ff8c00;
+  }
+}
+
+/* Dark mode theming */
+:root[color-theme="dark"] {
+  --header-background: #2b5a36; /* Darker forest green */
+  --header-font-color: #ffffff;
+
+  --body-background: #343a40;
+  --body-font-color: #ced3d8;
+
+  --mark-color: #ff8c00; /* Darker orange */
+
+  --button-background: #4ec58a; /* Lighter forest green */
+  --button-border-color: #2b5a36; /* Darker forest green */
+
+  --link-color: #7ac29e; /* Lighter green */
+  --link-color-visited: #c27a9e; /* Light purple */
+
+  --code-background: #2f353a;
+  --code-accent-color: #262b2f;
+  --code-accent-color-lite: #2b3035;
+  --code-font-color: #b9b9b9;
+
+  --code-copy-background: #343a40;
+  --code-copy-font-color: #6b7784;
+  --code-copy-border-color: #6b7784;
+  --code-copy-success-color: #2b5a36; /* Darker forest green */
+
+  --accent-color: #2b3035;
+  --accent-color-lite: #2f353a;
+
+  --control-icons: #6a2757; /* Dark purple */
+
+  --footer-background: #2b5a36; /* Forest green */
+  --footer-font-color: #ffffff;
+  --footer-link-color: #ff8c00; /* Darker orange */
+  --footer-link-color-visited: #ff8c00;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --header-background: #2b5a36;
+    --header-font-color: #ffffff;
+
+    --body-background: #343a40;
+    --body-font-color: #ced3d8;
+
+    --mark-color: #ff8c00;
+
+    --button-background: #4ec58a;
+    --button-border-color: #2b5a36;
+
+    --link-color: #7ac29e;
+    --link-color-visited: #c27a9e;
+
+    --code-background: #2f353a;
+    --code-accent-color: #262b2f;
+    --code-accent-color-lite: #2b3035;
+    --code-font-color: #b9b9b9;
+
+    --code-copy-background: #343a40;
+    --code-copy-font-color: #6b7784;
+    --code-copy-border-color: #6b7784;
+    --code-copy-success-color: #2b5a36;
+
+    --accent-color: #2b3035;
+    --accent-color-lite: #2f353a;
+
+    --control-icons: #6a2757;
+
+    --footer-background: #2b5a36;
+    --footer-font-color: #ffffff;
+    --footer-link-color: #ff8c00;
+    --footer-link-color-visited: #ff8c00;
+  }
+}
