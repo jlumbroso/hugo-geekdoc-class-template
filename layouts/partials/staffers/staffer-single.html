@@ -1,0 +1,39 @@
+<!-- layouts/partials/_internal/staffers/staffer-single.html -->
+<div class="staffer">
+  {{ $imagePath := "" }}
+  {{ if strings.HasPrefix .Params.photo "http://" }}
+    {{ $imagePath = .Params.photo }}
+  {{ else if strings.HasPrefix .Params.photo "https://" }}
+    {{ $imagePath = .Params.photo }}
+  {{ else if strings.HasPrefix .Params.photo "/" }}
+    {{ $imagePath = .Params.photo | absURL }}
+  {{ else }}
+    {{ $imagePath = path.Join .File.Dir .Params.photo | absURL }}
+  {{ end }}
+
+  {{ if $imagePath }}
+  <img class="staffer-image {{ $.Page.Parent.Params.imageShape }}" src="{{ $imagePath }}" alt="{{ .Params.name }}">
+  {{ end }}
+
+  <div>
+    <h3 class="staffer-name" id="{{ .Params.name | urlize }}">
+      {{ if .Params.website }}
+      <a href="{{ .Params.website }}">{{ .Params.name }}</a>
+      {{ else }}
+      {{ .Params.name }}
+      {{ end }}
+    </h3>
+    {{ with .Params.email }}
+    <p><a href="mailto:{{ . }}">{{ . }}</a></p>
+    {{ end }}
+    {{ with .Params.meta }}
+    <dl class="staffer-meta">
+      {{ range $key, $value := . }}
+      <dt>{{ $key }}</dt>
+      <dd>{{ $value | markdownify }}</dd>
+      {{ end }}
+    </dl>
+    {{ end }}
+    {{ .Content }}
+  </div>
+</div>

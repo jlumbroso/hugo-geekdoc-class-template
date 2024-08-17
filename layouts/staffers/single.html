@@ -1,0 +1,28 @@
+{{ define "main" }}
+<div class="staffer">
+  {{ with .Params.photo }}
+  <img class="staffer-image" src="{{ . | absURL }}" alt="{{ $.Params.name }}" width="100" height="100" style="border-radius: {{ if eq $.Parent.Params.imageShape "circle" }}50%{{ else }}0{{ end }}">
+  {{ end }}
+  <div>
+    <h3 class="staffer-name" id="{{ .Params.name | urlize }}">
+      {{ if .Params.website }}
+      <a href="{{ .Params.website }}">{{ .Params.name }}</a>
+      {{ else }}
+      {{ .Params.name }}
+      {{ end }}
+    </h3>
+    {{ with .Params.email }}
+    <p><a href="mailto:{{ . }}">{{ . }}</a></p>
+    {{ end }}
+    {{ with .Params.meta }}
+    <dl class="staffer-meta">
+      {{ range $key, $value := . }}
+      <dt>{{ $key }}</dt>
+      <dd>{{ $value | markdownify }}</dd>
+      {{ end }}
+    </dl>
+    {{ end }}
+    {{ .Content }}
+  </div>
+</div>
+{{ end }}

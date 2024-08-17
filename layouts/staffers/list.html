@@ -1,0 +1,12 @@
+{{ define "main" }}
+<div class="staffers">
+  {{ range .Pages.GroupByParam "role" }}
+  <h2>{{ .Key }}</h2>
+  <div class="role-group">
+    {{ range .Pages }}
+    {{ template "partials/staffers/staffer-single.html" . }}
+    {{ end }}
+  </div>
+  {{ end }}
+</div>
+{{ end }}
