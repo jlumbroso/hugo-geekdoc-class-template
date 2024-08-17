@@ -40,7 +40,8 @@
       {{ else }}
         <!-- Fallback for items without an icon -->
         {{ if eq $target "header" }}
-          <span>
+          <!-- FIXME: BAD HACK -->
+          <span style="display: inline-flex; /* Makes the span a flex container */ align-items: center; /* Centers the text vertically */ justify-content: center; /* (Optional) Centers the text horizontally if needed */">
             <a
               href="{{ if .external -}}
                 {{ .ref }}
