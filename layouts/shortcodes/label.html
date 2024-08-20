@@ -1,0 +1,18 @@
+{{/* 
+  label.html - A Hugo shortcode to generate a styled label with markdown support.
+
+  Usage: 
+  {{< label "Label Text" "color-class" >}}
+
+  Example:
+  {{< label "Section" "purple" >}}
+  Will render as:
+  <span class="label label-purple">Section</span>
+*/}}
+
+{{/* Define variables for the parameters */}}
+{{ $text := .Get 0 }}      {{/* The label text */}}
+{{ $color := .Get 1 }}     {{/* The color class */}}
+
+{{/* Output the formatted HTML */}}
+<strong class="label label-{{ $color }}">{{ $text | markdownify | safeHTML }}</strong>
