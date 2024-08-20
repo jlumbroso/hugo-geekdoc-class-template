@@ -1,0 +1,18 @@
+{{ define "main" }}
+    <div class="container">
+        <h1>{{ .Title }}</h1>
+        {{ if .Description }}
+        <p>{{ .Description }}</p>
+        {{ end }}
+
+        {{/* Directly display the markdown content of each module */}}
+        {{ range sort .Pages "File.BaseFileName" }}
+            <article class="module-content">
+                <h2>{{ .Title }}</h2>
+                <div class="module">
+                    {{ .Content }}
+                </div>
+            </article>
+        {{ end }}
+    </div>
+{{ end }}

@@ -1,0 +1,54 @@
+{{/* Split the input content into items using the "<--->" separator */}}
+{{ $items := split .Inner "<--->" }}
+{{ $len := len $items }}
+
+{{/* Begin the definition list */}}
+<dl>
+  {{ if eq $len 1 }}
+    <dt>{{ index $items 0 | markdownify }}</dt>
+    <dd></dd> <!-- Empty description for single item -->
+  {{ else if eq $len 2 }}
+    <dt>{{ index $items 0 | markdownify }}</dt>
+    <dd>{{ index $items 1 | markdownify }}</dd>
+  {{ else if eq $len 3 }}
+    <dt>{{ index $items 0 | markdownify }}</dt>
+    <dd>
+      <dl>
+        <dt>{{ index $items 1 | markdownify }}</dt>
+        <dd>{{ index $items 2 | markdownify }}</dd>
+      </dl>
+    </dd>
+  {{ else if eq $len 4 }}
+    <dt>{{ index $items 0 | markdownify }}</dt>
+    <dd>
+      <dl>
+        <dt>{{ index $items 1 | markdownify }}</dt>
+        <dd>
+          <dl>
+            <dt>{{ index $items 2 | markdownify }}</dt>
+            <dd>{{ index $items 3 | markdownify }}</dd>
+          </dl>
+        </dd>
+      </dl>
+    </dd>
+  {{ else if gt $len 4 }}
+    <dt>{{ index $items 0 | markdownify }}</dt>
+    <dd>
+      <dl>
+        <dt>{{ index $items 1 | markdownify }}</dt>
+        <dd>
+          <dl>
+            <dt>{{ index $items 2 | markdownify }}</dt>
+            <dd>
+                {{ index $items 3 | markdownify }}
+                {{/* Check if there are more than 4 items */}}
+                {{ range after 4 $items }}
+                    {{ . | markdownify }}
+                {{ end }}
+            </dd>
+          </dl>
+        </dd>
+      </dl>
+    </dd>
+  {{ end }}
+</dl>

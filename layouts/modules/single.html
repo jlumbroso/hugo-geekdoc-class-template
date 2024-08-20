@@ -1,0 +1,7 @@
+{{ define "main" }}
+<!-- layouts/modules/single.html -->
+<h2 class="fs-4" id="{{ .Title | urlize }}">{{ .Title }}</h2>
+<div class="module">
+  {{ .Content }}
+</div>
+{{ end }}
