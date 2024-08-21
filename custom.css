@@ -1,10 +1,18 @@
-dt:empty {
-  display: none;
+/* Custom CSS to remove colons in dt elements within modules */
+.main-content .module dt::after,
+.module dt::after {
+    content: none ! important; /* Removes the automatically appended colon */
 }
 
-dt:empty + dd {
-  margin-top: 0; /* Adjusts margin for the following dd */
-  border-top: none; /* If there's a border to remove */
+
+/* Custom Styles for Module to Remove Separation */
+.module dt.no-sep {
+  border-top: none; /* Removes top border from dt */
+}
+
+.module dt.no-sep + dd {
+  border-top: none; /* Removes top border from subsequent dd */
+  margin-top: 0; /* Removes top margin to merge visually with dt */
 }
 
 :root {
