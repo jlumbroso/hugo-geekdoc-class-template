@@ -21,4 +21,6 @@ Oct 8
 Oct 9
 : [Runtime Analysis](#)
   : [8.1](#), [8.2](#), [8.3](#), [8.4](#)
+
+<span class="no-sep"></span>
 : {{< label "HW 2 due" "red" >}}

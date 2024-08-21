@@ -22,6 +22,6 @@ Oct 2
 : [Tracing, IntLists, & Recursion](#)
   : [2.1](#)
 
-&nbsp;
+<span class="no-sep"></span>
 : {{< label "HW 1 due" "red" >}}
 
