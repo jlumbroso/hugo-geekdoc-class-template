@@ -3,45 +3,25 @@ title: Introduction to Java
 geekdocHidden: false
 ---
 
-{{< definition >}}
 Sep 28
-<--->
-[Java & Git](#)
-<--->
-[1.1](#)
-{{< /definition >}}
+: [Java & Git](#)
+  : [1.1](#)
 
-{{< definition >}}
 Sep 29
-<--->
-{{< label "Section" "purple" >}}[Intro to Java](#)
-<--->
-[Solution](#)
-{{< /definition >}}
+: {{< label "Section" "purple" >}}[Intro to Java](#)
+  : [Solution](#)
 
-{{< definition >}}
 Sep 30
-<--->
-[Variables & Objects](#)
-<--->
-[1.2](#), [2.1](#)
-{{< /definition >}}
+: [Variables & Objects](#)
+  : [1.2](#), [2.1](#)
 
-{{< definition >}}
 Oct 1
-<--->
-{{< label "Lab" "purple" >}} [Intro to Java](#)
-{{< /definition >}}
+: {{< label "Lab" "purple" >}} [Intro to Java](#)
 
-{{< definition >}}
 Oct 2
-<--->
-[Tracing, IntLists, & Recursion](#)
+: [Tracing, IntLists, & Recursion](#)
+  : [2.1](#)
 
+&nbsp;
+: {{< label "HW 1 due" "red" >}}
 
-{{< label "HW 1 due" "red" >}}
-
-<--->
-[2.1](#)
-
-{{< /definition >}}

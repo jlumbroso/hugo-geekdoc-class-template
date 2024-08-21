@@ -23,6 +23,8 @@ markup:
       # Needed for mermaid shortcode or when nesting shortcodes (e.g. img within
       # columns or tabs)
       unsafe: true
+  extensions:
+    definitionList: true
   tableOfContents:
     startLevel: 1
     endLevel: 9

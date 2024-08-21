@@ -8,7 +8,7 @@
         {{/* Directly display the markdown content of each module */}}
         {{ range sort .Pages "File.BaseFileName" }}
             <article class="module-content">
-                <h2>{{ .Title }}</h2>
+                <h2 class="fs-4" id="{{ .Title | urlize }}" >{{ .Title }}</h2>
                 <div class="module">
                     {{ .Content }}
                 </div>

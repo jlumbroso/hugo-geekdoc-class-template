@@ -12,3 +12,24 @@ geekdocBreadcrumb: false
 
 **Maecenas** aliquam cursus porttitor. Pellentesque volutpat velit at ex suscipit convallis. Proin fringilla lectus varius diam hendrerit, at fermentum mi laoreet. Nulla pellentesque libero vitae aliquam facilisis. Donec eget massa ex. Pellentesque interdum malesuada vestibulum. Quisque ultricies id massa accumsan pulvinar. Suspendisse id nisi a mauris maximus bibendum. Pellentesque sit amet nunc feugiat, porta erat et, placerat leo. Sed at lacus eget erat mattis feugiat in non dolor. Quisque interdum euismod urna, sed porta massa varius eget. In ligula magna, tempor vel nisl at, placerat aliquam libero. Maecenas porttitor erat sit amet fringilla malesuada. Aenean id cursus sapien.
 {{< /announcement >}}
+
+Oct 5
+: [Linked Lists & Encapsulation](#)
+  : [3.1](#), [2.2](#), [2.3](#)
+
+Oct 6
+: **Section**{: .label .label-purple }[Linked Lists](#)
+  : [Solution](#)
+
+Oct 7
+: [Resizing Arrays](#)
+  : [2.4](#), [2.5](#)
+
+Oct 8
+: **Lab**{: .label .label-purple } [Resizing Arrays](#)
+
+Oct 9
+: [Runtime Analysis](#)
+  : [8.1](#), [8.2](#), [8.3](#), [8.4](#)
+: **HW 2 due**{: .label .label-red }
+
