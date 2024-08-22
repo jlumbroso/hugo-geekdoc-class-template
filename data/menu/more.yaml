@@ -1,6 +1,6 @@
 ---
 more:
-  - name: News
+  - name: Recent Updates
     ref: "/posts"
     icon: "gdoc_notification"
   # - name: Releases
