@@ -1,6 +1,6 @@
 ---
 title: Introduction to Java
-geekdocHidden: false
+geekdocHidden: true
 ---
 
 Sep 28

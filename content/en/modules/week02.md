@@ -1,6 +1,6 @@
 ---
 title: Basic Data Structures
-geekdocHidden: false
+geekdocHidden: true
 ---
 
 Oct 5

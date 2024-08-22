@@ -2,7 +2,12 @@
     <div class="container">
         <h1>{{ .Title }}</h1>
         {{ if .Description }}
-        <p>{{ .Description }}</p>
+            <p>{{ .Description }}</p>
+        {{ end }}
+        {{ if .Content }}
+        <div>
+            {{ .Content }}
+        </div>
         {{ end }}
 
         {{/* Directly display the markdown content of each module */}}

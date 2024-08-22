@@ -1,0 +1,47 @@
+{{ define "main" }}
+    <div class="container">
+        <h1>{{ .Title }}</h1>
+        {{ if .Description }}
+            <p>{{ .Description }}</p>
+        {{ end }}
+        {{ if .Content }}
+        <div>
+            {{ .Content }}
+        </div>
+        {{ end }}
+
+        {{ $posts := .Site.RegularPages }}
+        {{ range $posts }}
+            {{ if and (in .Params.tags "urgent") (in .Params.tags "announcements") }}
+                <article>
+                    <div class="announcement">
+                        <h2><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
+                        <span class="announcement-meta">
+                            <div class="flex flex-wrap align-center gdoc-post__meta">
+                                <span class="flex align-center no-wrap">
+                                    <svg class="gdoc-icon gdoc_date"><use xlink:href="#gdoc_date"></use></svg>
+                                    <span class="gdoc-post__tag">
+                                        <time datetime="{{ .Lastmod.Format "2006-01-02T15:04:05Z07:00" | safeHTML }}">
+                                        {{ if .Lastmod.After (.Date.AddDate 0 0 1) }}
+                                            {{ i18n "posts_update_prefix" }}
+                                        {{ end }}
+                                        {{ .Lastmod.Format "Jan 2, 2006" }}
+                                        </time>
+                                    </span>
+                                </span>
+                                
+                                <span class="flex align-center no-wrap">
+                                    <svg class="gdoc-icon gdoc_timer"><use xlink:href="#gdoc_timer"></use></svg>
+                                    <span class="gdoc-post__tag">{{ i18n "posts_read_time" .ReadingTime }}</span>
+                                </span>
+                            </div>
+                        </span>
+                        <div>
+                            {{ .Content }}
+                        </div>
+                    </div>
+                </article>
+            {{ end }}
+        {{ end }}
+    </div>
+{{ end }}
