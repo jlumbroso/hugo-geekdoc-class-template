@@ -22,6 +22,9 @@
       {{ else }}
       {{ .Params.name }}
       {{ end }}
+      {{ if .Params.pronouns }}
+      <span class="staffer-pronouns">{{ .Params.pronouns }}</span>
+      {{ end }}
     </h3>
     {{ with .Params.email }}
     <p><a href="mailto:{{ . }}">{{ . }}</a></p>

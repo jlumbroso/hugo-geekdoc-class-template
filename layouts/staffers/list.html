@@ -1,12 +1,29 @@
 {{ define "main" }}
-<div class="staffers">
-  {{ range .Pages.GroupByParam "role" }}
-  <h2>{{ .Key }}</h2>
-  <div class="role-group">
-    {{ range .Pages }}
-    {{ template "partials/staffers/staffer-single.html" . }}
-    {{ end }}
+<div class="container">
+  <h1>{{ .Title }}</h1>
+  {{ if .Description }}
+      <p>{{ .Description }}</p>
+  {{ end }}
+  {{ if .Content }}
+  <div>
+      {{ .Content }}
   </div>
   {{ end }}
+  <div class="staffers">
+    {{ $roleOrder := .Params.roleOrder }}
+    {{ $allGroups := .Pages.GroupByParam "role" }}
+    
+    {{ range $roleOrder }}
+      {{ $group := where $allGroups "Key" "eq" . }}
+      {{ if $group }}
+        <h2>{{ . }}</h2>
+        <div class="role-group">
+          {{ range (index $group 0).Pages }}
+            {{ template "partials/staffers/staffer-single.html" . }}
+          {{ end }}
+        </div>
+      {{ end }}
+    {{ end }}
+  </div>
 </div>
 {{ end }}
