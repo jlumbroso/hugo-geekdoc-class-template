@@ -1,4 +1,4 @@
 User-agent: *
 Disallow: /tags/*
 
-Sitemap: https://jlumbroso.github.io/hugo-geekdoc-class-sandbox/sitemap.xml
+Sitemap: https://jlumbroso.github.io/hugo-geekdoc-class-template/sitemap.xml
