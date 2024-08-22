@@ -1,4 +1,4 @@
-# Geekdocs Course Website Template
+# "Geekdocs Class" Course Website Template
 
 This repository is a self-contained template to create a course website:
 - using Hugo static site generator,
