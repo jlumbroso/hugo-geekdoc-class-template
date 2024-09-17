@@ -18,7 +18,8 @@
       {{ if $group }}
         <h2>{{ . }}</h2>
         <div class="role-group">
-          {{ range (index $group 0).Pages }}
+          {{ $sortedPages := sort (index $group 0).Pages ".Params.last" }}
+          {{ range $sortedPages }}
             {{ template "partials/staffers/staffer-single.html" . }}
           {{ end }}
         </div>

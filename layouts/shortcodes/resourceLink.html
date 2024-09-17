@@ -1,0 +1,10 @@
+{{ $resource := .Page.Resources.GetMatch (.Get 0) }}
+{{ if $resource }}
+    {{ $name := .Get 1 }}
+    {{ if not $name }} <!-- If no second argument is provided -->
+        {{ $name = $resource.Name }} <!-- Use the resource filename as the default -->
+    {{ end }}
+    <a href="{{ $resource.Permalink }}">{{ $name }}</a><!-- eof -->
+{{ else }}
+    <p>Resource not found.</p>
+{{ end }}
