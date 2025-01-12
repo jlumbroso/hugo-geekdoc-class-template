@@ -18,6 +18,9 @@
 @import 'schedule';
 @import 'staffer';
 
+// Custom extensions
+@import '../just-the-class-extensions';
+
 // Overrides
 code {
   font-size: 14px;

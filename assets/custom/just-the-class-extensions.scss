@@ -1,0 +1,65 @@
+.staffer-languages {
+    font-size: 0.875em; // 1-2pts smaller relatively, adjust as needed
+    font-style: italic;
+    &:before {
+        content: "Also speaks: ";
+    }
+}
+
+.staffer-email {
+    font-size: 0.9em; // 1-2pts smaller relatively, adjust as needed
+    font-family: monospace;
+}
+
+/* Bar separating meta from initial profile */
+.staffer hr {
+    border: 0;
+    height: 1px;
+    background-color: black;
+    margin: $sp-2 0; // Reduced top and bottom padding, adjust $sp-2 as needed
+}
+
+.staffer-meta dt {
+    font-variant: small-caps;
+}
+
+.schedule {
+    .schedule-event {
+        &.lecture {
+            background-color: $green-000;
+        }
+        &.office-hours {
+            background-color: $yellow-300;
+        }
+    }
+}
+
+// Oranges
+$orange-000: #ffb87a !default;
+$orange-100: #ffa24e !default;
+$orange-200: #f9882e !default;
+$orange-300: #e7671a !default;
+
+// Pinks
+$pink-000: #ff9ac1 !default;
+$pink-100: #ff6fa7 !default;
+$pink-200: #f8518d !default;
+$pink-300: #e63875 !default;
+
+// Browns
+$brown-000: #d2b48c !default; // Tan
+$brown-100: #c19a6b !default; // Light brown (similar to fawn)
+$brown-200: #8b4513 !default; // Saddle brown
+$brown-300: #5d3a1a !default; // Dark brown
+
+.label-orange:not(g) {
+    background-color: $orange-200;
+}
+
+.label-pink:not(g) {
+    background-color: $pink-200;
+}
+
+.label-brown:not(g) {
+    background-color: $brown-200;
+}
