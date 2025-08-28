@@ -1,0 +1,517 @@
+// =========================================================================
+// Penn Engineering Theme - SCSS Variables & Mixins
+// =========================================================================
+// 
+// This SCSS file provides customizable variables and mixins for the
+// Penn Engineering theme. It allows for easy fine-tuning of the design.
+//
+// =========================================================================
+
+// Import existing Just-the-Class extensions
+@import "just-the-class-extensions";
+
+// =========================================================================
+// Penn Engineering Brand Colors
+// =========================================================================
+
+// Primary Brand Colors
+$penn-blue: #011F5B;
+$penn-red: #990000;
+$penn-white: #FFFFFF;
+
+// Secondary Brand Colors  
+$penn-dark-gray: #2D2926;
+$penn-bright-red: #DB2929;
+$penn-electric-blue: #63C7FF;
+$penn-light-gray: #F2F2F2;
+$penn-medium-gray: #807456;
+
+// Extended Palette
+$penn-blue-dark: #001442;
+$penn-blue-light: #0A3380;
+$penn-red-dark: #660000;
+$penn-red-light: #CC0000;
+
+// Gray Scale
+$penn-gray-50: #FAFAFA;
+$penn-gray-100: #F5F5F5;
+$penn-gray-200: #EEEEEE;
+$penn-gray-300: #E0E0E0;
+$penn-gray-400: #BDBDBD;
+$penn-gray-500: #9E9E9E;
+$penn-gray-600: #757575;
+$penn-gray-700: #616161;
+$penn-gray-800: #424242;
+$penn-gray-900: #212121;
+
+// Semantic Colors
+$penn-success: #4CAF50;
+$penn-warning: #FF9800;
+$penn-error: $penn-bright-red;
+$penn-info: $penn-electric-blue;
+
+// =========================================================================
+// Typography Variables
+// =========================================================================
+
+$penn-font-primary: "TWK Everett", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+$penn-font-secondary: "Pitch Sans", "SF Mono", Monaco, "Roboto Mono", "Courier New", monospace;
+
+// Font Weights
+$penn-font-light: 300;
+$penn-font-regular: 400;
+$penn-font-medium: 500;
+$penn-font-semibold: 600;
+$penn-font-bold: 700;
+
+// Font Sizes
+$penn-text-xs: 0.75rem;
+$penn-text-sm: 0.875rem;
+$penn-text-base: 1rem;
+$penn-text-lg: 1.125rem;
+$penn-text-xl: 1.25rem;
+$penn-text-2xl: 1.5rem;
+$penn-text-3xl: 1.875rem;
+$penn-text-4xl: 2.25rem;
+$penn-text-5xl: 3rem;
+
+// =========================================================================
+// Spacing Scale
+// =========================================================================
+
+$penn-spacing-xs: 0.25rem;
+$penn-spacing-sm: 0.5rem;
+$penn-spacing-md: 1rem;
+$penn-spacing-lg: 1.5rem;
+$penn-spacing-xl: 2rem;
+$penn-spacing-2xl: 3rem;
+$penn-spacing-3xl: 4rem;
+
+// =========================================================================
+// Border Radius
+// =========================================================================
+
+$penn-radius-sm: 2px;
+$penn-radius-md: 4px;
+$penn-radius-lg: 8px;
+$penn-radius-xl: 16px;
+$penn-radius-full: 9999px;
+
+// =========================================================================
+// Shadows
+// =========================================================================
+
+$penn-shadow-sm: 0 1px 3px rgba(1, 31, 91, 0.12), 0 1px 2px rgba(1, 31, 91, 0.24);
+$penn-shadow-md: 0 3px 6px rgba(1, 31, 91, 0.15), 0 2px 4px rgba(1, 31, 91, 0.12);
+$penn-shadow-lg: 0 10px 20px rgba(1, 31, 91, 0.15), 0 3px 6px rgba(1, 31, 91, 0.10);
+$penn-shadow-xl: 0 15px 25px rgba(1, 31, 91, 0.15), 0 5px 10px rgba(1, 31, 91, 0.05);
+$penn-shadow-inner: inset 0 2px 4px 0 rgba(1, 31, 91, 0.06);
+
+// =========================================================================
+// Transitions
+// =========================================================================
+
+$penn-transition-fast: 150ms ease-in-out;
+$penn-transition-base: 250ms ease-in-out;
+$penn-transition-slow: 350ms ease-in-out;
+
+// =========================================================================
+// Z-index Scale
+// =========================================================================
+
+$penn-z-base: 1;
+$penn-z-dropdown: 1000;
+$penn-z-sticky: 1020;
+$penn-z-fixed: 1030;
+$penn-z-modal-backdrop: 1040;
+$penn-z-modal: 1050;
+$penn-z-popover: 1060;
+$penn-z-tooltip: 1070;
+
+// =========================================================================
+// Mixins
+// =========================================================================
+
+// Penn Engineering Button
+@mixin penn-button($bg-color: $penn-blue, $text-color: $penn-white) {
+  font-family: $penn-font-primary;
+  font-weight: $penn-font-semibold;
+  background: $bg-color;
+  color: $text-color;
+  border: 2px solid $bg-color;
+  border-radius: $penn-radius-md;
+  padding: $penn-spacing-sm $penn-spacing-lg;
+  transition: all $penn-transition-base;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  box-shadow: $penn-shadow-sm;
+  
+  &:hover {
+    background: darken($bg-color, 10%);
+    border-color: darken($bg-color, 10%);
+    transform: translateY(-2px);
+    box-shadow: $penn-shadow-md;
+  }
+}
+
+// Penn Engineering Card
+@mixin penn-card($hover-effect: true) {
+  background: $penn-white;
+  border: 1px solid $penn-gray-200;
+  border-radius: $penn-radius-lg;
+  padding: $penn-spacing-lg;
+  box-shadow: $penn-shadow-sm;
+  
+  @if $hover-effect {
+    transition: all $penn-transition-base;
+    
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: $penn-shadow-lg;
+      border-color: $penn-electric-blue;
+    }
+  }
+}
+
+// Penn Engineering Gradient Background
+@mixin penn-gradient($direction: 135deg, $start-color: $penn-blue, $end-color: $penn-blue-light) {
+  background: linear-gradient($direction, $start-color 0%, $end-color 100%);
+}
+
+// Penn Engineering Text Shadow
+@mixin penn-text-shadow($color: rgba(1, 31, 91, 0.2)) {
+  text-shadow: 0 2px 4px $color;
+}
+
+// Penn Engineering Focus Ring
+@mixin penn-focus-ring($color: $penn-electric-blue) {
+  &:focus {
+    outline: 2px solid $color;
+    outline-offset: 2px;
+  }
+}
+
+// Penn Engineering Heading Style
+@mixin penn-heading($level: 1) {
+  font-family: $penn-font-primary;
+  font-weight: $penn-font-bold;
+  line-height: 1.2;
+  
+  @if $level == 1 {
+    font-size: $penn-text-4xl;
+    color: $penn-red;
+  } @else if $level == 2 {
+    font-size: $penn-text-3xl;
+    color: $penn-blue;
+  } @else if $level == 3 {
+    font-size: $penn-text-2xl;
+    color: $penn-blue;
+  } @else {
+    font-size: $penn-text-xl;
+    color: $penn-dark-gray;
+  }
+}
+
+// Penn Engineering Technical Text
+@mixin penn-technical-text() {
+  font-family: $penn-font-secondary;
+  font-weight: $penn-font-medium;
+  letter-spacing: 0.02em;
+}
+
+// Penn Engineering Spark Animation
+@mixin penn-spark-animation() {
+  @keyframes spark {
+    0%, 100% {
+      opacity: 0.03;
+      transform: scale(1) rotate(0deg);
+    }
+    50% {
+      opacity: 0.08;
+      transform: scale(1.1) rotate(5deg);
+    }
+  }
+  
+  animation: spark 10s ease-in-out infinite;
+}
+
+// =========================================================================
+// Component Styles
+// =========================================================================
+
+// Enhanced Schedule Events with Penn Colors
+.schedule {
+  @include penn-card(false);
+  
+  .schedule-event {
+    border-radius: $penn-radius-md;
+    transition: all $penn-transition-fast;
+    
+    &.lecture {
+      @include penn-gradient(135deg, $penn-blue, $penn-blue-light);
+      color: $penn-white;
+    }
+    
+    &.section {
+      @include penn-gradient(135deg, $penn-electric-blue, lighten($penn-electric-blue, 15%));
+      color: $penn-blue-dark;
+    }
+    
+    &.office-hours {
+      @include penn-gradient(135deg, $penn-red, $penn-red-light);
+      color: $penn-white;
+    }
+    
+    &.lab {
+      @include penn-gradient(135deg, $penn-success, lighten($penn-success, 10%));
+      color: $penn-white;
+    }
+    
+    &:hover {
+      transform: scale(1.05);
+      box-shadow: $penn-shadow-md;
+      z-index: $penn-z-base + 1;
+    }
+  }
+}
+
+// Enhanced Announcements with Lightning Motif
+.announcement {
+  @include penn-card(true);
+  position: relative;
+  overflow: hidden;
+  border-left: 4px solid $penn-red;
+  
+  &::before {
+    content: "⚡";
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    font-size: 120px;
+    opacity: 0.05;
+    color: $penn-electric-blue;
+    transform: rotate(-15deg);
+    @include penn-spark-animation();
+  }
+  
+  h2 {
+    @include penn-heading(2);
+    color: $penn-red;
+    margin-bottom: $penn-spacing-sm;
+  }
+  
+  .announcement-meta {
+    @include penn-technical-text();
+    color: $penn-medium-gray;
+    font-size: $penn-text-sm;
+  }
+}
+
+// Enhanced Staff Cards
+.staffer {
+  @include penn-card(true);
+  text-align: center;
+  position: relative;
+  
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    @include penn-gradient(90deg, $penn-blue, $penn-electric-blue);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform $penn-transition-base;
+  }
+  
+  &:hover::before {
+    transform: scaleX(1);
+  }
+  
+  img {
+    border-radius: $penn-radius-full;
+    border: 3px solid $penn-light-gray;
+    transition: all $penn-transition-base;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+  }
+  
+  &:hover img {
+    border-color: $penn-electric-blue;
+    transform: scale(1.05);
+  }
+  
+  .staffer-name {
+    @include penn-heading(3);
+    margin-top: $penn-spacing-md;
+  }
+  
+  .staffer-role {
+    @include penn-technical-text();
+    color: $penn-red;
+    font-size: $penn-text-base;
+  }
+  
+  .staffer-email {
+    @include penn-technical-text();
+    color: $penn-blue;
+    font-size: $penn-text-sm;
+    
+    &:hover {
+      color: $penn-electric-blue;
+    }
+  }
+}
+
+// Enhanced Module Cards
+.module-content {
+  @include penn-card(true);
+  margin-bottom: $penn-spacing-xl;
+  
+  h2 {
+    @include penn-heading(2);
+    padding-bottom: $penn-spacing-md;
+    border-bottom: 2px solid $penn-light-gray;
+  }
+  
+  .module {
+    padding: 0;
+    border: none;
+    background: transparent;
+    
+    dt {
+      @include penn-technical-text();
+      color: $penn-blue;
+      font-size: $penn-text-lg;
+      margin-top: $penn-spacing-lg;
+      
+      &:first-child {
+        margin-top: 0;
+      }
+    }
+    
+    dd {
+      margin-left: $penn-spacing-xl;
+      padding-left: $penn-spacing-md;
+      border-left: 2px solid $penn-electric-blue;
+      
+      a {
+        color: $penn-blue;
+        text-decoration: none;
+        transition: color $penn-transition-fast;
+        
+        &:hover {
+          color: $penn-electric-blue;
+        }
+      }
+    }
+  }
+}
+
+// Enhanced Labels with Penn Branding
+.label {
+  @include penn-technical-text();
+  font-size: $penn-text-xs;
+  text-transform: uppercase;
+  padding: $penn-spacing-xs $penn-spacing-sm;
+  border-radius: $penn-radius-md;
+  display: inline-block;
+  transition: all $penn-transition-fast;
+  
+  &:hover {
+    transform: scale(1.05);
+    box-shadow: $penn-shadow-sm;
+  }
+  
+  &-blue {
+    background-color: $penn-blue;
+    color: $penn-white;
+  }
+  
+  &-red {
+    background-color: $penn-red;
+    color: $penn-white;
+  }
+  
+  &-electric {
+    background-color: $penn-electric-blue;
+    color: $penn-blue-dark;
+  }
+  
+  &-success {
+    background-color: $penn-success;
+    color: $penn-white;
+  }
+  
+  &-warning {
+    background-color: $penn-warning;
+    color: $penn-dark-gray;
+  }
+}
+
+// =========================================================================
+// Responsive Utilities
+// =========================================================================
+
+@mixin penn-responsive($breakpoint) {
+  @if $breakpoint == 'sm' {
+    @media (max-width: 640px) {
+      @content;
+    }
+  } @else if $breakpoint == 'md' {
+    @media (max-width: 768px) {
+      @content;
+    }
+  } @else if $breakpoint == 'lg' {
+    @media (max-width: 1024px) {
+      @content;
+    }
+  } @else if $breakpoint == 'xl' {
+    @media (max-width: 1280px) {
+      @content;
+    }
+  }
+}
+
+// =========================================================================
+// Animation Classes
+// =========================================================================
+
+.penn-fade-in {
+  animation: fadeIn $penn-transition-slow;
+}
+
+.penn-fade-in-up {
+  animation: fadeInUp $penn-transition-slow;
+}
+
+.penn-spark {
+  @include penn-spark-animation();
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// =========================================================================
+// End of Penn Engineering Theme SCSS
+// =========================================================================

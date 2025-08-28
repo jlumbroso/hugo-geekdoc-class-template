@@ -1,6 +1,6 @@
 ---
 baseURL: https://jlumbroso.github.io/hugo-geekdoc-class-template
-title: "CS 1002"
+title: "Penn Engineering"
 theme: hugo-geekdoc
 
 # Required to get well formatted code blocks
