@@ -38,12 +38,20 @@ This Hugo template has been beautifully themed with Penn Engineering's official 
 ```
 static/
 ├── themes/
-│   └── penn-engineering.css    # Main theme file
-├── custom.css                   # Imports Penn theme + custom overrides
+│   └── penn-engineering.css    # Main Penn Engineering theme
+├── custom.css                   # Theme switcher (one line to change themes!)
+├── custom-unbranded.css        # Original green theme (fallback)
+├── custom-original.css         # Backup of original with Penn colors
+├── penn-engineering-logo.png   # Penn Engineering logo (white on transparent)
+├── penn-engineering-shield.png # Penn shield for social media
 └── ...
 
 assets/custom/
 ├── penn-engineering-theme.scss  # SCSS variables and mixins
+└── ...
+
+config/_default/
+├── params.yaml                 # Logo and images configured here
 └── ...
 ```
 
@@ -51,16 +59,26 @@ assets/custom/
 
 ### Quick Theme Switch
 
-To switch themes, edit `static/custom.css`:
+**To enable/disable Penn Engineering branding:**
+
+Edit `static/custom.css` (just one line!):
 
 ```css
-/* Current: Penn Engineering Theme */
+/* Penn Engineering Theme - ENABLED */
 @import url("themes/penn-engineering.css");
 
-/* Alternative themes available: */
+/* To DISABLE Penn branding, comment the line above and uncomment one below: */
+/* @import url("custom-unbranded.css"); */  /* Green theme */
 /* @import url("themes/evergreen-harmony.css"); */
 /* @import url("themes/geekdocs-green.css"); */
 ```
+
+**To remove Penn-specific content:**
+1. Change the theme import in `custom.css`
+2. Update `config/_default/params.yaml`:
+   - Remove or comment out `geekdocLogo`
+   - Change `images` back to default
+3. Update site title in `config/_default/config.yaml`
 
 ### Color Customization
 
@@ -266,6 +284,29 @@ Create a new file `static/themes/my-department.css`:
 - **Font Files**: Automatically loaded from CDN
 - **Visual Library**: Blue and red technical illustrations available
 
+## Key Features & Improvements
+
+### Theme Separation
+- **Easy Toggle**: Switch between Penn Engineering and unbranded themes with one line
+- **Clean Architecture**: All Penn-specific styling isolated in `penn-engineering.css`
+- **Universal Styles**: Common customizations preserved across all themes
+
+### Typography Enhancements
+- **Complete Font Coverage**: TWK Everett and Pitch Sans applied everywhere
+- **Override System Fonts**: Replaced Metropolis with Penn fonts throughout
+- **Consistent Hierarchy**: Proper font weights and sizes for all elements
+
+### Visual Improvements
+- **Module Links**: Clear visual feedback with hover effects
+- **Placeholder Links**: Grayed out with dashed underline (#)  
+- **Active Links**: Blue with dotted underline, electric blue on hover
+- **Dark Mode Links**: Properly styled for visibility
+
+### Branding Assets
+- **Logo Integration**: Penn Engineering shield properly configured
+- **Social Media**: Custom image for link previews
+- **Flexible System**: Easy to swap logos via config files
+
 ## Support
 
 For questions about the theme:
@@ -275,6 +316,6 @@ For questions about the theme:
 
 ---
 
-**Theme Version**: 1.0.0  
+**Theme Version**: 1.1.0  
 **Last Updated**: January 2025  
 **Brand Tagline**: "Reinventing Invention"

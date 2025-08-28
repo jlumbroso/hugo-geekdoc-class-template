@@ -236,13 +236,28 @@ body {
   letter-spacing: 0.01em;
 }
 
+/* Override Geekdoc's default Metropolis font everywhere */
+* {
+  font-family: inherit;
+}
+
 /* Headings - TWK Everett Bold */
 h1, h2, h3, h4, h5, h6,
-.gdoc-header__title {
-  font-family: var(--penn-font-primary);
+.gdoc-header__title,
+.gdoc-brand__title {
+  font-family: var(--penn-font-primary) !important;
   font-weight: var(--penn-font-bold);
   line-height: 1.2;
   color: var(--penn-blue);
+}
+
+/* Ensure navigation uses Penn fonts */
+.gdoc-nav,
+.gdoc-nav__entry,
+.gdoc-page__header,
+.gdoc-page__footer,
+.gdoc-footer {
+  font-family: var(--penn-font-primary) !important;
 }
 
 :root[color-theme="dark"] h1,
@@ -315,19 +330,8 @@ blockquote {
   font-size: 1.25rem;
 }
 
-/* Add Penn Engineering Shield Logo */
-.gdoc-header__title::before {
-  content: "";
-  display: inline-block;
-  width: 40px;
-  height: 48px;
-  margin-right: var(--penn-spacing-sm);
-  vertical-align: middle;
-  background-image: url("https://jlumbroso.github.io/penn-engineering-web-assets/shields/PE-logo-RGB-stacked-reverse.png");
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-}
+/* Penn Engineering Shield Logo - Removed as we now use geekdocLogo parameter */
+/* Logo is now configured via config/_default/params.yaml */
 
 /* =========================================================================
    Navigation Enhancements
@@ -444,6 +448,58 @@ blockquote {
   margin-left: var(--penn-spacing-lg);
   padding-left: var(--penn-spacing-md);
   border-left: 2px solid var(--penn-light-gray);
+}
+
+/* Module page link styling */
+.module a,
+.module-content a {
+  color: var(--penn-blue);
+  text-decoration: none;
+  border-bottom: 1px dotted var(--penn-blue);
+  transition: all var(--penn-transition-fast);
+  display: inline-block;
+}
+
+.module a:hover,
+.module-content a:hover {
+  color: var(--penn-electric-blue);
+  border-bottom: 2px solid var(--penn-electric-blue);
+  transform: translateX(2px);
+}
+
+/* Special styling for placeholder links */
+.module a[href="#"],
+.module-content a[href="#"] {
+  color: var(--penn-gray-600);
+  border-bottom: 1px dashed var(--penn-gray-400);
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.module a[href="#"]:hover,
+.module-content a[href="#"]:hover {
+  color: var(--penn-gray-700);
+  border-bottom: 1px dashed var(--penn-gray-500);
+  transform: none;
+}
+
+/* Dark mode module links */
+:root[color-theme="dark"] .module a,
+:root[color-theme="dark"] .module-content a {
+  color: var(--penn-electric-blue);
+  border-bottom-color: var(--penn-electric-blue);
+}
+
+:root[color-theme="dark"] .module a:hover,
+:root[color-theme="dark"] .module-content a:hover {
+  color: #8AD5FF;
+  border-bottom-color: #8AD5FF;
+}
+
+:root[color-theme="dark"] .module a[href="#"],
+:root[color-theme="dark"] .module-content a[href="#"] {
+  color: var(--penn-gray-500);
+  border-bottom-color: var(--penn-gray-600);
 }
 
 /* =========================================================================

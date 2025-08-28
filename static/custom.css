@@ -1,28 +1,46 @@
 /* =========================================================================
-   Custom CSS - Penn Engineering Theme Integration
+   Hugo Geekdoc Class Template - Custom CSS
+   =========================================================================
+   
+   This file controls which theme is active. To switch themes, simply
+   comment out the current theme and uncomment your desired theme.
+   
    ========================================================================= */
 
-/* Import Penn Engineering Theme */
+/* THEME SELECTION - Choose ONE by uncommenting the @import line */
+
+/* Penn Engineering Theme (Elegant, Professional, Brand-compliant) */
 @import url("themes/penn-engineering.css");
 
+/* Original Green Themes */
+/* @import url("themes/evergreen-harmony.css"); */
+/* @import url("themes/geekdocs-green.css"); */
+/* @import url("themes/granny-lime-bliss.css"); */
+/* @import url("themes/greenest.css"); */
+/* @import url("themes/vibrant-meadow.css"); */
+
+/* Unbranded Default (Clean, minimal styling) */
+/* @import url("custom-unbranded.css"); */
+
 /* =========================================================================
-   Original Custom Styles (Preserved)
+   Universal Customizations
+   These apply regardless of which theme is selected
    ========================================================================= */
 
 /* Custom CSS to remove colons in dt elements within modules */
 .main-content .module dt::after,
 .module dt::after {
-    content: none !important; /* Removes the automatically appended colon */
+    content: none !important;
 }
 
 /* Custom Styles for Module to Remove Separation */
 .module dt.no-sep {
-  border-top: none; /* Removes top border from dt */
+  border-top: none;
 }
 
 .module dt.no-sep + dd {
-  border-top: none; /* Removes top border from subsequent dd */
-  margin-top: 0; /* Removes top margin to merge visually with dt */
+  border-top: none;
+  margin-top: 0;
 }
 
 /* Icon Grid Styles */
@@ -47,55 +65,11 @@
   font-size: 0.8em;
 }
 
-/* =========================================================================
-   Penn Engineering Theme Activation
-   ========================================================================= */
-
-/* 
-   The Penn Engineering theme is now active!
-   
-   To customize the theme, you can:
-   
-   1. Override CSS variables in :root
-   2. Add custom styles below
-   3. Switch between themes by commenting/uncommenting the import statement
-   
-   Available theme files:
-   - themes/penn-engineering.css (Current - Penn Engineering branded)
-   - themes/evergreen-harmony.css
-   - themes/geekdocs-green.css  
-   - themes/granny-lime-bliss.css
-   - themes/greenest.css
-   - themes/vibrant-meadow.css
-*/
-
-/* =========================================================================
-   Custom Overrides and Extensions
-   ========================================================================= */
-
-/* Additional custom styles can be added here */
-
-/* Example: Custom announcement style with Penn Engineering branding */
-.announcement-penn {
-  background: linear-gradient(135deg, #F5F7FA 0%, #FFFFFF 100%);
-  border-left: 4px solid var(--penn-red);
-  position: relative;
-}
-
-.announcement-penn::after {
-  content: "PENN ENGINEERING";
-  position: absolute;
-  bottom: 10px;
-  right: 10px;
-  font-family: var(--penn-font-secondary);
-  font-size: 0.7rem;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  color: var(--penn-electric-blue);
-  opacity: 0.3;
-}
-
-/* Code block max height override */
+/* Code block max height */
 :root {
   --code-max-height: 60rem;
 }
+
+/* =========================================================================
+   Add Your Own Custom Styles Below
+   ========================================================================= */

@@ -2,7 +2,7 @@
 description: >
   Penn Engineering course website - Reinventing Invention through education and innovation.
 images:
-  - "socialmedia2.png"
+  - "penn-engineering-shield.png"
 
 # (Optional, default 6) Set how many table of contents levels to be showed on page.
 # Use false to hide ToC, note that 0 will default to 6 (https://gohugo.io/functions/default/)
@@ -11,7 +11,7 @@ geekdocToC: 3
 
 # (Optional, default static/brand.svg) Set the path to a logo for the Geekdoc
 # relative to your 'static/' folder.
-# geekdocLogo: logo.png
+geekdocLogo: penn-engineering-logo.png
 
 # (Optional, default false) Render menu from data file in 'data/menu/main.yaml'.
 # See also https://geekdocs.de/usage/menus/#bundle-menu.
