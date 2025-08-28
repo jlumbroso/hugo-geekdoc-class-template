@@ -70,6 +70,31 @@
   --code-max-height: 60rem;
 }
 
+/* "Skip to main content" link */
+
+#gdoc-to-main {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+#gdoc-to-main:focus {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 1rem;
+  width: auto;
+  height: auto;
+  padding: 0.5rem 1rem;
+  background: var(--accent-color-lite, #f0f0f0);
+  border: 1px solid var(--accent-color, #333);
+  border-radius: 4px;
+  z-index: 1000;
+}
+
 /* =========================================================================
    Add Your Own Custom Styles Below
    ========================================================================= */
