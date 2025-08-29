@@ -242,13 +242,21 @@ body {
 }
 
 /* Headings - TWK Everett Bold */
-h1, h2, h3, h4, h5, h6,
-.gdoc-header__title,
-.gdoc-brand__title {
-  font-family: var(--penn-font-primary) !important;
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--penn-font-primary);
   font-weight: var(--penn-font-bold);
   line-height: 1.2;
   color: var(--penn-blue);
+}
+
+/* Brand title in header needs special treatment */
+.gdoc-header .gdoc-brand__title,
+.gdoc-header__title {
+  font-family: var(--penn-font-primary);
+  font-weight: var(--penn-font-bold);
+  line-height: 1.2;
+  color: var(--penn-white); /* White text in header */
+  font-size: 2rem; /* Ensure it's large */
 }
 
 /* Ensure navigation uses Penn fonts */
@@ -257,7 +265,7 @@ h1, h2, h3, h4, h5, h6,
 .gdoc-page__header,
 .gdoc-page__footer,
 .gdoc-footer {
-  font-family: var(--penn-font-primary) !important;
+  font-family: var(--penn-font-primary);
 }
 
 :root[color-theme="dark"] h1,
@@ -280,18 +288,24 @@ h1 {
   color: var(--penn-electric-blue);
 }
 
-/* Subheadings and Metadata - Pitch Sans */
+/* Subheadings and Metadata - Pitch Sans (per brand guidelines) */
 .gdoc-page__header time,
 .gdoc-page__header .gdoc-page__meta,
+.gdoc-page__footer,
+.gdoc-footer__item,
 .announcement-meta,
 .module dt,
 .schedule-header,
 .staffer-meta dt,
+.gdoc-search__input,
+.gdoc-search__list,
+.gdoc-toc,
+.gdoc-button,
 code,
 pre,
 kbd,
 samp {
-  font-family: var(--penn-font-secondary);
+  font-family: var(--penn-font-secondary) !important;
 }
 
 /* Technical Annotations */
@@ -327,11 +341,56 @@ blockquote {
   font-weight: var(--penn-font-bold);
   letter-spacing: 0.02em;
   text-transform: uppercase;
-  font-size: 1.25rem;
+  font-size: 2rem; /* Much larger title */
+  color: var(--penn-white);
+  line-height: 1.2;
 }
 
-/* Penn Engineering Shield Logo - Removed as we now use geekdocLogo parameter */
-/* Logo is now configured via config/_default/params.yaml */
+/* Make sure brand title is also large */
+.gdoc-brand__title {
+  font-size: 2rem;
+}
+
+/* Fix logo sizing to maintain aspect ratio */
+.gdoc-brand__img {
+  height: 50px; /* Slightly larger to match title */
+  width: auto !important;
+  max-width: none !important;
+  object-fit: contain;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* Ensure proper spacing between logo and title */
+.gdoc-brand {
+  display: flex;
+  align-items: center;
+  gap: var(--penn-spacing-md);
+}
+
+.gdoc-brand__link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  transition: opacity var(--penn-transition-fast);
+}
+
+.gdoc-brand__link:hover {
+  opacity: 0.9;
+}
+
+/* GitHub and other header links - use Pitch Sans for metadata/technical elements */
+.gdoc-header__link {
+  font-family: var(--penn-font-secondary);
+  font-weight: var(--penn-font-medium);
+  font-size: 0.875rem; /* Keep small for metadata */
+  color: var(--penn-white);
+  transition: color var(--penn-transition-fast);
+}
+
+.gdoc-header__link:hover {
+  color: var(--penn-electric-blue);
+}
 
 /* =========================================================================
    Navigation Enhancements
@@ -710,6 +769,126 @@ blockquote {
 }
 
 /* =========================================================================
+   Tags Styling - Override button appearance completely
+   ========================================================================= */
+
+/* Target the actual tag structure from the template */
+.gdoc-post__tag.gdoc-button {
+  /* Complete reset of button styling */
+  all: revert;
+  /* Apply minimal tag styling */
+  display: inline-block;
+  padding: 2px 6px;
+  margin: 0 3px;
+  font-size: 0.65rem;
+  line-height: 1.2;
+  border: none;
+  background: transparent;
+  box-shadow: none;
+}
+
+.gdoc-post__tag.gdoc-button .gdoc-button__link {
+  /* Style the link inside */
+  all: revert;
+  font-family: var(--penn-font-secondary);
+  font-size: 0.65rem;
+  font-weight: 400;
+  color: var(--penn-gray-600);
+  background: var(--penn-gray-100);
+  padding: 2px 8px;
+  border-radius: 10px;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.2s ease;
+  text-transform: none;
+  letter-spacing: normal;
+  line-height: 1.3;
+  border: 1px solid var(--penn-gray-200);
+}
+
+.gdoc-post__tag.gdoc-button .gdoc-button__link:hover,
+.gdoc-post__tag.gdoc-button .gdoc-button__link:focus,
+.gdoc-post__tag.gdoc-button .gdoc-button__link:active {
+  background: var(--penn-blue);
+  color: var(--penn-white) !important; /* Force white text for readability */
+  border-color: var(--penn-blue);
+  transform: none;
+}
+
+/* Also target if they appear in headers/metadata */
+.gdoc-post__meta .gdoc-post__tag.gdoc-button,
+.gdoc-page__meta .gdoc-post__tag.gdoc-button {
+  display: inline-block;
+  margin: 0 2px;
+}
+
+/* Dark mode */
+:root[color-theme="dark"] .gdoc-post__tag.gdoc-button .gdoc-button__link {
+  color: var(--penn-gray-400);
+  background: var(--penn-gray-800);
+  border-color: var(--penn-gray-700);
+}
+
+:root[color-theme="dark"] .gdoc-post__tag.gdoc-button .gdoc-button__link:hover {
+  background: var(--penn-electric-blue);
+  color: var(--penn-white); /* Ensure white text for readability */
+  border-color: var(--penn-electric-blue);
+}
+
+/* =========================================================================
+   Post/Page Metadata Styling
+   ========================================================================= */
+
+.gdoc-page__header {
+  margin-bottom: var(--penn-spacing-xl);
+  padding-bottom: var(--penn-spacing-lg);
+  border-bottom: 2px solid var(--penn-light-gray);
+}
+
+.gdoc-page__meta {
+  font-family: var(--penn-font-secondary) !important;
+  font-size: 0.875rem;
+  color: var(--penn-medium-gray);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--penn-spacing-lg); /* Better spacing between metadata items */
+  align-items: center;
+  margin-top: var(--penn-spacing-md);
+}
+
+.gdoc-page__meta > span {
+  display: flex;
+  align-items: center;
+  gap: var(--penn-spacing-xs);
+}
+
+/* Add separators between metadata items */
+.gdoc-page__meta > span:not(:last-child)::after {
+  content: "•";
+  margin-left: var(--penn-spacing-lg);
+  color: var(--penn-gray-400);
+}
+
+/* Reading time and date styling */
+.gdoc-page__meta time {
+  font-weight: var(--penn-font-semibold);
+  color: var(--penn-blue);
+}
+
+/* Dark mode metadata */
+:root[color-theme="dark"] .gdoc-page__header {
+  border-bottom-color: var(--penn-gray-700);
+}
+
+:root[color-theme="dark"] .gdoc-page__meta {
+  color: var(--penn-gray-400);
+}
+
+:root[color-theme="dark"] .gdoc-page__meta time {
+  color: var(--penn-electric-blue);
+}
+
+/* =========================================================================
    Footer (Penn Engineering)
    ========================================================================= */
 
@@ -775,12 +954,16 @@ blockquote {
 
 @media (max-width: 768px) {
   h1 {
-    font-size: 2rem;
+    font-size: 1.75rem;
   }
   
-  .gdoc-header__title::before {
-    width: 30px;
-    height: 36px;
+  /* Adjust header title for mobile */
+  .gdoc-header__title {
+    font-size: 1.5rem !important;
+  }
+  
+  .gdoc-brand__img {
+    height: 40px;
   }
   
   .gdoc-page::before {
@@ -790,6 +973,17 @@ blockquote {
   
   .announcement::before {
     font-size: 80px;
+  }
+  
+  /* Stack metadata on mobile */
+  .gdoc-page__meta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--penn-spacing-sm);
+  }
+  
+  .gdoc-page__meta > span:not(:last-child)::after {
+    display: none; /* Remove separators on mobile */
   }
 }
 

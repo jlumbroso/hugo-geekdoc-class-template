@@ -15,8 +15,12 @@ This Hugo template has been beautifully themed with Penn Engineering's official 
    - Full grayscale palette for nuanced design
 
 2. **Typography System**
-   - **TWK Everett** - Primary typeface with sharp, technical details
-   - **Pitch Sans** - Monospace-inspired secondary font for technical content
+   - **TWK Everett** - Primary typeface for body text, headlines, navigation
+   - **Pitch Sans** - Secondary font for:
+     - Metadata (dates, GitHub links, footer items)
+     - Technical content (code, buttons, search)
+     - Annotations and subheadings
+     - Module dates and schedule headers
    - Web fonts loaded directly from Penn Engineering CDN
 
 3. **Visual Motifs**
@@ -294,7 +298,10 @@ Create a new file `static/themes/my-department.css`:
 ### Typography Enhancements
 - **Complete Font Coverage**: TWK Everett and Pitch Sans applied everywhere
 - **Override System Fonts**: Replaced Metropolis with Penn fonts throughout
-- **Consistent Hierarchy**: Proper font weights and sizes for all elements
+- **Brand-Compliant Usage**: 
+  - Everett for main content and navigation
+  - Pitch Sans for metadata, technical elements (per guidelines)
+- **Fixed Header Styling**: White text on blue background, proper logo sizing
 
 ### Visual Improvements
 - **Module Links**: Clear visual feedback with hover effects
@@ -316,6 +323,22 @@ For questions about the theme:
 
 ---
 
-**Theme Version**: 1.1.0  
+**Theme Version**: 1.2.0  
 **Last Updated**: January 2025  
 **Brand Tagline**: "Reinventing Invention"
+
+## Change Log
+
+### Version 1.2.0
+- Fixed header title size (now 2rem for proper prominence)
+- Restyled tags as small, subtle elements (not buttons)
+- Improved metadata display with proper spacing and separators
+- Maintained GitHub link at appropriate 0.875rem size
+
+### Version 1.1.0
+- Separated Penn branding for easy toggle
+- Complete font coverage with brand-compliant usage
+- Fixed module link styling
+
+### Version 1.0.0
+- Initial Penn Engineering theme implementation
