@@ -1,0 +1,198 @@
+/* Custom CSS to remove colons in dt elements within modules */
+.main-content .module dt::after,
+.module dt::after {
+    content: none ! important; /* Removes the automatically appended colon */
+}
+
+
+/* Custom Styles for Module to Remove Separation */
+.module dt.no-sep {
+  border-top: none; /* Removes top border from dt */
+}
+
+.module dt.no-sep + dd {
+  border-top: none; /* Removes top border from subsequent dd */
+  margin-top: 0; /* Removes top margin to merge visually with dt */
+}
+
+:root {
+  --code-max-height: 60rem;
+}
+
+.icon-grid {
+  width: 8rem;
+  height: 8rem;
+  margin: 0.2em;
+  text-align: center;
+  padding: 0.3em;
+}
+
+.icon-grid__line {
+  height: 4rem;
+}
+
+.icon-grid__line .gdoc-icon {
+  width: 3em;
+  height: 3em;
+}
+
+.icon-grid__line--text {
+  font-size: 0.8em;
+}
+
+/* Global customization */
+
+:root {
+  --code-max-height: 60rem;
+}
+
+/* Light mode theming */
+:root,
+:root[color-theme="light"] {
+  --header-background: #088024; /* Dark green */
+  --header-font-color: #ffffff;
+
+  --body-background: #ffffff;
+  --body-font-color: #343a40;
+
+  --mark-color: #e7ff86; /* Pastel yellow-green */
+
+  --button-background: #5ada3a; /* Bright green */
+  --button-border-color: #088024; /* Dark green */
+
+  --link-color: #9d37b7; /* Vibrant purple */
+  --link-color-visited: #dd721f; /* Bold orange */
+
+  --code-background: #f5f6f8;
+  --code-accent-color: #dad496; /* Soft gold */
+  --code-accent-color-lite: #eff1f3;
+  --code-font-color: #5f5f5f;
+
+  --code-copy-background: #f5f6f8;
+  --code-copy-font-color: #6b7784;
+  --code-copy-border-color: #adb4bc;
+  --code-copy-success-color: #5ada3a; /* Bright green */
+
+  --accent-color: #e9ecef;
+  --accent-color-lite: #f8f9fa;
+
+  --control-icons: #807456; /* Brownish taupe */
+
+  --footer-background: #088024; /* Dark green */
+  --footer-font-color: #ffffff;
+  --footer-link-color: #e7ff86; /* Pastel yellow-green */
+  --footer-link-color-visited: #dd721f; /* Bold orange */
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --header-background: #088024;
+    --header-font-color: #ffffff;
+
+    --body-background: #ffffff;
+    --body-font-color: #343a40;
+
+    --mark-color: #e7ff86;
+
+    --button-background: #5ada3a;
+    --button-border-color: #088024;
+
+    --link-color: #9d37b7;
+    --link-color-visited: #dd721f;
+
+    --code-background: #f5f6f8;
+    --code-accent-color: #dad496;
+    --code-accent-color-lite: #eff1f3;
+    --code-font-color: #5f5f5f;
+
+    --code-copy-background: #f5f6f8;
+    --code-copy-font-color: #6b7784;
+    --code-copy-border-color: #adb4bc;
+    --code-copy-success-color: #5ada3a;
+
+    --accent-color: #e9ecef;
+    --accent-color-lite: #f8f9fa;
+
+    --control-icons: #807456;
+
+    --footer-background: #088024;
+    --footer-font-color: #ffffff;
+    --footer-link-color: #e7ff86;
+    --footer-link-color-visited: #dd721f;
+  }
+}
+
+/* Dark mode theming */
+:root[color-theme="dark"] {
+  --header-background: #088024; /* Dark green */
+  --header-font-color: #ffffff;
+
+  --body-background: #343a40;
+  --body-font-color: #ced3d8;
+
+  --mark-color: #e7ff86; /* Pastel yellow-green */
+
+  --button-background: #5ada3a; /* Bright green */
+  --button-border-color: #088024; /* Dark green */
+
+  --link-color: #9d37b7; /* Vibrant purple */
+  --link-color-visited: #dd721f; /* Bold orange */
+
+  --code-background: #2f353a;
+  --code-accent-color: #dad496; /* Soft gold */
+  --code-accent-color-lite: #2b3035;
+  --code-font-color: #b9b9b9;
+
+  --code-copy-background: #343a40;
+  --code-copy-font-color: #6b7784;
+  --code-copy-border-color: #6b7784;
+  --code-copy-success-color: #5ada3a; /* Bright green */
+
+  --accent-color: #2b3035;
+  --accent-color-lite: #2f353a;
+
+  --control-icons: #807456; /* Brownish taupe */
+
+  --footer-background: #088024; /* Dark green */
+  --footer-font-color: #ffffff;
+  --footer-link-color: #e7ff86; /* Pastel yellow-green */
+  --footer-link-color-visited: #dd721f; /* Bold orange */
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --header-background: #088024;
+    --header-font-color: #ffffff;
+
+    --body-background: #343a40;
+    --body-font-color: #ced3d8;
+
+    --mark-color: #e7ff86;
+
+    --button-background: #5ada3a;
+    --button-border-color: #088024;
+
+    --link-color: #9d37b7;
+    --link-color-visited: #dd721f;
+
+    --code-background: #2f353a;
+    --code-accent-color: #dad496;
+    --code-accent-color-lite: #2b3035;
+    --code-font-color: #b9b9b9;
+
+    --code-copy-background: #343a40;
+    --code-copy-font-color: #6b7784;
+    --code-copy-border-color: #6b7784;
+    --code-copy-success-color: #5ada3a;
+
+    --accent-color: #2b3035;
+    --accent-color-lite: #2f353a;
+
+    --control-icons: #807456;
+
+    --footer-background: #088024;
+    --footer-font-color: #ffffff;
+    --footer-link-color: #e7ff86;
+    --footer-link-color-visited: #dd721f;
+  }
+}

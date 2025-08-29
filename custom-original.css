@@ -1,0 +1,101 @@
+/* =========================================================================
+   Custom CSS - Penn Engineering Theme Integration
+   ========================================================================= */
+
+/* Import Penn Engineering Theme */
+@import url("themes/penn-engineering.css");
+
+/* =========================================================================
+   Original Custom Styles (Preserved)
+   ========================================================================= */
+
+/* Custom CSS to remove colons in dt elements within modules */
+.main-content .module dt::after,
+.module dt::after {
+    content: none !important; /* Removes the automatically appended colon */
+}
+
+/* Custom Styles for Module to Remove Separation */
+.module dt.no-sep {
+  border-top: none; /* Removes top border from dt */
+}
+
+.module dt.no-sep + dd {
+  border-top: none; /* Removes top border from subsequent dd */
+  margin-top: 0; /* Removes top margin to merge visually with dt */
+}
+
+/* Icon Grid Styles */
+.icon-grid {
+  width: 8rem;
+  height: 8rem;
+  margin: 0.2em;
+  text-align: center;
+  padding: 0.3em;
+}
+
+.icon-grid__line {
+  height: 4rem;
+}
+
+.icon-grid__line .gdoc-icon {
+  width: 3em;
+  height: 3em;
+}
+
+.icon-grid__line--text {
+  font-size: 0.8em;
+}
+
+/* =========================================================================
+   Penn Engineering Theme Activation
+   ========================================================================= */
+
+/* 
+   The Penn Engineering theme is now active!
+   
+   To customize the theme, you can:
+   
+   1. Override CSS variables in :root
+   2. Add custom styles below
+   3. Switch between themes by commenting/uncommenting the import statement
+   
+   Available theme files:
+   - themes/penn-engineering.css (Current - Penn Engineering branded)
+   - themes/evergreen-harmony.css
+   - themes/geekdocs-green.css  
+   - themes/granny-lime-bliss.css
+   - themes/greenest.css
+   - themes/vibrant-meadow.css
+*/
+
+/* =========================================================================
+   Custom Overrides and Extensions
+   ========================================================================= */
+
+/* Additional custom styles can be added here */
+
+/* Example: Custom announcement style with Penn Engineering branding */
+.announcement-penn {
+  background: linear-gradient(135deg, #F5F7FA 0%, #FFFFFF 100%);
+  border-left: 4px solid var(--penn-red);
+  position: relative;
+}
+
+.announcement-penn::after {
+  content: "PENN ENGINEERING";
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  font-family: var(--penn-font-secondary);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: var(--penn-electric-blue);
+  opacity: 0.3;
+}
+
+/* Code block max height override */
+:root {
+  --code-max-height: 60rem;
+}
