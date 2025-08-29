@@ -1,0 +1,47 @@
+{{/* Favicon configuration - easily switchable via params */}}
+{{ $faviconPath := .Site.Params.faviconPath | default "favicons/default" }}
+
+{{/* Basic favicon */}}
+<link rel="shortcut icon" href="{{ printf "%s/favicon.ico" $faviconPath | absURL }}" type="image/x-icon">
+<link rel="icon" href="{{ printf "%s/favicon.ico" $faviconPath | absURL }}" type="image/x-icon">
+
+{{/* PNG favicons if they exist */}}
+{{ if fileExists (printf "static/%s/favicon-32x32.png" $faviconPath) }}
+<link rel="icon" type="image/png" sizes="32x32" href="{{ printf "%s/favicon-32x32.png" $faviconPath | absURL }}">
+{{ end }}
+
+{{ if fileExists (printf "static/%s/favicon-16x16.png" $faviconPath) }}
+<link rel="icon" type="image/png" sizes="16x16" href="{{ printf "%s/favicon-16x16.png" $faviconPath | absURL }}">
+{{ end }}
+
+{{/* Apple Touch Icon */}}
+{{ if fileExists (printf "static/%s/apple-touch-icon.png" $faviconPath) }}
+<link rel="apple-touch-icon" sizes="180x180" href="{{ printf "%s/apple-touch-icon.png" $faviconPath | absURL }}">
+{{ end }}
+
+{{/* Android Chrome Icons */}}
+{{ if fileExists (printf "static/%s/android-chrome-192x192.png" $faviconPath) }}
+<link rel="icon" type="image/png" sizes="192x192" href="{{ printf "%s/android-chrome-192x192.png" $faviconPath | absURL }}">
+{{ end }}
+
+{{ if fileExists (printf "static/%s/android-chrome-512x512.png" $faviconPath) }}
+<link rel="icon" type="image/png" sizes="512x512" href="{{ printf "%s/android-chrome-512x512.png" $faviconPath | absURL }}">
+{{ end }}
+
+{{/* Web Manifest */}}
+{{ if fileExists (printf "static/%s/site.webmanifest" $faviconPath) }}
+<link rel="manifest" href="{{ printf "%s/site.webmanifest" $faviconPath | absURL }}">
+{{ end }}
+
+{{/* Safari Pinned Tab */}}
+{{ if fileExists (printf "static/%s/safari-pinned-tab.svg" $faviconPath) }}
+<link rel="mask-icon" href="{{ printf "%s/safari-pinned-tab.svg" $faviconPath | absURL }}" color="{{ .Site.Params.safariPinnedTabColor | default "#011F5B" }}">
+{{ end }}
+
+{{/* Microsoft Tile */}}
+{{ if .Site.Params.msapplicationTileColor }}
+<meta name="msapplication-TileColor" content="{{ .Site.Params.msapplicationTileColor }}">
+{{ end }}
+
+{{/* Theme Color */}}
+<meta name="theme-color" content="{{ .Site.Params.themeColor | default "#011F5B" }}">

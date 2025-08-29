@@ -98,3 +98,9 @@ geekdocFileTreeSortBy: "title"
 # geekdocContentLicense:
 #   name: CC BY-SA 4.0
 #   link: https://creativecommons.org/licenses/by-sa/4.0/
+
+# Favicon configuration
+faviconPath: "favicons/penn-engineering"
+safariPinnedTabColor: "#011F5B"
+msapplicationTileColor: "#011F5B"
+themeColor: "#011F5B"
