@@ -19,6 +19,10 @@ It is designed to work well both on desktop and mobile — and to make it easy t
 
 ![Mobile Schedule](static/_docs/sshot_mobile_schedule.png)
 
+This template can also easily be themed, for instance, in the colors of the University of Pennsylvania (or your own institution):
+
+![University of Pennsylvania Desktop Modules](static/_docs/sshot_desktop_modules_penn.png)
+
 ## Offline Site Generation
 
 By default, the site is built and deployed by GitHub Actions.  
