@@ -69,6 +69,8 @@
 {{ end }}
 <!-- End of including Just-the-Docs and Just-the-Class SASS code -->
 
+{{- partial "head/course-accent.html" . }}
+
 {{- with .OutputFormats.Get "html" }}
   {{ printf `<link href=%q rel=%q type=%q />` .Permalink .Rel .MediaType.Type | safeHTML }}
 {{- end }}

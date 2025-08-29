@@ -1,0 +1,9 @@
+{{/* Course Accent Color System */}}
+{{ if .Site.Params.courseAccent }}
+  {{/* Load base accent system */}}
+  <link rel="stylesheet" href="{{ "accents/base-accent.css" | absURL }}">
+  
+  {{/* Load specific accent color theme */}}
+  {{ $accentFile := printf "accents/%s.css" .Site.Params.courseAccent }}
+  <link rel="stylesheet" href="{{ $accentFile | absURL }}">
+{{ end }}

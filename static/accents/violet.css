@@ -1,0 +1,10 @@
+/* Violet Accent Theme
+   Penn's Violet for creative/design courses */
+
+:root {
+  --course-accent-primary: #4B2E83;        /* Penn Violet */
+  --course-accent-secondary: #35205e;      /* Darker Violet */
+  --course-accent-light: #7d6ba3;          /* Lighter Violet */
+  --course-accent-bg: rgba(75, 46, 131, 0.05); /* Very light Violet background */
+  --course-accent-hover: #35205e;          /* Hover state */
+}

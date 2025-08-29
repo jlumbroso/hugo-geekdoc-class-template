@@ -104,3 +104,8 @@ faviconPath: "favicons/penn-engineering"
 safariPinnedTabColor: "#011F5B"
 msapplicationTileColor: "#011F5B"
 themeColor: "#011F5B"
+
+# Course accent color
+# Available options: evergreen, teal, warwick, violet, orange, red
+# Leave empty or comment out for default Penn blue
+courseAccent: ""

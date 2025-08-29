@@ -1,0 +1,10 @@
+/* Teal Accent Theme
+   Penn's Teal color for bioengineering/health courses */
+
+:root {
+  --course-accent-primary: #007E7A;        /* Penn Teal */
+  --course-accent-secondary: #005855;      /* Darker Teal */
+  --course-accent-light: #4da6a3;          /* Lighter Teal */
+  --course-accent-bg: rgba(0, 126, 122, 0.05); /* Very light Teal background */
+  --course-accent-hover: #005855;          /* Hover state */
+}

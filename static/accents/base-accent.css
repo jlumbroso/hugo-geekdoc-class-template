@@ -1,0 +1,179 @@
+/* Base Course Accent System
+   This file defines which elements receive accent colors.
+   The actual colors are defined in individual accent files.
+   This creates a consistent accent application across all courses. */
+
+/* Accent color variables - will be overridden by specific accent files */
+:root {
+  --course-accent-primary: var(--penn-blue);      /* Main accent color */
+  --course-accent-secondary: var(--penn-blue-dark); /* Darker variant */
+  --course-accent-light: var(--penn-blue-light);   /* Lighter variant */
+  --course-accent-bg: rgba(1, 31, 91, 0.05);      /* Very light background */
+  --course-accent-hover: var(--penn-blue-dark);    /* Hover state */
+}
+
+/* Module/section headers with accent */
+.gdoc-markdown h2 {
+  border-left: 4px solid var(--course-accent-primary);
+  padding-left: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.gdoc-markdown h2:hover {
+  border-left-color: var(--course-accent-hover);
+}
+
+/* Accent for current page in navigation */
+.gdoc-nav__entry.is-active > a,
+.gdoc-nav__entry.is-active > label {
+  color: var(--course-accent-primary) !important;
+  font-weight: 600;
+}
+
+/* Active section in table of contents */
+.gdoc-toc a.is-active {
+  color: var(--course-accent-primary) !important;
+  border-left: 3px solid var(--course-accent-primary);
+  padding-left: 0.5rem;
+  margin-left: -0.5rem;
+}
+
+/* Links within content */
+.gdoc-markdown a:not(.gdoc-button__link) {
+  color: var(--course-accent-primary);
+  border-bottom: 1px dotted var(--course-accent-primary);
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.gdoc-markdown a:not(.gdoc-button__link):hover {
+  color: var(--course-accent-hover);
+  border-bottom-style: solid;
+}
+
+/* Code blocks with accent */
+.gdoc-markdown pre {
+  border-left: 3px solid var(--course-accent-primary);
+}
+
+/* Blockquotes with accent */
+.gdoc-markdown blockquote {
+  border-left: 4px solid var(--course-accent-primary);
+  background: var(--course-accent-bg);
+}
+
+/* Important lists with accent markers */
+.gdoc-markdown ul.accent-list li::before,
+.gdoc-markdown ul.important li::before {
+  content: "▸";
+  color: var(--course-accent-primary);
+  font-weight: bold;
+  display: inline-block;
+  width: 1em;
+  margin-left: -1em;
+}
+
+/* Accent badges/labels */
+.gdoc-badge,
+.course-label {
+  background: var(--course-accent-primary);
+  color: white;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 0.85em;
+  font-family: var(--penn-font-secondary);
+}
+
+/* Module cards with accent */
+.gdoc-post__feature {
+  border-top: 3px solid var(--course-accent-primary);
+}
+
+.gdoc-post__feature:hover {
+  border-top-color: var(--course-accent-hover);
+  box-shadow: 0 4px 12px var(--course-accent-bg);
+}
+
+/* Tags with accent on hover */
+.gdoc-post__tag.gdoc-button .gdoc-button__link:hover {
+  background: var(--course-accent-primary) !important;
+  border-color: var(--course-accent-primary) !important;
+}
+
+/* Progress bars */
+.progress-bar,
+.course-progress {
+  background: linear-gradient(
+    to right,
+    var(--course-accent-primary) 0%,
+    var(--course-accent-primary) var(--progress, 50%),
+    var(--penn-gray-200) var(--progress, 50%),
+    var(--penn-gray-200) 100%
+  );
+  height: 4px;
+  border-radius: 2px;
+}
+
+/* Callout boxes with accent */
+.gdoc-hint,
+.course-callout {
+  border-left: 4px solid var(--course-accent-primary);
+  background: var(--course-accent-bg);
+}
+
+/* Search results highlighting */
+.gdoc-search__mark {
+  background: var(--course-accent-light);
+  color: var(--penn-white);
+  padding: 2px 4px;
+  border-radius: 2px;
+}
+
+/* Breadcrumb accent */
+.gdoc-breadcrumb a:hover {
+  color: var(--course-accent-primary);
+}
+
+/* Footer links with accent */
+.gdoc-footer__link:hover {
+  color: var(--course-accent-primary);
+}
+
+/* Custom buttons with accent */
+.btn-accent,
+.gdoc-button--accent .gdoc-button__link {
+  background: var(--course-accent-primary);
+  border-color: var(--course-accent-primary);
+  color: white;
+}
+
+.btn-accent:hover,
+.gdoc-button--accent .gdoc-button__link:hover {
+  background: var(--course-accent-hover);
+  border-color: var(--course-accent-hover);
+}
+
+/* Schedule/calendar accent */
+.course-schedule .current-week,
+.course-calendar .today {
+  background: var(--course-accent-bg);
+  border: 2px solid var(--course-accent-primary);
+}
+
+/* Assignment deadlines */
+.deadline-urgent {
+  color: var(--course-accent-primary);
+  font-weight: 600;
+}
+
+/* Section dividers */
+.gdoc-markdown hr {
+  border: none;
+  height: 2px;
+  background: linear-gradient(
+    to right,
+    var(--course-accent-primary),
+    transparent
+  );
+  margin: 2rem 0;
+}

@@ -1,0 +1,10 @@
+/* Red Accent Theme
+   Penn's Red for critical/important courses or alerts */
+
+:root {
+  --course-accent-primary: #990000;        /* Penn Red */
+  --course-accent-secondary: #660000;      /* Darker Red */
+  --course-accent-light: #cc6666;          /* Lighter Red */
+  --course-accent-bg: rgba(153, 0, 0, 0.05); /* Very light Red background */
+  --course-accent-hover: #660000;          /* Hover state */
+}
