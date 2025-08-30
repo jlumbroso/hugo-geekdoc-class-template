@@ -111,6 +111,144 @@
           el.classList.remove('penn-action-flash');
         }, 800);
       }
+    },
+
+    /**
+     * Enable AI button effects globally
+     */
+    enableButtons: function() {
+      document.body.classList.add('penn-ai-buttons-enabled');
+      console.log('🎨 Penn AI button effects enabled');
+    },
+
+    /**
+     * Disable AI button effects globally
+     */
+    disableButtons: function() {
+      document.body.classList.remove('penn-ai-buttons-enabled');
+      console.log('Penn AI button effects disabled');
+    },
+
+    /**
+     * Toggle AI button effects
+     */
+    toggleButtons: function() {
+      if (document.body.classList.contains('penn-ai-buttons-enabled')) {
+        this.disableButtons();
+      } else {
+        this.enableButtons();
+      }
+    },
+
+    /**
+     * Add AI effect to specific button(s)
+     * @param {string|HTMLElement|NodeList} selector - Button selector or element(s)
+     */
+    addToButton: function(selector) {
+      const elements = typeof selector === 'string' 
+        ? document.querySelectorAll(selector)
+        : selector instanceof NodeList 
+        ? selector 
+        : [selector];
+      
+      elements.forEach(el => {
+        el.classList.add('penn-ai-button');
+        el.classList.remove('penn-ai-inactive');
+      });
+    },
+
+    /**
+     * Remove AI effect from specific button(s)
+     * @param {string|HTMLElement|NodeList} selector - Button selector or element(s)
+     */
+    removeFromButton: function(selector) {
+      const elements = typeof selector === 'string' 
+        ? document.querySelectorAll(selector)
+        : selector instanceof NodeList 
+        ? selector 
+        : [selector];
+      
+      elements.forEach(el => {
+        el.classList.add('penn-ai-inactive');
+      });
+    },
+
+    /**
+     * Enable AI input/text field effects globally
+     */
+    enableInputs: function() {
+      document.body.classList.add('penn-ai-inputs-enabled');
+      console.log('🎨 Penn AI input effects enabled');
+    },
+
+    /**
+     * Disable AI input effects globally
+     */
+    disableInputs: function() {
+      document.body.classList.remove('penn-ai-inputs-enabled');
+      console.log('Penn AI input effects disabled');
+    },
+
+    /**
+     * Toggle AI input effects
+     */
+    toggleInputs: function() {
+      if (document.body.classList.contains('penn-ai-inputs-enabled')) {
+        this.disableInputs();
+      } else {
+        this.enableInputs();
+      }
+    },
+
+    /**
+     * Add AI effect to specific input(s) - wraps them if needed
+     * @param {string|HTMLElement|NodeList} selector - Input selector or element(s)
+     */
+    addToInput: function(selector) {
+      const elements = typeof selector === 'string' 
+        ? document.querySelectorAll(selector)
+        : selector instanceof NodeList 
+        ? selector 
+        : [selector];
+      
+      elements.forEach(input => {
+        // For search input, use the existing parent
+        if (input.id === 'gdoc-search-input' || input.classList.contains('gdoc-search__input')) {
+          // Use existing parent container
+          const parent = input.parentElement;
+          parent.classList.add('penn-ai-input-wrapper');
+          input.classList.add('penn-ai-input');
+          parent.classList.remove('penn-ai-inactive');
+        } else {
+          // For other inputs, wrap them
+          if (!input.parentElement.classList.contains('penn-ai-input-wrapper')) {
+            const wrapper = document.createElement('div');
+            wrapper.className = 'penn-ai-input-wrapper';
+            input.parentNode.insertBefore(wrapper, input);
+            wrapper.appendChild(input);
+          }
+          input.classList.add('penn-ai-input');
+          input.parentElement.classList.remove('penn-ai-inactive');
+        }
+      });
+    },
+
+    /**
+     * Remove AI effect from specific input(s)
+     * @param {string|HTMLElement|NodeList} selector - Input selector or element(s)
+     */
+    removeFromInput: function(selector) {
+      const elements = typeof selector === 'string' 
+        ? document.querySelectorAll(selector)
+        : selector instanceof NodeList 
+        ? selector 
+        : [selector];
+      
+      elements.forEach(input => {
+        if (input.parentElement.classList.contains('penn-ai-input-wrapper')) {
+          input.parentElement.classList.add('penn-ai-inactive');
+        }
+      });
     }
   };
 
@@ -157,16 +295,47 @@
     );
     console.log(
       'Commands:\n' +
+      '  === Flash Effects ===\n' +
       '  PennAI.flash()             - Cascading flash (top → header)\n' +
       '  PennAI.flashTop()          - Top gradient flash only\n' +
       '  PennAI.flashHeader()       - Header border flash only\n' +
       '  PennAI.flashBoth()         - Cascading flash (customizable delay)\n' +
-      '  PennAI.flashBoth(0, 500)   - Cascade with 500ms delay\n' +
       '  PennAI.flashSimultaneous() - Both flashes at once\n' +
+      '  \n' +
+      '  === Input/Text Field AI Effects ===\n' +
+      '  PennAI.enableInputs()      - Enable AI effect on all inputs\n' +
+      '  PennAI.disableInputs()     - Disable AI effect on all inputs\n' +
+      '  PennAI.toggleInputs()      - Toggle input AI effects\n' +
+      '  PennAI.addToInput("#search") - Add AI effect to search field\n' +
+      '  PennAI.removeFromInput(s)  - Remove AI effect from input(s)\n' +
+      '  \n' +
+      '  === Button AI Effects ===\n' +
+      '  PennAI.enableButtons()     - Enable AI effect on all buttons\n' +
+      '  PennAI.disableButtons()    - Disable AI effect on all buttons\n' +
+      '  PennAI.toggleButtons()     - Toggle button AI effects\n' +
+      '  PennAI.addToButton(sel)    - Add AI effect to specific button(s)\n' +
+      '  PennAI.removeFromButton(s) - Remove AI effect from button(s)\n' +
+      '  \n' +
+      '  === Other Effects ===\n' +
       '  PennAI.expand()            - iOS-style expansion\n' +
       '  PennAI.startRotation()     - Continuous rotation\n' +
       '  PennAI.stop()              - Stop all animations\n' +
+      '  \n' +
       '  Keyboard: Ctrl/Cmd+Shift+G - Cascading flash'
+    );
+    
+    // Quick start examples
+    console.log(
+      '%cQuick Start Examples:',
+      'color: #019CDE; font-weight: bold;',
+      '\n' +
+      '1. Test on search field:\n' +
+      '   PennAI.enableInputs()\n' + 
+      '   PennAI.addToInput("#search")\n' +
+      '\n' +
+      '2. Test on button:\n' +
+      '   PennAI.enableButtons()\n' +
+      '   PennAI.addToButton(".gdoc-button")\n'
     );
   });
 
