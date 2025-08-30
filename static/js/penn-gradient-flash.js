@@ -6,8 +6,8 @@
 (function() {
   'use strict';
 
-  // Penn AI Mode API
-  window.PennAI = {
+  // Penn Gradient Mode API
+  window.PennGradient = {
     /**
      * Trigger the AI flash animation (like Google's AI Mode)
      * Both top and header by default
@@ -252,23 +252,63 @@
     }
   };
 
-  // Set up backward compatibility immediately
-  window.PennGradient = window.PennAI;
+  // Set up backward compatibility - PennAI is now an alias for PennGradient
+  window.PennAI = window.PennGradient;
 
   // Auto-flash on certain events (optional)
   document.addEventListener('DOMContentLoaded', function() {
-    // Flash on page load (subtle welcome effect)
-    if (window.location.pathname.includes('/posts/') || 
-        window.location.pathname.includes('/staffers/')) {
-      PennAI.flash(300);
+    // Check for page-specific settings from frontmatter (via data attributes)
+    const pageSettings = document.querySelector('meta[name="penn-gradient-settings"]');
+    if (pageSettings) {
+      // Parse settings - handle HTML entity encoding
+      let content = pageSettings.getAttribute('content');
+      // Decode HTML entities
+      const textarea = document.createElement('textarea');
+      textarea.innerHTML = content;
+      content = textarea.value;
+      
+      const settings = JSON.parse(content || '{}');
+      
+      // Debug log to see what we got
+      console.log('Penn Gradient settings loaded:', settings);
+      
+      // Enable buttons if specified (handle lowercase keys from Hugo)
+      if (settings.enableButtons === true || settings.enablebuttons === true) {
+        PennGradient.enableButtons();
+        // Auto-add to any existing buttons
+        const buttons = document.querySelectorAll('button, .gdoc-button');
+        buttons.forEach(btn => PennGradient.addToButton(btn));
+      }
+      
+      // Enable inputs if specified (handle lowercase keys from Hugo)
+      if (settings.enableInputs === true || settings.enableinputs === true) {
+        PennGradient.enableInputs();
+        // Auto-add to search input if present
+        const searchInput = document.getElementById('gdoc-search-input');
+        if (searchInput) {
+          PennGradient.addToInput('#gdoc-search-input');
+        }
+      }
+      
+      // Flash header on load if specified (handle lowercase keys from Hugo)
+      if (settings.flashHeaderOnLoad === true || settings.flashheaderonload === true) {
+        PennGradient.flashHeader(300);
+      }
+      
+      // Full flash on load if specified (handle lowercase keys from Hugo)
+      if (settings.flashOnLoad === true || settings.flashonload === true) {
+        PennGradient.flash(300);
+      }
     }
+    
+    // No legacy behavior - everything controlled by settings now
 
     // Flash on successful form submissions
     document.querySelectorAll('form').forEach(form => {
       form.addEventListener('submit', function(e) {
         // Only flash if form validates
         if (form.checkValidity()) {
-          PennAI.flash();
+          PennGradient.flash();
         }
       });
     });
@@ -276,7 +316,7 @@
     // Flash on edit button clicks
     document.querySelectorAll('.edit-link a').forEach(link => {
       link.addEventListener('click', function(e) {
-        PennAI.flash();
+        PennGradient.flash();
       });
     });
 
@@ -284,42 +324,42 @@
     document.addEventListener('keydown', function(e) {
       if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key === 'G') {
         e.preventDefault();
-        PennAI.flashBoth();
+        PennGradient.flashBoth();
       }
     });
 
     // Add console message for developers
     console.log(
-      '%c🎨 Penn AI Mode Ready!',
+      '%c🎨 Penn Gradient Effects Ready!',
       'color: #011F5B; font-weight: bold; font-size: 14px;'
     );
     console.log(
       'Commands:\n' +
       '  === Flash Effects ===\n' +
-      '  PennAI.flash()             - Cascading flash (top → header)\n' +
-      '  PennAI.flashTop()          - Top gradient flash only\n' +
-      '  PennAI.flashHeader()       - Header border flash only\n' +
-      '  PennAI.flashBoth()         - Cascading flash (customizable delay)\n' +
-      '  PennAI.flashSimultaneous() - Both flashes at once\n' +
+      '  PennGradient.flash()             - Cascading flash (top → header)\n' +
+      '  PennGradient.flashTop()          - Top gradient flash only\n' +
+      '  PennGradient.flashHeader()       - Header border flash only\n' +
+      '  PennGradient.flashBoth()         - Cascading flash (customizable delay)\n' +
+      '  PennGradient.flashSimultaneous() - Both flashes at once\n' +
       '  \n' +
-      '  === Input/Text Field AI Effects ===\n' +
-      '  PennAI.enableInputs()      - Enable AI effect on all inputs\n' +
-      '  PennAI.disableInputs()     - Disable AI effect on all inputs\n' +
-      '  PennAI.toggleInputs()      - Toggle input AI effects\n' +
-      '  PennAI.addToInput("#search") - Add AI effect to search field\n' +
-      '  PennAI.removeFromInput(s)  - Remove AI effect from input(s)\n' +
+      '  === Input/Text Field Effects ===\n' +
+      '  PennGradient.enableInputs()      - Enable gradient effect on all inputs\n' +
+      '  PennGradient.disableInputs()     - Disable gradient effect on all inputs\n' +
+      '  PennGradient.toggleInputs()      - Toggle input gradient effects\n' +
+      '  PennGradient.addToInput("#search") - Add gradient to search field\n' +
+      '  PennGradient.removeFromInput(s)  - Remove gradient from input(s)\n' +
       '  \n' +
-      '  === Button AI Effects ===\n' +
-      '  PennAI.enableButtons()     - Enable AI effect on all buttons\n' +
-      '  PennAI.disableButtons()    - Disable AI effect on all buttons\n' +
-      '  PennAI.toggleButtons()     - Toggle button AI effects\n' +
-      '  PennAI.addToButton(sel)    - Add AI effect to specific button(s)\n' +
-      '  PennAI.removeFromButton(s) - Remove AI effect from button(s)\n' +
+      '  === Button Effects ===\n' +
+      '  PennGradient.enableButtons()     - Enable gradient effect on all buttons\n' +
+      '  PennGradient.disableButtons()    - Disable gradient effect on all buttons\n' +
+      '  PennGradient.toggleButtons()     - Toggle button gradient effects\n' +
+      '  PennGradient.addToButton(sel)    - Add gradient to specific button(s)\n' +
+      '  PennGradient.removeFromButton(s) - Remove gradient from button(s)\n' +
       '  \n' +
       '  === Other Effects ===\n' +
-      '  PennAI.expand()            - iOS-style expansion\n' +
-      '  PennAI.startRotation()     - Continuous rotation\n' +
-      '  PennAI.stop()              - Stop all animations\n' +
+      '  PennGradient.expand()            - iOS-style expansion\n' +
+      '  PennGradient.startRotation()     - Continuous rotation\n' +
+      '  PennGradient.stop()              - Stop all animations\n' +
       '  \n' +
       '  Keyboard: Ctrl/Cmd+Shift+G - Cascading flash'
     );
@@ -330,12 +370,12 @@
       'color: #019CDE; font-weight: bold;',
       '\n' +
       '1. Test on search field:\n' +
-      '   PennAI.enableInputs()\n' + 
-      '   PennAI.addToInput("#search")\n' +
+      '   PennGradient.enableInputs()\n' + 
+      '   PennGradient.addToInput("#gdoc-search-input")\n' +
       '\n' +
       '2. Test on button:\n' +
-      '   PennAI.enableButtons()\n' +
-      '   PennAI.addToButton(".gdoc-button")\n'
+      '   PennGradient.enableButtons()\n' +
+      '   PennGradient.addToButton(".gdoc-button")\n'
     );
   });
 

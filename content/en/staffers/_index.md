@@ -14,4 +14,10 @@ roleOrder:
   - "TA"
 ---
 
+{{< penn-gradient 
+  enableButtons="true"
+  enableInputs="true" 
+  flashOnLoad="true"
+>}}
+
 Staff

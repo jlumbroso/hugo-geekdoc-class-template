@@ -31,6 +31,20 @@
   <link rel="stylesheet" href="{{ $pennAICSS.RelPermalink }}">
 {{ end }}
 
+<!-- Penn Gradient Settings -->
+{{/* Get site-wide default settings */}}
+{{ $siteSettings := .Site.Params.pennGradient | default dict }}
+
+{{/* Get page-specific settings from frontmatter (if any) */}}
+{{ $pageSettings := .Params.penngradient | default dict }}
+
+{{/* Merge: page settings override site settings */}}
+{{ $pennGradient := merge $pageSettings $siteSettings }}
+
+{{/* Always output the meta tag with global/frontmatter settings */}}
+{{/* Note: The penn-gradient shortcode can override these via JavaScript */}}
+<meta name="penn-gradient-settings" content='{{ $pennGradient | jsonify }}'>
+
 <!-- Penn Gradient Flash JavaScript -->
 <script src="{{ "js/penn-gradient-flash.js" | absURL }}" defer></script>
 

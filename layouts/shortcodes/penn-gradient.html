@@ -1,0 +1,54 @@
+{{/* Penn Gradient Settings Shortcode */}}
+{{/* This shortcode injects page-specific gradient settings that override site defaults */}}
+
+{{/* Get parameters from shortcode */}}
+{{ $enableButtons := .Get "enableButtons" | default (.Get "buttons") }}
+{{ $enableInputs := .Get "enableInputs" | default (.Get "inputs") }}
+{{ $flashHeaderOnLoad := .Get "flashHeaderOnLoad" | default (.Get "flashHeader") }}
+{{ $flashOnLoad := .Get "flashOnLoad" | default (.Get "flash") }}
+
+{{/* Build settings object */}}
+{{ $settings := dict }}
+{{ if ne $enableButtons nil }}
+  {{ $settings = merge (dict "enablebuttons" ($enableButtons | eq "true")) $settings }}
+{{ end }}
+{{ if ne $enableInputs nil }}
+  {{ $settings = merge (dict "enableinputs" ($enableInputs | eq "true")) $settings }}
+{{ end }}
+{{ if ne $flashHeaderOnLoad nil }}
+  {{ $settings = merge (dict "flashheaderonload" ($flashHeaderOnLoad | eq "true")) $settings }}
+{{ end }}
+{{ if ne $flashOnLoad nil }}
+  {{ $settings = merge (dict "flashonload" ($flashOnLoad | eq "true")) $settings }}
+{{ end }}
+
+{{/* Output a script tag that will override the settings */}}
+{{ if $settings }}
+<script>
+  // Penn Gradient local override from shortcode
+  document.addEventListener('DOMContentLoaded', function() {
+    // Wait a tiny bit to ensure the main script has loaded
+    setTimeout(function() {
+      const overrideSettings = {{ $settings | jsonify | safeJS }};
+      console.log('Penn Gradient shortcode override:', overrideSettings);
+      
+      // Apply the overrides
+      if (overrideSettings.enablebuttons === true) {
+        PennGradient.enableButtons();
+        document.querySelectorAll('button, .gdoc-button').forEach(btn => PennGradient.addToButton(btn));
+      }
+      if (overrideSettings.enableinputs === true) {
+        PennGradient.enableInputs();
+        const searchInput = document.getElementById('gdoc-search-input');
+        if (searchInput) PennGradient.addToInput('#gdoc-search-input');
+      }
+      if (overrideSettings.flashheaderonload === true) {
+        PennGradient.flashHeader(300);
+      }
+      if (overrideSettings.flashonload === true) {
+        PennGradient.flash(300);
+      }
+    }, 100);
+  });
+</script>
+{{ end }}

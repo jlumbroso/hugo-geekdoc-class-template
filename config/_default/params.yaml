@@ -118,6 +118,14 @@ themeColor: "#011F5B"
 # Leave empty or comment out for default Penn blue
 courseAccent: ""
 
+# Penn Gradient settings (Google AI-style effects with Penn colors)
+# These are the site-wide defaults - can be overridden per page or section
+pennGradient:
+  enableButtons: false      # Enable gradient effect on buttons (default: false)
+  enableInputs: true        # Enable gradient effect on search and text inputs (default: true)
+  flashHeaderOnLoad: false  # Flash the header border when page loads (default: false)
+  flashOnLoad: false        # Full flash effect (top + header) on load (default: false)
+
 # Header background customization
 headerStyle:
   preset: "subtle-texture"  # Options: none, minimal, subtle-texture, engineering-lab, campus-hero, gradient-modern
