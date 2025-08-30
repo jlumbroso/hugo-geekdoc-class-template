@@ -1,0 +1,94 @@
+/* Claude AI Footer Attribution Styles */
+
+/* Container for Claude attribution */
+.gdoc-footer__claude {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-left: 0.25rem; /* Tighter spacing after heart */
+}
+
+/* Text before logo */
+.gdoc-footer__claude-text {
+  font-size: inherit;
+  opacity: 0.8;
+}
+
+/* Claude logo styles */
+.gdoc-footer__claude-logo {
+  height: 0.9em; /* Smaller, more discrete size */
+  width: auto;
+  display: inline-block;
+  vertical-align: middle;
+  opacity: 0.7; /* More subtle */
+  transition: opacity 0.3s ease;
+  margin-left: 0.25rem;
+}
+
+/* Hover effect */
+.gdoc-footer__claude:hover .gdoc-footer__claude-logo {
+  opacity: 1;
+}
+
+/* Light/Dark mode logo switching */
+/* By default, show light logo (white letters for dark footer) */
+.gdoc-footer__claude-logo--dark {
+  display: none;
+}
+
+.gdoc-footer__claude-logo--light {
+  display: inline-block;
+}
+
+/* When footer has light background, show dark logo */
+.gdoc-footer--light .gdoc-footer__claude-logo--dark {
+  display: inline-block;
+}
+
+.gdoc-footer--light .gdoc-footer__claude-logo--light {
+  display: none;
+}
+
+/* Dark mode overrides - footer is typically dark in both modes */
+@media (prefers-color-scheme: dark) {
+  .gdoc-footer__claude-logo--dark {
+    display: none;
+  }
+  
+  .gdoc-footer__claude-logo--light {
+    display: inline-block;
+  }
+}
+
+:root[color-theme="dark"] .gdoc-footer__claude-logo--dark {
+  display: none;
+}
+
+:root[color-theme="dark"] .gdoc-footer__claude-logo--light {
+  display: inline-block;
+}
+
+/* Mobile adjustments */
+@media (max-width: 45rem) {
+  .gdoc-footer__claude {
+    display: block;
+    margin-left: 0;
+    margin-top: 0.5rem;
+  }
+  
+  .gdoc-footer__claude-text {
+    font-size: 0.9em;
+  }
+  
+  .gdoc-footer__claude-logo {
+    height: 1em;
+  }
+}
+
+/* Ensure proper spacing in footer items */
+.gdoc-footer__item--row + .gdoc-footer__claude {
+  margin-left: 0.35rem; /* Reduced for tighter appearance */
+}
+
+/* Remove animation for a more professional look */
+/* Animation removed - too distracting for a discrete attribution */

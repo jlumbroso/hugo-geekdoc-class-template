@@ -1,0 +1,10 @@
+/* Evergreen Accent Theme
+   Penn's Evergreen color for environmental/sustainability courses */
+
+:root {
+  --course-accent-primary: #00553F;        /* Penn Evergreen */
+  --course-accent-secondary: #003d2d;      /* Darker Evergreen */
+  --course-accent-light: #4d8b7a;          /* Lighter Evergreen */
+  --course-accent-bg: rgba(0, 85, 63, 0.05); /* Very light Evergreen background */
+  --course-accent-hover: #003d2d;          /* Hover state */
+}

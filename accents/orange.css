@@ -1,0 +1,10 @@
+/* Orange Accent Theme
+   Penn's Orange for energy/mechanical engineering courses */
+
+:root {
+  --course-accent-primary: #CC6500;        /* Penn Orange */
+  --course-accent-secondary: #994c00;      /* Darker Orange */
+  --course-accent-light: #e69956;          /* Lighter Orange */
+  --course-accent-bg: rgba(204, 101, 0, 0.05); /* Very light Orange background */
+  --course-accent-hover: #994c00;          /* Hover state */
+}

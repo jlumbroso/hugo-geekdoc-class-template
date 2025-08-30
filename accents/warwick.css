@@ -1,0 +1,10 @@
+/* Warwick Accent Theme
+   Penn's Warwick Blue for computer science/tech courses */
+
+:root {
+  --course-accent-primary: #1E407C;        /* Penn Warwick Blue */
+  --course-accent-secondary: #152d58;      /* Darker Warwick */
+  --course-accent-light: #5973a3;          /* Lighter Warwick */
+  --course-accent-bg: rgba(30, 64, 124, 0.05); /* Very light Warwick background */
+  --course-accent-hover: #152d58;          /* Hover state */
+}
