@@ -1,0 +1,37 @@
+/* Make .container and #main-content purely semantic - no styling */
+
+/* Remove padding from container */
+.container {
+  padding: 0 !important;
+  /* Keep the max-width and centering for layout purposes */
+  /* but remove any visual styling */
+}
+
+/* Ensure main-content has no padding */
+#main-content {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* Optional: If you want to add padding back to specific pages/sections,
+   you can use more specific selectors like:
+   .gdoc-markdown { padding: 1.25rem; }
+   or add a wrapper div with padding inside your content
+*/
+
+/* Note: You may want to add padding to specific content areas instead
+   For example: */
+.content-wrapper {
+  padding: 1.25rem;
+}
+
+/* Or add padding only to article content */
+article.gdoc-post {
+  padding: 1.25rem;
+}
+
+/* Keep padding for markdown content if desired */
+.gdoc-markdown {
+  /* Uncomment if you want to restore padding for markdown content */
+  /* padding: 1.25rem; */
+}
