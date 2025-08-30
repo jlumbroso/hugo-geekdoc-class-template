@@ -1,0 +1,96 @@
+{{/*
+  Edit link utility partial
+  
+  Params:
+    - page: The page context
+    - type: "page" or "item" 
+    - class: Additional CSS classes
+    - showIcon: Whether to show icon (default true)
+    - showText: Whether to show text (default depends on type)
+  
+  Returns: Edit link HTML or nothing if edit should not be shown
+*/}}
+
+{{ $page := .page }}
+{{ $type := .type | default "page" }}
+{{ $class := .class | default "" }}
+{{ $showIcon := .showIcon }}
+{{ $showText := .showText }}
+{{ $site := .Site | default $page.Site }}
+
+{{/* Default showIcon/showText based on type */}}
+{{ if eq $showIcon nil }}
+  {{ $showIcon = true }}
+{{ end }}
+{{ if eq $showText nil }}
+  {{ if eq $type "item" }}
+    {{ $showText = false }}
+  {{ else }}
+    {{ $showText = true }}
+  {{ end }}
+{{ end }}
+
+{{/* Get repository and edit path configuration */}}
+{{ $geekdocRepo := default (default false $site.Params.geekdocRepo) $page.Params.geekdocRepo }}
+{{ $geekdocEditPath := default (default false $site.Params.geekdocEditPath) $page.Params.geekdocEditPath }}
+
+{{/* Check if page has a file path */}}
+{{ $hasFile := false }}
+{{ if $page.File }}
+  {{ $hasFile = true }}
+{{ end }}
+
+{{/* Early exit if basic requirements not met */}}
+{{ if not (and $hasFile $geekdocRepo $geekdocEditPath) }}
+  {{/* Return nothing */}}
+{{ else }}
+
+  {{/* Determine if edit should be shown based on cascading settings */}}
+  {{ $showEdit := false }}
+  
+  {{/* Get the appropriate site-level default */}}
+  {{ $siteDefault := false }}
+  {{ if eq $type "page" }}
+    {{ $siteDefault = default true $site.Params.geekdocShowPageEdit }}
+  {{ else if eq $type "item" }}
+    {{ $siteDefault = default true $site.Params.geekdocShowItemEdit }}
+  {{ end }}
+  
+  {{/* Start with site default */}}
+  {{ $showEdit = $siteDefault }}
+  
+  {{/* Check section/parent override (cascade from _index.md) */}}
+  {{ $parentPage := $page.Parent }}
+  {{ if $parentPage }}
+    {{ if eq $type "page" }}
+      {{ $showEdit = default $showEdit $parentPage.Params.geekdocShowPageEdit }}
+    {{ else if eq $type "item" }}
+      {{ $showEdit = default $showEdit $parentPage.Params.geekdocShowItemEdit }}
+    {{ end }}
+  {{ end }}
+  
+  {{/* Check individual page override (highest priority) */}}
+  {{ if eq $type "page" }}
+    {{ $showEdit = default $showEdit $page.Params.geekdocShowPageEdit }}
+  {{ else if eq $type "item" }}
+    {{ $showEdit = default $showEdit $page.Params.geekdocShowItemEdit }}
+  {{ end }}
+  
+  {{/* Generate edit link if should be shown */}}
+  {{ if $showEdit }}
+    {{ $geekdocFilePath := default (strings.TrimPrefix hugo.WorkingDir $page.File.Filename) $page.Params.geekdocFilePath }}
+    {{ $editURL := printf "%s/%s" $geekdocRepo (path.Join $geekdocEditPath $geekdocFilePath) }}
+    
+    <span class="edit-link {{ $class }}">
+      <a href="{{ $editURL }}" rel="edit"{{ if eq $type "item" }} title="{{ i18n "edit_page" | default "Edit page" }}"{{ end }}>
+        {{ if $showIcon }}
+          <svg class="gdoc-icon gdoc_code"><use xlink:href="#gdoc_code"></use></svg>
+        {{ end }}
+        {{ if $showText }}
+          <span>{{ i18n "edit_page" | default "Edit page" }}</span>
+        {{ end }}
+      </a>
+    </span>
+  {{ end }}
+
+{{ end }}

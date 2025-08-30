@@ -37,6 +37,14 @@ geekdocRepo: "https://github.com/jlumbroso/hugo-geekdoc-class-template"
 # You can also specify this parameter per page in front matter.
 geekdocEditPath: "edit/main/"
 
+# (Optional, default true) Show edit buttons in page headers (breadcrumb area)
+# You can override this per page or section in front matter.
+geekdocShowPageEdit: true
+
+# (Optional, default true) Show edit pencil icons next to list item titles
+# You can override this per page or section in front matter.
+geekdocShowItemEdit: true
+
 # (Optional, default true) Enables search function with flexsearch.
 # Index is built on the fly and might slow down your website.
 geekdocSearch: true

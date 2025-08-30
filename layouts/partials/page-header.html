@@ -1,0 +1,46 @@
+{{ define "breadcrumb" }}
+  {{ $parent := .page.Parent }}
+  {{ if $parent }}
+    {{ $name := (partial "utils/title" $parent) }}
+    {{ $position := (sub .position 1) }}
+    {{ $value := (printf "<li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><a itemscope itemtype='https://schema.org/WebPage' itemprop='item' itemid='%s' href='%s'><span itemprop='name'>%s</span></a><meta itemprop='position' content='%d' /></li><li> / </li>%s" $parent.RelPermalink $parent.RelPermalink $name $position .value) }}
+    {{ template "breadcrumb" dict "page" $parent "value" $value "position" $position }}
+  {{ else }}
+    {{ .value | safeHTML }}
+  {{ end }}
+{{ end }}
+
+{{ $showBreadcrumb := (and (default true .Page.Params.geekdocBreadcrumb) (default true .Site.Params.geekdocBreadcrumb)) }}
+
+{{/* Use new edit-link utility */}}
+{{ $editLink := partial "utils/edit-link.html" (dict "page" .Page "type" "page" "class" "editpage") }}
+{{ $showEdit := ne $editLink "" }}
+
+<div
+  class="gdoc-page__header flex flex-wrap
+  {{ if $showBreadcrumb }}
+    justify-between
+  {{ else }}
+    justify-end
+  {{ end }}
+  {{ if not $showEdit }}hidden-mobile{{ end }}
+  {{ if (and (not $showBreadcrumb) (not $showEdit)) }}hidden{{ end }}"
+  itemprop="breadcrumb"
+>
+  {{ if $showBreadcrumb }}
+    <div>
+      <svg class="gdoc-icon gdoc_path hidden-mobile"><use xlink:href="#gdoc_path"></use></svg>
+      <ol class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+        {{ $position := sub (len (split .RelPermalink "/")) 1 }}
+        {{ $name := (partial "utils/title" .) }}
+        {{ $value := (printf "<li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><span itemprop='name'>%s</span><meta itemprop='position' content='%d' /></li>" $name $position ) }}
+        {{ template "breadcrumb" dict "page" . "value" $value "position" $position }}
+      </ol>
+    </div>
+  {{ end }}
+  {{ if $showEdit }}
+    <div>
+      {{ $editLink | safeHTML }}
+    </div>
+  {{ end }}
+</div>

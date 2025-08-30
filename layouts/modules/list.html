@@ -1,4 +1,5 @@
 {{ define "main" }}
+    {{ partial "page-header" . }}
     <div class="container" id="main-content" tabindex="-1">
         <h1>{{ .Title }}</h1>
         {{ if .Description }}
@@ -13,7 +14,10 @@
         {{/* Directly display the markdown content of each module */}}
         {{ range sort .Pages "File.Path" }}
             <article class="module-content">
-                <h2 class="fs-4" id="{{ .Title | urlize }}" >{{ .Title }}</h2>
+                <h2 class="fs-4" id="{{ .Title | urlize }}" >
+                  {{ .Title }}
+                  {{ partial "utils/edit-link.html" (dict "page" . "type" "item" "class" "module-edit") }}
+                </h2>
                 <div class="module">
                     {{ .Content }}
                 </div>

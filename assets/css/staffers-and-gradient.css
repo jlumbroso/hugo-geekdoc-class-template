@@ -1,0 +1,296 @@
+/* =========================================================================
+   Penn Gradient Flash Animation - Main Header Ruler
+   ========================================================================= */
+/*** NOTE FOR CLAUDE: I AM COMMENTING THIS OUT */
+//***  Target the MAIN header border - the line between navigation and content
+//***  .gdoc-header {
+//***    position: relative;
+//***    border-bottom: 1px solid var(--header-border-color, #e1e4e8) !important;
+//***  }
+//***
+//***  /* Create gradient overlay for the main header ruler */
+//***  .gdoc-header::after {
+//***    content: "";
+//***    position: absolute;
+//***    bottom: -1px;
+//***    left: 0;
+//***    right: 0;
+//***    height: 3px;
+//***    background: linear-gradient(
+//***      90deg,
+//***      var(--penn-blue, #011F5B) 0%,
+//***      var(--penn-electric-blue, #019CDE) 20%,
+//***    var(--penn-red, #990000) 35%,
+//***    var(--penn-electric-blue, #019CDE) 50%,
+//***    var(--penn-red, #990000) 65%,
+//***    var(--penn-electric-blue, #019CDE) 80%,
+//***    var(--penn-blue, #011F5B) 100%
+//***  );
+//***  background-size: 300% 100%;
+//***  opacity: 0;
+//***  transition: opacity 0.3s ease;
+//***  z-index: 100;
+//***}
+
+/* Animation keyframes */
+@keyframes penn-gradient-flash {
+  0% {
+    background-position: 300% 0;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  50% {
+    background-position: 0% 0;
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    background-position: -300% 0;
+    opacity: 0;
+  }
+}
+
+/* Trigger animation */
+.penn-gradient-flash .gdoc-header::after {
+  animation: penn-gradient-flash 2s ease-in-out;
+}
+
+/* Continuous pulse option */
+.penn-gradient-pulse .gdoc-header::after {
+  opacity: 0.7;
+  animation: penn-gradient-pulse 4s ease-in-out infinite;
+}
+
+@keyframes penn-gradient-pulse {
+  0%, 100% {
+    background-position: 300% 0;
+    opacity: 0.3;
+  }
+  50% {
+    background-position: 0% 0;
+    opacity: 0.7;
+  }
+}
+
+/* =========================================================================
+   Staffers - Compact Professional Layout (Not Cards)
+   ========================================================================= */
+
+/* Remove card styling, use clean list layout */
+.role-group {
+  display: block;
+  margin: 2rem 0;
+}
+
+/* Compact staffer layout - horizontal with small image */
+.staffer {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+  padding: 1.5rem 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  background: transparent;
+  border-radius: 0;
+  transition: none !important;
+  position: relative;
+  overflow: visible;
+}
+
+.staffer:last-child {
+  border-bottom: none;
+}
+
+.staffer:hover {
+  transform: none !important;
+  box-shadow: none !important;
+  background: rgba(1, 31, 91, 0.02); /* Very subtle highlight */
+}
+
+/* Remove all animations */
+.staffer::before {
+  display: none !important;
+}
+
+/* Smaller, consistent image size */
+.staffer img,
+.staffer-image {
+  width: 80px !important;
+  height: 80px !important;
+  min-width: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  transition: none !important;
+  flex-shrink: 0;
+}
+
+.staffer:hover img {
+  border-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Compact text layout */
+.staffer > div:last-child {
+  flex: 1;
+  min-width: 0; /* Allow text to wrap properly */
+}
+
+/* Name styling - inline with pronouns */
+.staffer-name {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--penn-blue, #011F5B);
+  margin: 0 0 0.25rem 0;
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.staffer-name a {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s;
+}
+
+.staffer-name a:hover {
+  border-bottom-color: var(--penn-electric-blue, #019CDE);
+}
+
+.staffer-pronouns {
+  font-size: 0.875rem;
+  color: #666;
+  font-weight: normal;
+  font-style: italic;
+}
+
+/* Email on same line as name if space allows */
+.staffer-email {
+  font-size: 0.9rem;
+  margin: 0.25rem 0;
+  color: #555;
+}
+
+.staffer-email a {
+  color: var(--penn-electric-blue, #019CDE);
+  text-decoration: none;
+}
+
+.staffer-email a:hover {
+  text-decoration: underline;
+}
+
+/* Compact metadata display - inline format */
+.staffer-meta {
+  margin: 0.5rem 0 0 0;
+  font-size: 0.875rem;
+  color: #555;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.staffer-meta dt,
+.staffer-meta dd {
+  display: inline;
+  margin: 0;
+  padding: 0;
+}
+
+.staffer-meta dt {
+  font-weight: 600;
+  color: #333;
+}
+
+.staffer-meta dt::after {
+  content: ":";
+  margin-right: 0.25rem;
+}
+
+.staffer-meta dd {
+  margin-right: 1rem;
+}
+
+.staffer-meta dd::after {
+  content: "";
+}
+
+/* Languages if present */
+.staffer-languages {
+  font-size: 0.875rem;
+  color: #666;
+  margin: 0.25rem 0;
+}
+
+/* Edit pencil positioning for staffers */
+.staffer-name .edit-link {
+  margin-left: 0.5rem;
+  font-size: 0.75em;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .staffer {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .staffer-name {
+    justify-content: center;
+  }
+  
+  .staffer-meta {
+    justify-content: center;
+  }
+}
+
+/* Dark mode adjustments */
+:root[color-theme="dark"] .staffer {
+  border-bottom-color: rgba(255, 255, 255, 0.1);
+}
+
+:root[color-theme="dark"] .staffer:hover {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+:root[color-theme="dark"] .staffer-name {
+  color: var(--penn-electric-blue, #019CDE);
+}
+
+:root[color-theme="dark"] .staffer-pronouns,
+:root[color-theme="dark"] .staffer-languages {
+  color: #aaa;
+}
+
+:root[color-theme="dark"] .staffer-email,
+:root[color-theme="dark"] .staffer-meta {
+  color: #bbb;
+}
+
+:root[color-theme="dark"] .staffer-meta dt {
+  color: #ddd;
+}
+
+:root[color-theme="dark"] .staffer img {
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Section headers (Instructor, Head TA, TA) - keep simple */
+.staffers h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--penn-blue, #011F5B);
+  margin: 2rem 0 1rem 0;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+}
+
+:root[color-theme="dark"] .staffers h2 {
+  color: var(--penn-electric-blue, #019CDE);
+  border-bottom-color: rgba(255, 255, 255, 0.1);
+}

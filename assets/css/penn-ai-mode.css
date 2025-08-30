@@ -1,0 +1,191 @@
+/* =========================================================================
+   Penn AI Mode Effect - Inspired by Google AI Mode Rainbow
+   Using Penn's signature colors instead of rainbow spectrum
+   ========================================================================= */
+
+/* Animation keyframes that will be used by both effects */
+@keyframes penn-ai-flash {
+  0% {
+    opacity: 0;
+    background-position: 100% 0;
+    transform: scaleY(1);
+  }
+  5% {
+    opacity: 1;
+    transform: scaleY(1.5);
+  }
+  50% {
+    opacity: 1;
+    background-position: 0% 0;
+    transform: scaleY(1.2);
+  }
+  95% {
+    opacity: 1;
+    transform: scaleY(1.5);
+  }
+  100% {
+    opacity: 0;
+    background-position: -100% 0;
+    transform: scaleY(1);
+  }
+}
+
+/* Continuous rotation mode (like Google's ambient state) */
+@keyframes penn-ai-rotate {
+  0% {
+    background-position: 0% 0;
+  }
+  100% {
+    background-position: -300% 0;
+  }
+}
+
+/* Alternative: Radial expansion effect (like iOS implementation) */
+@keyframes penn-ai-expand {
+  0% {
+    opacity: 0;
+    transform: scaleX(0) scaleY(1);
+  }
+  10% {
+    opacity: 1;
+    transform: scaleX(0.1) scaleY(1.5);
+  }
+  50% {
+    opacity: 1;
+    transform: scaleX(1) scaleY(1.2);
+    background-position: -50% 0;
+  }
+  90% {
+    opacity: 1;
+    transform: scaleX(1) scaleY(1.5);
+  }
+  100% {
+    opacity: 0;
+    transform: scaleX(1) scaleY(1);
+    background-position: -100% 0;
+  }
+}
+
+/* Circle effect around search or buttons (like Circle to Search) */
+.penn-ai-circle {
+  position: relative;
+}
+
+.penn-ai-circle::before {
+  content: "";
+  position: absolute;
+  inset: -3px;
+  border-radius: inherit;
+  padding: 2px;
+  background: linear-gradient(
+    45deg,
+    #011F5B,
+    #019CDE,
+    #990000,
+    #019CDE,
+    #011F5B
+  );
+  background-size: 300% 300%;
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: exclude;
+  mask-composite: exclude;
+  opacity: 0;
+  animation: penn-circle-rotate 3s linear infinite;
+}
+
+@keyframes penn-circle-rotate {
+  0% {
+    background-position: 0% 50%;
+    opacity: 0.8;
+  }
+  50% {
+    background-position: 100% 50%;
+    opacity: 1;
+  }
+  100% {
+    background-position: 0% 50%;
+    opacity: 0.8;
+  }
+}
+
+.penn-ai-active .penn-ai-circle::before {
+  opacity: 1;
+}
+
+/* Performance optimizations */
+@media (prefers-reduced-motion: reduce) {
+  main.container::before,
+  .penn-ai-circle::before {
+    animation: none !important;
+  }
+  
+  .penn-gradient-pulse main.container::before {
+    opacity: 0.5;
+    background-position: -50% 0;
+  }
+}
+
+/* =========================================================================
+   HEADER BOTTOM BORDER FLASH: Animate the existing border
+   ========================================================================= */
+
+/* Animate the header's bottom border color directly */
+@keyframes penn-header-border-flash {
+  0% {
+    border-bottom-color: #990000;
+  }
+  10% {
+    border-bottom-color: #011F5B;
+  }
+  30% {
+    border-bottom-color: #019CDE;
+  }
+  50% {
+    border-bottom-color: #990000;
+  }
+  70% {
+    border-bottom-color: #019CDE;
+  }
+  90% {
+    border-bottom-color: #011F5B;
+  }
+  100% {
+    border-bottom-color: #990000;
+  }
+}
+
+/* Apply the animation to the header - just animate the border color */
+.penn-gradient-flash .gdoc-header {
+  animation: penn-header-border-flash 2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Dark mode adjustments */
+:root[color-theme="dark"] main.container {
+  border-top-color: var(--penn-electric-blue, #019CDE);
+}
+
+:root[color-theme="dark"] main.container::before {
+  filter: brightness(1.2);
+}
+
+:root[color-theme="dark"] .penn-gradient-flash main.container::before,
+:root[color-theme="dark"] .penn-gradient-pulse main.container::before {
+  box-shadow: 
+    0 0 15px rgba(1, 156, 222, 0.7),
+    0 0 30px rgba(1, 156, 222, 0.4),
+    0 0 45px rgba(153, 0, 0, 0.3);
+}
+
+:root[color-theme="dark"] .gdoc-header::after {
+  filter: brightness(1.2);
+}
+
+:root[color-theme="dark"] .penn-gradient-flash .gdoc-header::after,
+:root[color-theme="dark"] .penn-gradient-pulse .gdoc-header::after {
+  box-shadow: 
+    0 2px 15px rgba(1, 156, 222, 0.7),
+    0 4px 30px rgba(1, 156, 222, 0.4),
+    0 6px 45px rgba(153, 0, 0, 0.3);
+}

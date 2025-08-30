@@ -1,4 +1,5 @@
 {{ define "main" }}
+    {{ partial "page-header" . }}
     <div class="container" id="main-content" tabindex="-1">
         <h1>{{ .Title }}</h1>
         {{ if .Description }}
@@ -15,7 +16,10 @@
             {{ if and (in .Params.tags "urgent") (in .Params.tags "announcements") }}
                 <article>
                     <div class="announcement">
-                        <h2><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
+                        <h2>
+                          <a href="{{ .Permalink }}">{{ .Title }}</a>
+                          {{ partial "utils/edit-link.html" (dict "page" . "type" "item" "class" "announcement-edit") }}
+                        </h2>
                         <span class="announcement-meta">
                             <div class="flex flex-wrap align-center gdoc-post__meta">
                                 <span class="flex align-center no-wrap">

@@ -8,6 +8,7 @@
       <header class="gdoc-post__header">
         <h1 class="gdoc-post__title">
           <a href="{{ .RelPermalink }}">{{ partial "utils/title" . }}</a>
+          {{ partial "utils/edit-link.html" (dict "page" . "type" "item" "class" "post-edit" "Site" $.Site) }}
         </h1>
       </header>
       <section>

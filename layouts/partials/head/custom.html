@@ -13,6 +13,27 @@
 <link rel="stylesheet" href="{{ "footer-tagline.css" | absURL }}">
 {{ end }}
 
+<!-- Edit link styles -->
+{{ $editLinksCSS := resources.Get "css/custom-edit-links.css" }}
+{{ if $editLinksCSS }}
+  <link rel="stylesheet" href="{{ $editLinksCSS.RelPermalink }}">
+{{ end }}
+
+<!-- Staffers and gradient animation styles -->
+{{ $staffersGradientCSS := resources.Get "css/staffers-and-gradient.css" }}
+{{ if $staffersGradientCSS }}
+  <link rel="stylesheet" href="{{ $staffersGradientCSS.RelPermalink }}">
+{{ end }}
+
+<!-- Penn AI Mode Effect (Google AI-style with Penn colors) -->
+{{ $pennAICSS := resources.Get "css/penn-ai-mode.css" }}
+{{ if $pennAICSS }}
+  <link rel="stylesheet" href="{{ $pennAICSS.RelPermalink }}">
+{{ end }}
+
+<!-- Penn Gradient Flash JavaScript -->
+<script src="{{ "js/penn-gradient-flash.js" | absURL }}" defer></script>
+
 <!-- MathJax for LaTeX rendering (only activated when frontmatter has "latex: true") -->
 {{ if .Params.latex }}
   <script type="text/javascript"

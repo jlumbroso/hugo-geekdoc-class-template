@@ -30,6 +30,7 @@
       {{ if .Params.pronouns }}
       <span class="staffer-pronouns">{{ .Params.pronouns }}</span>
       {{ end }}
+      {{ partial "utils/edit-link.html" (dict "page" . "type" "item" "class" "staffer-edit") }}
     </h3>
     {{ with .Params.email }}
     <p class="staffer-email"><a href="mailto:{{ . }}">{{ . }}</a></p>
