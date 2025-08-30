@@ -3,6 +3,45 @@
    Using Penn's signature colors instead of rainbow spectrum
    ========================================================================= */
 
+/* TOP FLASH: Create the effect at the very top of the page */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    /* Penn Blue */
+    #011F5B 0%,
+    #011F5B 8%,
+    /* Transition to Electric Blue */
+    #019CDE 16%,
+    #019CDE 24%,
+    /* Transition to Red */
+    #990000 32%,
+    #990000 40%,
+    /* Back to Electric Blue */
+    #019CDE 48%,
+    #019CDE 56%,
+    /* Back to Blue */
+    #011F5B 64%,
+    #011F5B 72%,
+    /* Electric Blue again */
+    #019CDE 80%,
+    #019CDE 88%,
+    /* End with Blue */
+    #011F5B 96%,
+    #011F5B 100%
+  );
+  background-size: 300% 100%;
+  opacity: 0;
+  transform-origin: center;
+  z-index: 10000;
+  pointer-events: none;
+}
+
 /* Animation keyframes that will be used by both effects */
 @keyframes penn-ai-flash {
   0% {
@@ -158,6 +197,25 @@
 
 /* Apply the animation to the header - just animate the border color */
 .penn-gradient-flash .gdoc-header {
+  animation: penn-header-border-flash 2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* TOP FLASH: Trigger animations for the top gradient */
+body.penn-gradient-flash-top::before {
+  animation: penn-ai-flash 2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body.penn-gradient-pulse-top::before {
+  opacity: 0.8;
+  animation: penn-ai-rotate 4s linear infinite;
+}
+
+body.penn-gradient-expand-top::before {
+  animation: penn-ai-expand 1.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* HEADER FLASH: Allow separate header animations */
+.penn-gradient-flash-header .gdoc-header {
   animation: penn-header-border-flash 2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 

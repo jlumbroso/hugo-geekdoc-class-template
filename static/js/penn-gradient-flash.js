@@ -10,18 +10,61 @@
   window.PennAI = {
     /**
      * Trigger the AI flash animation (like Google's AI Mode)
+     * Both top and header by default
      * @param {number} delay - Optional delay in milliseconds before flash
      */
     flash: function(delay = 0) {
+      this.flashBoth(delay);
+    },
+
+    /**
+     * Trigger only the top flash animation
+     * @param {number} delay - Optional delay in milliseconds before flash
+     */
+    flashTop: function(delay = 0) {
       setTimeout(() => {
-        document.body.classList.remove('penn-gradient-pulse', 'penn-gradient-expand');
-        document.body.classList.add('penn-gradient-flash');
+        document.body.classList.remove('penn-gradient-pulse-top', 'penn-gradient-expand-top');
+        document.body.classList.add('penn-gradient-flash-top');
         
         // Remove class after animation completes
         setTimeout(() => {
-          document.body.classList.remove('penn-gradient-flash');
+          document.body.classList.remove('penn-gradient-flash-top');
         }, 2000);
       }, delay);
+    },
+
+    /**
+     * Trigger only the header border flash animation
+     * @param {number} delay - Optional delay in milliseconds before flash
+     */
+    flashHeader: function(delay = 0) {
+      setTimeout(() => {
+        document.body.classList.add('penn-gradient-flash-header');
+        
+        // Remove class after animation completes
+        setTimeout(() => {
+          document.body.classList.remove('penn-gradient-flash-header');
+        }, 2000);
+      }, delay);
+    },
+
+    /**
+     * Trigger both flashes with cascading effect
+     * @param {number} delay - Optional delay in milliseconds before flash
+     * @param {number} cascade - Delay between top and header (default 250ms)
+     */
+    flashBoth: function(delay = 0, cascade = 250) {
+      this.flashTop(delay);
+      this.flashHeader(delay + cascade);  // Header follows after cascade delay
+    },
+    
+    /**
+     * Trigger both flashes simultaneously (no cascade)
+     * @param {number} delay - Optional delay in milliseconds before flash
+     */
+    flashSimultaneous: function(delay = 0) {
+      this.flashTop(delay);
+      this.flashHeader(delay);
     },
 
     /**
@@ -103,7 +146,7 @@
     document.addEventListener('keydown', function(e) {
       if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key === 'G') {
         e.preventDefault();
-        PennAI.flash();
+        PennAI.flashBoth();
       }
     });
 
@@ -114,11 +157,16 @@
     );
     console.log(
       'Commands:\n' +
-      '  PennAI.flash()        - Google-style AI flash\n' +
-      '  PennAI.expand()       - iOS-style expansion\n' +
-      '  PennAI.startRotation() - Continuous rotation\n' +
-      '  PennAI.stop()         - Stop all animations\n' +
-      '  Keyboard: Ctrl/Cmd+Shift+G - Manual flash'
+      '  PennAI.flash()             - Cascading flash (top → header)\n' +
+      '  PennAI.flashTop()          - Top gradient flash only\n' +
+      '  PennAI.flashHeader()       - Header border flash only\n' +
+      '  PennAI.flashBoth()         - Cascading flash (customizable delay)\n' +
+      '  PennAI.flashBoth(0, 500)   - Cascade with 500ms delay\n' +
+      '  PennAI.flashSimultaneous() - Both flashes at once\n' +
+      '  PennAI.expand()            - iOS-style expansion\n' +
+      '  PennAI.startRotation()     - Continuous rotation\n' +
+      '  PennAI.stop()              - Stop all animations\n' +
+      '  Keyboard: Ctrl/Cmd+Shift+G - Cascading flash'
     );
   });
 
