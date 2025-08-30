@@ -124,7 +124,9 @@
 }
 
 /* Ensure header content is above background layers */
-.gdoc-header__wrapper {
+.gdoc-header__wrapper,
+.gdoc-header .container,
+.gdoc-header > * {
   position: relative;
   z-index: 10;
 }

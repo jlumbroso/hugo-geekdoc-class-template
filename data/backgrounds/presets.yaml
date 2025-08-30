@@ -26,6 +26,31 @@ header:
     toolbar:
       color: "var(--penn-white)"
   
+  # Discrete Math theme with algorithm background
+  discrete-math:
+    height: "100px"
+    image: "./discrete-math.png"  # Algorithm/graph theory background image
+    imageOpacity: 0.85
+    imageSize: "cover"
+    imagePosition: "center center"
+    textureImage: "/backgrounds/textures/penn-subtle-texture.png"
+    textureOpacity: 0.05  # Very subtle texture overlay
+    logo:
+      background: "rgba(1, 31, 91, 0.7)"  # Penn blue with 70% opacity
+      color: "var(--penn-white)"
+      padding: "0.5rem"
+      borderRadius: "4px"
+    title:
+      background: "rgba(1, 31, 91, 0.7)"  # Penn blue with 70% opacity
+      color: "var(--penn-white)"
+      padding: "0.25rem 0.75rem"
+      borderRadius: "4px"
+    toolbar:
+      background: "rgba(1, 31, 91, 0.5)"  # Penn blue with 50% opacity
+      color: "var(--penn-white)"
+      padding: "0.25rem"
+      borderRadius: "4px"
+  
   # Engineering lab with photo
   engineering-lab:
     height: "180px"
