@@ -3,6 +3,45 @@
    Using Penn's signature colors instead of rainbow spectrum
    ========================================================================= */
 
+/* TOP FLASH: Create the effect at the very top of the page */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    /* Penn Blue */
+    #011F5B 0%,
+    #011F5B 8%,
+    /* Transition to Electric Blue */
+    #019CDE 16%,
+    #019CDE 24%,
+    /* Transition to Red */
+    #990000 32%,
+    #990000 40%,
+    /* Back to Electric Blue */
+    #019CDE 48%,
+    #019CDE 56%,
+    /* Back to Blue */
+    #011F5B 64%,
+    #011F5B 72%,
+    /* Electric Blue again */
+    #019CDE 80%,
+    #019CDE 88%,
+    /* End with Blue */
+    #011F5B 96%,
+    #011F5B 100%
+  );
+  background-size: 300% 100%;
+  opacity: 0;
+  transform-origin: center;
+  z-index: 10000;
+  pointer-events: none;
+}
+
 /* Animation keyframes that will be used by both effects */
 @keyframes penn-ai-flash {
   0% {
@@ -66,52 +105,219 @@
   }
 }
 
-/* Circle effect around search or buttons (like Circle to Search) */
-.penn-ai-circle {
+/* =========================================================================
+   BUTTON AI EFFECT: Google-style rainbow border on focus
+   ========================================================================= */
+
+/* Button AI enhancement - add this class to enable AI mode on buttons */
+.penn-ai-button {
   position: relative;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.penn-ai-circle::before {
+/* Create the gradient border effect */
+.penn-ai-button::before {
   content: "";
   position: absolute;
-  inset: -3px;
+  inset: -2px;
   border-radius: inherit;
   padding: 2px;
   background: linear-gradient(
-    45deg,
-    #011F5B,
-    #019CDE,
-    #990000,
-    #019CDE,
-    #011F5B
+    90deg,
+    #011F5B 0%,
+    #019CDE 20%,
+    #990000 40%,
+    #019CDE 60%,
+    #011F5B 80%,
+    #019CDE 100%
   );
-  background-size: 300% 300%;
+  background-size: 300% 100%;
   -webkit-mask: 
     linear-gradient(#fff 0 0) content-box, 
     linear-gradient(#fff 0 0);
   -webkit-mask-composite: exclude;
   mask-composite: exclude;
   opacity: 0;
-  animation: penn-circle-rotate 3s linear infinite;
+  transform: scale(0.95);
+  pointer-events: none;
+  transition: 
+    opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-@keyframes penn-circle-rotate {
+/* Animate in on focus - energize once then stay */
+.penn-ai-button:focus::before,
+.penn-ai-button:focus-visible::before,
+.penn-ai-button:focus-within::before {
+  opacity: 1;
+  transform: scale(1);
+  animation: penn-button-energize 1.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  padding: 3px; /* Thicker border */
+}
+
+/* Energize animation - sweep through colors once then settle on blue */
+@keyframes penn-button-energize {
   0% {
-    background-position: 0% 50%;
-    opacity: 0.8;
-  }
-  50% {
     background-position: 100% 50%;
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  20% {
     opacity: 1;
+    transform: scale(1.02);
+  }
+  60% {
+    background-position: -100% 50%;
+    transform: scale(1);
   }
   100% {
-    background-position: 0% 50%;
-    opacity: 0.8;
+    background-position: -200% 50%; /* Settle on blue section */
+    opacity: 1;
+    transform: scale(1);
   }
 }
 
-.penn-ai-active .penn-ai-circle::before {
+/* Enhanced glow effect on focus */
+.penn-ai-button:focus,
+.penn-ai-button:focus-visible {
+  outline: none;
+  box-shadow: 
+    0 0 0 3px rgba(1, 156, 222, 0.1),
+    0 0 20px rgba(1, 156, 222, 0.2),
+    0 0 40px rgba(1, 31, 91, 0.1);
+}
+
+/* Remove hover interference - no hover effect when focused */
+.penn-ai-button:hover:not(:focus)::before {
+  opacity: 0.15;
+  transform: scale(0.99);
+}
+
+/* Enable/disable AI button effects globally */
+body.penn-ai-buttons-enabled .penn-ai-button::before {
+  display: block;
+}
+
+body:not(.penn-ai-buttons-enabled) .penn-ai-button::before {
+  display: none;
+}
+
+/* Alternative activation: per-button control */
+.penn-ai-button.penn-ai-inactive::before {
+  display: none !important;
+}
+
+/* =========================================================================
+   TEXT FIELD AI EFFECT: Google-style rainbow border on focus
+   ========================================================================= */
+
+/* Text field AI enhancement - add this class to enable AI mode on inputs */
+.penn-ai-input {
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Create wrapper for absolute positioning (since inputs can't have ::before) */
+.penn-ai-input-wrapper {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+/* Specific handling for search container */
+.gdoc-search.penn-ai-input-wrapper {
+  position: relative;
+  overflow: visible;
+}
+
+/* Create the gradient border effect on wrapper */
+.penn-ai-input-wrapper::before {
+  content: "";
+  position: absolute;
+  inset: -3px;
+  border-radius: 4px;
+  padding: 3px;
+  background: linear-gradient(
+    90deg,
+    #011F5B 0%,
+    #019CDE 20%,
+    #990000 40%,
+    #019CDE 60%,
+    #011F5B 80%,
+    #019CDE 100%
+  );
+  background-size: 300% 100%;
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: exclude;
+  mask-composite: exclude;
+  opacity: 0;
+  transform: scale(0.98);
+  pointer-events: none;
+  transition: 
+    opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1;
+}
+
+/* Animate in when input is focused - energize once then stay */
+.penn-ai-input-wrapper:focus-within::before {
   opacity: 1;
+  transform: scale(1);
+  animation: penn-input-energize 1.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* Energize animation for inputs - sweep through colors once then settle */
+@keyframes penn-input-energize {
+  0% {
+    background-position: 100% 50%;
+    opacity: 0;
+    transform: scale(0.97);
+  }
+  15% {
+    opacity: 1;
+    transform: scale(1.01);
+  }
+  50% {
+    background-position: -100% 50%;
+    transform: scale(1);
+  }
+  100% {
+    background-position: -180% 50%; /* Settle on electric blue section */
+    opacity: 0.9;
+    transform: scale(1);
+  }
+}
+
+/* Style the input itself when focused */
+.penn-ai-input-wrapper:focus-within .penn-ai-input,
+.penn-ai-input:focus {
+  outline: none;
+  border-color: transparent;
+  box-shadow: 
+    0 0 0 1px rgba(1, 156, 222, 0.1),
+    0 2px 8px rgba(1, 156, 222, 0.15);
+}
+
+/* Remove hover interference - minimal hover when not focused */
+.penn-ai-input-wrapper:hover:not(:focus-within)::before {
+  opacity: 0.1;
+  transform: scale(0.995);
+}
+
+/* Enable/disable AI input effects globally */
+body.penn-ai-inputs-enabled .penn-ai-input-wrapper::before {
+  display: block;
+}
+
+body:not(.penn-ai-inputs-enabled) .penn-ai-input-wrapper::before {
+  display: none;
+}
+
+/* Alternative activation: per-input control */
+.penn-ai-input-wrapper.penn-ai-inactive::before {
+  display: none !important;
 }
 
 /* Performance optimizations */
@@ -158,6 +364,25 @@
 
 /* Apply the animation to the header - just animate the border color */
 .penn-gradient-flash .gdoc-header {
+  animation: penn-header-border-flash 2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* TOP FLASH: Trigger animations for the top gradient */
+body.penn-gradient-flash-top::before {
+  animation: penn-ai-flash 2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body.penn-gradient-pulse-top::before {
+  opacity: 0.8;
+  animation: penn-ai-rotate 4s linear infinite;
+}
+
+body.penn-gradient-expand-top::before {
+  animation: penn-ai-expand 1.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* HEADER FLASH: Allow separate header animations */
+.penn-gradient-flash-header .gdoc-header {
   animation: penn-header-border-flash 2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 

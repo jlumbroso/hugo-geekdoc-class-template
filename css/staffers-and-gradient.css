@@ -77,62 +77,62 @@
 }
 
 /* =========================================================================
-   Staffers - Compact Professional Layout (Not Cards)
+   Staffers - Professional List Layout (Better for Many Staffers)
    ========================================================================= */
 
-/* Remove card styling, use clean list layout */
+/* Container for staffer list */
 .role-group {
   display: block;
   margin: 2rem 0;
+  max-width: 900px;
 }
 
-/* Compact staffer layout - horizontal with small image */
+/* Staffer list item layout */
 .staffer {
   display: flex;
   align-items: flex-start;
   gap: 1.5rem;
-  padding: 1.5rem 0;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 2rem 1rem;
   background: transparent;
-  border-radius: 0;
-  transition: none !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  transition: background-color 0.2s ease;
   position: relative;
   overflow: visible;
 }
 
-.staffer:last-child {
-  border-bottom: none;
+.staffer:first-child {
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .staffer:hover {
-  transform: none !important;
-  box-shadow: none !important;
-  background: rgba(1, 31, 91, 0.02); /* Very subtle highlight */
+  background: rgba(1, 156, 222, 0.03);
+  transform: none;
+  box-shadow: none;
 }
 
-/* Remove all animations */
+/* Remove gradient animations from staffers */
 .staffer::before {
   display: none !important;
 }
 
-/* Smaller, consistent image size */
+/* Consistent image size - smaller for list view */
 .staffer img,
 .staffer-image {
-  width: 80px !important;
-  height: 80px !important;
-  min-width: 80px;
+  width: 120px !important;
+  height: 120px !important;
+  min-width: 120px;
   border-radius: 50%;
   object-fit: cover;
-  border: 2px solid rgba(0, 0, 0, 0.1);
-  transition: none !important;
+  border: 2px solid rgba(1, 31, 91, 0.1);
+  transition: border-color 0.2s ease;
   flex-shrink: 0;
 }
 
 .staffer:hover img {
-  border-color: rgba(0, 0, 0, 0.1) !important;
+  border-color: var(--penn-electric-blue, #019CDE);
 }
 
-/* Compact text layout */
+/* Text content layout */
 .staffer > div:last-child {
   flex: 1;
   min-width: 0; /* Allow text to wrap properly */
@@ -232,12 +232,38 @@
   font-size: 0.75em;
 }
 
+/* Show the hr separator as a visual divider between sections */
+.staffer hr {
+  margin: 1rem 0;
+  border: none;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
 /* Responsive design */
 @media (max-width: 768px) {
+  .staffer {
+    padding: 1.5rem 0.5rem;
+    gap: 1rem;
+  }
+  
+  .staffer img,
+  .staffer-image {
+    width: 90px !important;
+    height: 90px !important;
+    min-width: 90px;
+  }
+  
+  .staffer-name {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
   .staffer {
     flex-direction: column;
     align-items: center;
     text-align: center;
+    padding: 1.5rem 0.5rem;
   }
   
   .staffer-name {
@@ -246,6 +272,12 @@
   
   .staffer-meta {
     justify-content: center;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .staffer-meta dd {
+    margin-right: 0;
   }
 }
 
@@ -254,8 +286,16 @@
   border-bottom-color: rgba(255, 255, 255, 0.1);
 }
 
+:root[color-theme="dark"] .staffer:first-child {
+  border-top-color: rgba(255, 255, 255, 0.1);
+}
+
 :root[color-theme="dark"] .staffer:hover {
-  background: rgba(255, 255, 255, 0.03);
+  background: rgba(1, 156, 222, 0.05);
+}
+
+:root[color-theme="dark"] .staffer hr {
+  border-top-color: rgba(255, 255, 255, 0.1);
 }
 
 :root[color-theme="dark"] .staffer-name {
