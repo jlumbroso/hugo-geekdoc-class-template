@@ -1,37 +1,34 @@
-/* Make .container and #main-content purely semantic - no styling */
+/* Targeted semantic content adjustments */
 
-/* Remove padding from container */
-.container {
-  padding: 0 !important;
-  /* Keep the max-width and centering for layout purposes */
-  /* but remove any visual styling */
-}
-
-/* Ensure main-content has no padding */
+/* Remove padding ONLY from #main-content, not all containers */
 #main-content {
   padding: 0 !important;
+}
+
+/* If main-content has the container class, still remove padding */
+#main-content.container {
+  padding: 0 !important;
+}
+
+/* But preserve padding for other specific content wrappers if needed */
+#main-content .content-wrapper,
+#main-content article {
+  /* These can have padding if needed */
+  padding: 1.25rem;
+}
+
+/* Fix breadcrumb padding asymmetry */
+/* The header has padding-bottom: 1.5rem and margin-bottom: 2rem = 3.5rem total! */
+/* Let's make it more balanced */
+.gdoc-page__header {
+  padding-top: 0.75rem !important;    /* Add some top padding for balance */
+  padding-bottom: 0.75rem !important; /* Reduce from 1.5rem */
+  margin-bottom: 1rem !important;     /* Reduce from 2rem */
+  /* Total bottom space now: 1.75rem instead of 3.5rem */
+}
+
+/* Ensure breadcrumb itself is symmetrical */
+.gdoc-breadcrumb {
+  padding: 0.5rem 0 !important;
   margin: 0 !important;
-}
-
-/* Optional: If you want to add padding back to specific pages/sections,
-   you can use more specific selectors like:
-   .gdoc-markdown { padding: 1.25rem; }
-   or add a wrapper div with padding inside your content
-*/
-
-/* Note: You may want to add padding to specific content areas instead
-   For example: */
-.content-wrapper {
-  padding: 1.25rem;
-}
-
-/* Or add padding only to article content */
-article.gdoc-post {
-  padding: 1.25rem;
-}
-
-/* Keep padding for markdown content if desired */
-.gdoc-markdown {
-  /* Uncomment if you want to restore padding for markdown content */
-  /* padding: 1.25rem; */
 }
