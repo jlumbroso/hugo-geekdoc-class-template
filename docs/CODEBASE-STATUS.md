@@ -3,6 +3,8 @@
 ## Overview
 This is a comprehensive Hugo-based course website template built on the Geekdoc theme, designed specifically for academic courses. It provides a complete solution for creating course websites with features tailored for educational content delivery.
 
+**Last Updated**: August 2025 - Major enhancements and innovations added
+
 ## Core Architecture
 
 ### Framework & Theme
@@ -34,13 +36,98 @@ hugo-geekdoc-class-template/
 │   ├── announcements/  # Announcement list/single templates
 │   ├── modules/        # Module list/single templates
 │   ├── partials/       # Reusable template parts
+│   │   ├── head/       # Head customizations
+│   │   ├── staffers/   # Staff-specific partials
+│   │   ├── functions/  # Helper functions
+│   │   └── utils/      # Utility partials
 │   ├── shortcodes/     # Custom Hugo shortcodes
+│   ├── posts/          # Blog post templates
 │   └── staffers/       # Staff list/single templates
 ├── static/             # Static assets
 │   ├── custom.css      # Main custom CSS
 │   └── themes/         # Additional color themes
 └── themes/hugo-geekdoc/ # Geekdoc theme (submodule)
 ```
+
+## Recent Major Enhancements (2025)
+
+### Advanced Template System Improvements
+
+#### 1. Sophisticated Edit Link System
+- **Location**: `layouts/partials/utils/edit-link.html`
+- **Features**:
+  - Cascading configuration (site → section → page level)
+  - Multiple edit types ('page' vs 'item')
+  - Configurable display options (icon/text visibility)
+  - Smart repository path handling
+  - Context-aware edit URLs for different content types
+  - Integration points in announcements, modules, and staffers
+
+#### 2. Enhanced Page Header System
+- **Location**: `layouts/partials/page-header.html`
+- **Features**:
+  - Unified header with integrated breadcrumb navigation
+  - Schema.org markup for SEO
+  - Flexible edit link integration
+  - Responsive design with mobile optimization
+  - Accessibility improvements (`id="main-content" tabindex="-1"`)
+  - Consistent styling across all content types
+
+#### 3. Advanced Background Configuration
+- **Location**: `layouts/partials/head/background-config.html`
+- **Features**:
+  - Preset-based configuration system
+  - Header, body, and footer background control
+  - Image/texture layering system
+  - Dark mode support with separate opacity/invert settings
+  - CSS custom properties for dynamic theming
+  - Override capability at page level
+
+#### 4. Penn Engineering Integration
+- **Locations**: 
+  - `layouts/shortcodes/penn-gradient.html`
+  - `static/js/penn-gradient-flash.js`
+  - `assets/css/penn-ai-mode.css`
+- **Features**:
+  - Penn gradient effects with configurable animations
+  - AI mode styling (Google AI-style with Penn colors)
+  - Cascading gradient animations
+  - Button and input field enhancements
+  - Header flash effects
+  - Dark mode compatibility
+
+#### 5. Professional Favicon Management
+- **Location**: `layouts/partials/head/favicons.html`
+- **Features**:
+  - Configurable favicon paths
+  - Multi-format support (ICO, PNG, SVG)
+  - Platform-specific icons (Apple Touch, Android, Safari)
+  - Web manifest integration
+  - Progressive enhancement with file existence checks
+
+#### 6. Enhanced Site Footer
+- **Location**: `layouts/partials/site-footer.html`
+- **Features**:
+  - Claude AI attribution with theme-aware logos
+  - Footer tagline support
+  - Comprehensive legal/privacy links
+  - Enhanced accessibility
+  - Penn Engineering styling integration
+
+#### 7. Course Accent Color System
+- **Location**: `layouts/partials/head/course-accent.html`
+- **Features**:
+  - Modular accent color system
+  - Base accent framework
+  - Switchable color themes
+  - Clean separation of concerns
+
+#### 8. Semantic Content Support
+- **Location**: `assets/css/semantic-content.css`
+- **Features**:
+  - Improved content structure
+  - Better typography handling
+  - Container and main-content optimization
 
 ## Key Features
 
@@ -74,10 +161,14 @@ hugo-geekdoc-class-template/
 
 - **`announcement`**: Styled announcement blocks with title, date, and content
 - **`schedule`**: Dynamic schedule grid from YAML data
+  - Support for instructor field (added 2025)
+  - Time-based positioning
+  - Color-coded event types
 - **`label`**: Colored labels for categorizing content
 - **`sprites`**: SVG icon sprite integration
 - **`resourceLink`**: Link formatting helper
 - **`hugo-encrypt`**: Content encryption support
+- **`penn-gradient`**: Penn Engineering gradient effects (new 2025)
 
 ### 3. Styling System
 
@@ -175,10 +266,13 @@ Special build mode for USB/offline distribution:
 
 ### Key Files to Modify
 1. `config/_default/config.yaml` - Site URL and title
-2. `config/_default/params.yaml` - Theme settings
+2. `config/_default/params.yaml` - Theme settings (including pennGradient, edit links)
 3. `data/class_schedule.yaml` - Course schedule
 4. `content/en/` - All course content
 5. `static/custom.css` - Visual customizations
+6. `layouts/partials/head/custom.html` - Advanced customizations and integrations
+7. `layouts/partials/head/background-config.html` - Background theming
+8. `assets/css/` - SCSS/CSS customizations
 
 ### Best Practices
 - Use front matter for page-specific settings
@@ -194,5 +288,67 @@ Special build mode for USB/offline distribution:
 - Monitor GitHub Actions for build status
 - Keep theme submodule updated
 
+## Technical Entry Points for LLMs
+
+### Configuration Cascade
+1. **Site-wide settings**: `config/_default/params.yaml`
+2. **Page frontmatter**: Override any site setting at page level
+3. **Partial parameters**: Pass context and parameters to partials
+
+### Key Integration Points
+
+#### Edit Link System
+```yaml
+# In params.yaml or page frontmatter
+editURL:
+  enable: true
+  base: "https://github.com/user/repo/edit/main"
+  text: "Edit this page"
+  icon: true
+  showText: true
+```
+
+#### Penn Gradient Configuration
+```yaml
+# In params.yaml or page frontmatter
+pennGradient:
+  enabled: true
+  headerFlash: true
+  buttons: true
+  inputs: true
+  cascading: true
+```
+
+#### Background Configuration
+```yaml
+# In params.yaml
+backgroundPreset: "dots"  # or custom settings
+backgroundSettings:
+  header:
+    image: "/path/to/image"
+    opacity: 0.1
+  body:
+    texture: "dots"
+    darkInvert: true
+```
+
+### Content Type Templates
+- **Announcements**: `layouts/announcements/list.html`
+- **Modules**: `layouts/modules/[list|single].html`
+- **Staffers**: `layouts/staffers/[list|single].html`
+- **Posts**: `layouts/posts/[list|single].html`
+- **Schedule**: `layouts/shortcodes/schedule.html`
+
+### Styling Hierarchy
+1. **Theme base**: `themes/hugo-geekdoc/`
+2. **Custom overrides**: `static/custom.css`
+3. **SCSS extensions**: `assets/custom/`
+4. **Component styles**: `assets/css/[component].css`
+5. **Theme variants**: `static/themes/`
+
+### JavaScript Integration
+- **Penn Gradient**: `static/js/penn-gradient-flash.js`
+- **Custom scripts**: Added via `layouts/partials/head/custom.html`
+
 ## Summary
-This is a well-architected, education-focused Hugo template that successfully combines the Geekdoc theme's documentation capabilities with academic course management features. The codebase is clean, modular, and extensively customizable, making it an excellent foundation for course websites. The integration of Just-the-Class styling elements provides familiar academic website aesthetics while maintaining Hugo's performance advantages.
+This is a highly evolved, education-focused Hugo template that has significantly advanced beyond its initial implementation. The 2025 enhancements have transformed it from a basic course website template into a sophisticated, highly configurable system with professional-grade theming, accessibility features, and extensive customization options. The template successfully combines the Geekdoc theme's documentation capabilities with academic course management features, Penn Engineering branding, and modern web development best practices.
