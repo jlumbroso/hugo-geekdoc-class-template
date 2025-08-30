@@ -1,5 +1,6 @@
 ---
 title: "Our Staff"
+type: "staffers"
 geekdocCollapseSection: false
 geekdocHidden: false
 cascade:

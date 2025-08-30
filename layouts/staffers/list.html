@@ -11,7 +11,8 @@
   {{ end }}
   <div class="staffers">
     {{ $roleOrder := .Params.roleOrder }}
-    {{ $allGroups := .Pages.GroupByParam "role" }}
+    {{ $allStaffers := where .Site.RegularPages "Section" "staffers" }}
+    {{ $allGroups := $allStaffers.GroupByParam "role" }}
     
     {{ range $roleOrder }}
       {{ $group := where $allGroups "Key" "eq" . }}
