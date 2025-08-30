@@ -1,4 +1,7 @@
 <footer class="gdoc-footer">
+  {{ with .Site.Params.footerTagline }}
+    <div class="gdoc-footer__tagline">{{ . }}</div>
+  {{ end }}
   <nav class="container flex">
     <div>
       <section class="flex flex-wrap align-center">

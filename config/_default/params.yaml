@@ -128,3 +128,6 @@ footerBackgroundStyle:
 
 # Claude AI attribution in footer
 claudeInFooter: true  # Set to false to hide Claude logo
+
+# Footer tagline
+footerTagline: "RECODING COMMUNICATION"  # Set to empty string to hide tagline

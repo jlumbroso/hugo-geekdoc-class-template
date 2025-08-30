@@ -8,6 +8,11 @@
 <link rel="stylesheet" href="{{ "claude-footer.css" | absURL }}">
 {{ end }}
 
+<!-- Footer tagline styles -->
+{{ if .Site.Params.footerTagline }}
+<link rel="stylesheet" href="{{ "footer-tagline.css" | absURL }}">
+{{ end }}
+
 <!-- MathJax for LaTeX rendering (only activated when frontmatter has "latex: true") -->
 {{ if .Params.latex }}
   <script type="text/javascript"
