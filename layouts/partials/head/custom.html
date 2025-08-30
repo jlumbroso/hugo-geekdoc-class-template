@@ -31,6 +31,12 @@
   <link rel="stylesheet" href="{{ $pennAICSS.RelPermalink }}">
 {{ end }}
 
+<!-- Semantic Content - Remove padding from container and main-content -->
+{{ $semanticCSS := resources.Get "css/semantic-content.css" }}
+{{ if $semanticCSS }}
+  <link rel="stylesheet" href="{{ $semanticCSS.RelPermalink }}">
+{{ end }}
+
 <!-- Penn Gradient Settings -->
 {{/* Get site-wide default settings */}}
 {{ $siteSettings := .Site.Params.pennGradient | default dict }}
