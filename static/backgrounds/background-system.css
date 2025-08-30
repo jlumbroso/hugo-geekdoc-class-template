@@ -1,0 +1,362 @@
+/* Background System CSS
+   Provides layered backgrounds for header and body with texture support */
+
+/* CSS Variables for Header Backgrounds */
+:root {
+  /* Header dimensions */
+  --header-height: 80px;
+  --header-height-mobile: auto;
+  
+  /* Header background color */
+  --header-bg-color: transparent;
+  
+  /* Header background image */
+  --header-bg-image: none;
+  --header-bg-image-opacity: 1;
+  --header-bg-image-position: center center;
+  --header-bg-image-size: cover;
+  
+  /* Header texture overlay */
+  --header-texture-image: none;
+  --header-texture-opacity: 1;
+  --header-texture-layer-z: 2;
+  --header-texture-blend: normal;
+  --header-texture-repeat: repeat;
+  --header-texture-size: auto;
+  
+  /* Header element backgrounds */
+  --header-logo-bg: transparent;
+  --header-logo-color: inherit;
+  --header-logo-padding: 0;
+  --header-logo-radius: 0;
+  --header-logo-opacity: 1;
+  
+  --header-title-bg: transparent;
+  --header-title-color: inherit;
+  --header-title-padding: 0;
+  --header-title-radius: 0;
+  --header-title-opacity: 1;
+  
+  --header-toolbar-bg: transparent;
+  --header-toolbar-color: inherit;
+  --header-toolbar-padding: 0;
+  --header-toolbar-radius: 0;
+  --header-toolbar-opacity: 1;
+}
+
+/* Body Background Variables */
+:root {
+  --body-bg-color: var(--body-background, transparent); /* Use theme's body background as fallback */
+  --body-bg-image: none;
+  --body-bg-image-opacity: 1;
+  --body-bg-image-position: center top;
+  --body-bg-image-size: cover;
+  --body-bg-image-attachment: scroll;
+  --body-bg-image-repeat: no-repeat;
+  
+  --body-texture-image: none;
+  --body-texture-opacity: 1;
+  --body-texture-repeat: repeat;
+  --body-texture-size: auto;
+  --body-texture-position: center center;
+  --body-texture-attachment: scroll;
+  --body-texture-blend: normal;
+}
+
+/* Footer Background Variables */
+:root {
+  --footer-bg-color: transparent;
+  --footer-bg-image: none;
+  --footer-bg-image-opacity: 1;
+  --footer-bg-image-position: center center;
+  --footer-bg-image-size: cover;
+  
+  --footer-texture-image: none;
+  --footer-texture-opacity: 1;
+  --footer-texture-repeat: repeat;
+  --footer-texture-size: auto;
+  --footer-texture-blend: normal;
+  
+  --footer-height: auto;
+  --footer-padding: inherit;
+}
+
+/* Header Background Implementation */
+.gdoc-header {
+  position: relative;
+  min-height: var(--header-height);
+  background: var(--header-bg-color) !important; /* Override theme background */
+  overflow: hidden;
+}
+
+/* Header background image layer */
+.gdoc-header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: var(--header-bg-image);
+  background-position: var(--header-bg-image-position);
+  background-size: var(--header-bg-image-size);
+  background-repeat: no-repeat;
+  opacity: var(--header-bg-image-opacity);
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Header texture overlay layer */
+.gdoc-header::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: var(--header-texture-image);
+  background-repeat: var(--header-texture-repeat);
+  background-size: var(--header-texture-size);
+  opacity: var(--header-texture-opacity);
+  mix-blend-mode: var(--header-texture-blend);
+  z-index: var(--header-texture-layer-z);
+  pointer-events: none;
+}
+
+/* Ensure header content is above background layers */
+.gdoc-header__wrapper {
+  position: relative;
+  z-index: 10;
+}
+
+/* Header element backgrounds */
+.gdoc-brand {
+  background: var(--header-logo-bg);
+  padding: var(--header-logo-padding);
+  border-radius: var(--header-logo-radius);
+  opacity: var(--header-logo-opacity);
+}
+
+.gdoc-brand__img {
+  display: block;
+}
+
+.gdoc-brand__title {
+  background: var(--header-title-bg);
+  color: var(--header-title-color) !important;
+  padding: var(--header-title-padding);
+  border-radius: var(--header-title-radius);
+  opacity: var(--header-title-opacity);
+}
+
+.gdoc-brand__title a {
+  color: inherit !important;
+}
+
+.gdoc-nav__control,
+.gdoc-menu-header__items {
+  background: var(--header-toolbar-bg);
+  padding: var(--header-toolbar-padding);
+  border-radius: var(--header-toolbar-radius);
+  opacity: var(--header-toolbar-opacity);
+}
+
+.gdoc-nav__control .icon,
+.gdoc-menu-header__items .icon,
+.gdoc-menu-header__items a {
+  color: var(--header-toolbar-color) !important;
+}
+
+/* Body Background Implementation */
+body {
+  position: relative;
+  background: var(--body-bg-color) !important; /* Override theme default */
+}
+
+/* Ensure main content areas are transparent to show body background */
+.gdoc-page,
+.gdoc-page__content,
+main,
+.wrapper,
+.container {
+  background: transparent !important;
+}
+
+/* Body background image layer */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: var(--body-bg-image);
+  background-position: var(--body-bg-image-position);
+  background-size: var(--body-bg-image-size);
+  background-attachment: var(--body-bg-image-attachment);
+  background-repeat: var(--body-bg-image-repeat);
+  opacity: var(--body-bg-image-opacity);
+  z-index: -2;
+  pointer-events: none;
+}
+
+/* Body texture overlay layer */
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: var(--body-texture-image);
+  background-repeat: var(--body-texture-repeat);
+  background-size: var(--body-texture-size);
+  background-position: var(--body-texture-position);
+  background-attachment: var(--body-texture-attachment);
+  opacity: var(--body-texture-opacity);
+  mix-blend-mode: var(--body-texture-blend);
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Footer Background Implementation */
+.gdoc-footer {
+  position: relative;
+  min-height: var(--footer-height);
+  padding: var(--footer-padding);
+  background: var(--footer-bg-color) !important;
+  overflow: hidden;
+}
+
+/* Footer background image layer */
+.gdoc-footer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: var(--footer-bg-image);
+  background-position: var(--footer-bg-image-position);
+  background-size: var(--footer-bg-image-size);
+  background-repeat: no-repeat;
+  opacity: var(--footer-bg-image-opacity);
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Footer texture overlay layer */
+.gdoc-footer::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: var(--footer-texture-image);
+  background-repeat: var(--footer-texture-repeat);
+  background-size: var(--footer-texture-size);
+  opacity: var(--footer-texture-opacity);
+  mix-blend-mode: var(--footer-texture-blend);
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* Ensure footer content is above background layers */
+.gdoc-footer__wrapper {
+  position: relative;
+  z-index: 10;
+}
+
+/* Mobile Responsive */
+@media (max-width: 45rem) {
+  .gdoc-header {
+    min-height: var(--header-height-mobile);
+  }
+  
+  .gdoc-header::before {
+    background-position: var(--header-bg-image-position-mobile, var(--header-bg-image-position));
+  }
+  
+  /* Simplify body backgrounds on mobile for performance */
+  body::before {
+    background-attachment: scroll !important;
+  }
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --header-bg-image-opacity: var(--header-bg-image-opacity-dark, var(--header-bg-image-opacity));
+    --header-texture-opacity: var(--header-texture-opacity-dark, var(--header-texture-opacity));
+    --body-bg-image-opacity: var(--body-bg-image-opacity-dark, var(--body-bg-image-opacity));
+    --body-texture-opacity: var(--body-texture-opacity-dark, var(--body-texture-opacity));
+    --footer-bg-image-opacity: var(--footer-bg-image-opacity-dark, var(--footer-bg-image-opacity));
+    --footer-texture-opacity: var(--footer-texture-opacity-dark, var(--footer-texture-opacity));
+    
+    /* Switch body background color in dark mode */
+    --body-bg-color: var(--body-bg-color-dark, var(--body-bg-color));
+  }
+  
+  /* Texture inversion for dark mode */
+  .gdoc-header::after {
+    filter: var(--header-texture-filter-dark, none);
+  }
+  
+  body::after {
+    filter: var(--body-texture-filter-dark, none);
+  }
+  
+  .gdoc-footer::after {
+    filter: var(--footer-texture-filter-dark, none);
+  }
+  
+  /* Element color overrides for dark mode */
+  .gdoc-nav__control .icon,
+  .gdoc-menu-header__items .icon,
+  .gdoc-menu-header__items a {
+    color: var(--header-toolbar-color-dark, var(--header-toolbar-color)) !important;
+  }
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+  :root {
+    --header-logo-opacity: 0.95;
+    --header-title-opacity: 0.95;
+    --header-toolbar-opacity: 0.95;
+    --header-bg-image-opacity: 0.2;
+    --header-texture-opacity: 0.05;
+    --body-bg-image-opacity: 0.2;
+    --body-texture-opacity: 0.05;
+  }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  body::before {
+    background-attachment: scroll !important;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .gdoc-header::before,
+  .gdoc-header::after,
+  body::before,
+  body::after {
+    display: none !important;
+  }
+  
+  .gdoc-header,
+  body {
+    background: white !important;
+  }
+  
+  .gdoc-header__title,
+  .gdoc-nav__control,
+  .gdoc-menu-header__items {
+    background: transparent !important;
+    color: black !important;
+  }
+}

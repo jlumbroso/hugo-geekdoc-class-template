@@ -288,6 +288,22 @@ h1 {
   color: var(--penn-electric-blue);
 }
 
+/* Fix blog post titles in dark mode */
+:root[color-theme="dark"] .gdoc-markdown h1,
+:root[color-theme="dark"] .gdoc-markdown h2,
+:root[color-theme="dark"] .gdoc-markdown h3,
+@media (prefers-color-scheme: dark) {
+  :root .gdoc-markdown h1,
+  :root .gdoc-markdown h2,
+  :root .gdoc-markdown h3 {
+    color: var(--penn-white);
+  }
+  
+  :root .gdoc-markdown h1 {
+    color: var(--penn-electric-blue);
+  }
+}
+
 /* Subheadings and Metadata - Pitch Sans (per brand guidelines) */
 .gdoc-page__header time,
 .gdoc-page__header .gdoc-page__meta,
@@ -414,6 +430,22 @@ blockquote {
   font-weight: var(--penn-font-semibold);
 }
 
+/* Dark mode navigation active state */
+:root[color-theme="dark"] .gdoc-nav__entry.is-active,
+@media (prefers-color-scheme: dark) {
+  :root .gdoc-nav__entry.is-active {
+    background-color: rgba(99, 199, 255, 0.15);
+    color: var(--penn-white);
+  }
+}
+
+:root[color-theme="dark"] .gdoc-nav__entry:hover,
+@media (prefers-color-scheme: dark) {
+  :root .gdoc-nav__entry:hover {
+    background-color: rgba(99, 199, 255, 0.1);
+  }
+}
+
 /* =========================================================================
    Content Area Enhancements
    ========================================================================= */
@@ -452,6 +484,15 @@ blockquote {
   overflow: hidden;
 }
 
+/* Dark mode announcement panels */
+:root[color-theme="dark"] .announcement,
+@media (prefers-color-scheme: dark) {
+  :root .announcement {
+    background: linear-gradient(135deg, #2a2a2a 0%, #1f1f1f 100%);
+    border-left-color: var(--penn-electric-blue);
+  }
+}
+
 .announcement::before {
   content: "⚡";
   position: absolute;
@@ -469,12 +510,28 @@ blockquote {
   margin-bottom: var(--penn-spacing-sm);
 }
 
+/* Dark mode announcement titles */
+:root[color-theme="dark"] .announcement h2,
+@media (prefers-color-scheme: dark) {
+  :root .announcement h2 {
+    color: var(--penn-electric-blue);
+  }
+}
+
 .announcement-meta {
   font-family: var(--penn-font-secondary);
   font-size: 0.875rem;
   color: var(--penn-medium-gray);
   margin-bottom: var(--penn-spacing-md);
   font-weight: var(--penn-font-medium);
+}
+
+/* Dark mode announcement metadata */
+:root[color-theme="dark"] .announcement-meta,
+@media (prefers-color-scheme: dark) {
+  :root .announcement-meta {
+    color: var(--penn-gray-400);
+  }
 }
 
 /* =========================================================================
@@ -501,6 +558,14 @@ blockquote {
   color: var(--penn-blue);
   font-size: 1.125rem;
   margin-bottom: var(--penn-spacing-sm);
+}
+
+/* Dark mode module date colors */
+:root[color-theme="dark"] .module dt,
+@media (prefers-color-scheme: dark) {
+  :root .module dt {
+    color: var(--penn-electric-blue);
+  }
 }
 
 .module dd {
@@ -572,6 +637,15 @@ blockquote {
   box-shadow: var(--penn-shadow-md);
 }
 
+/* Dark mode schedule background */
+:root[color-theme="dark"] .schedule,
+@media (prefers-color-scheme: dark) {
+  :root .schedule {
+    background: #2a2a2a;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+  }
+}
+
 .schedule-header {
   font-family: var(--penn-font-secondary);
   font-weight: var(--penn-font-bold);
@@ -579,6 +653,14 @@ blockquote {
   letter-spacing: 0.1em;
   color: var(--penn-blue);
   font-size: 0.875rem;
+}
+
+/* Dark mode schedule headers */
+:root[color-theme="dark"] .schedule-header,
+@media (prefers-color-scheme: dark) {
+  :root .schedule-header {
+    color: var(--penn-white);
+  }
 }
 
 .schedule-event {

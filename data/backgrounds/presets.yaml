@@ -1,0 +1,150 @@
+# Background System Presets
+# These presets can be used via headerStyle.preset and bodyBackgroundStyle.preset
+
+header:
+  # Default/none - no modifications
+  none: {}
+  
+  # Minimal - just Penn blue header
+  minimal:
+    height: "80px"
+    title:
+      background: "var(--penn-blue)"
+      color: "var(--penn-white)"
+      opacity: 1
+  
+  # Subtle texture overlay
+  subtle-texture:
+    height: "100px"
+    background: "var(--penn-blue)"  # Blue header background
+    textureImage: "backgrounds/line_texture_white_bg-3_small.png"
+    textureOpacity: 0.15
+    textureLayer: "foreground"
+    # No individual element backgrounds - keep it clean
+    title:
+      color: "var(--penn-white)"
+    toolbar:
+      color: "var(--penn-white)"
+  
+  # Engineering lab with photo
+  engineering-lab:
+    height: "180px"
+    heightMobile: "120px"
+    image: "backgrounds/penn-engineering-lab.jpg"
+    imageOpacity: 0.4
+    imagePosition: "center 60%"
+    imagePositionMobile: "center center"
+    textureImage: "backgrounds/line_texture_white_bg-3_small.png"
+    textureOpacity: 0.1
+    textureLayer: "foreground"
+    darkModeImageOpacity: 0.3
+    darkModeTextureInvert: true
+    logo:
+      background: "rgba(255,255,255,0.9)"
+      color: "var(--penn-blue)"
+      padding: "8px"
+      borderRadius: "4px"
+    title:
+      background: "rgba(1,31,91,0.85)"
+      color: "var(--penn-white)"
+      opacity: 1
+    toolbar:
+      background: "rgba(255,255,255,0.8)"
+      color: "var(--penn-blue)"
+      padding: "4px 8px"
+      borderRadius: "4px"
+  
+  # Campus hero image
+  campus-hero:
+    height: "200px"
+    heightMobile: "140px"
+    image: "backgrounds/penn-campus.jpg"
+    imageOpacity: 0.5
+    imagePosition: "center 40%"
+    imageSize: "cover"
+    logo:
+      background: "rgba(255,255,255,0.95)"
+      color: "var(--penn-blue)"
+    title:
+      background: "linear-gradient(90deg, rgba(1,31,91,0.9), rgba(1,31,91,0.7))"
+      color: "var(--penn-white)"
+    toolbar:
+      background: "transparent"
+      color: "var(--penn-white)"
+      darkModeColor: "var(--penn-white)"
+  
+  # Bold gradient
+  gradient-modern:
+    height: "120px"
+    background: "linear-gradient(135deg, var(--penn-blue), var(--penn-blue-dark))"
+    textureImage: "backgrounds/line_texture_white_bg-3_small.png"
+    textureOpacity: 0.03
+    textureLayer: "foreground"
+    logo:
+      background: "rgba(255,255,255,0.1)"
+      color: "var(--penn-white)"
+    title:
+      background: "transparent"
+      color: "var(--penn-white)"
+    toolbar:
+      background: "rgba(255,255,255,0.1)"
+      color: "var(--penn-white)"
+
+body:
+  # Default/none - no modifications
+  none: {}
+  
+  # Subtle page texture
+  subtle-texture:
+    color: "var(--penn-gray-50)"
+    textureImage: "backgrounds/line_texture_white_bg-3_small.png"
+    textureOpacity: 0.03
+    textureRepeat: "repeat"
+    textureSize: "auto"
+    darkModeColor: "var(--penn-gray-900)"
+    darkModeTextureInvert: true
+    darkModeTextureOpacity: 0.02
+  
+  # Penn official background
+  penn-official:
+    color: "var(--penn-white)"  # Base white background
+    #textureImage: "backgrounds/home-page-background.BIGfRDNj-g6x-cropped.jpg"
+    #textureSize: "180% auto"  # Good zoom level for curves
+    #texturePosition: "center -600px"  # Pull up to show dramatic curves
+    textureImage: "backgrounds/home-page-background.BIGfRDNj.jpg"
+    textureSize: "180% auto"  # Good zoom level for curves
+    texturePosition: "center -1500px"  # Pull up to show dramatic curves
+    textureAttachment: "fixed"
+    textureRepeat: "no-repeat"
+    textureOpacity: 1  # Full opacity in light mode
+    textureLayer: "background"  # Behind content
+    darkModeColor: "#1a1a1a"  # Dark background for dark mode
+    darkModeTextureInvert: false  # Don't invert - it makes it black!
+    darkModeTextureOpacity: 0  # Hide texture completely in dark mode - it has white baked in!
+  
+  # Gradient background
+  gradient-soft:
+    background: "linear-gradient(180deg, var(--penn-gray-50) 0%, var(--penn-white) 50%, var(--penn-gray-50) 100%)"
+    imageAttachment: "fixed"
+    darkModeColor: "var(--penn-gray-900)"
+
+footer:
+  # Default/none - no modifications
+  none: {}
+  
+  # Subtle footer texture
+  subtle-texture:
+    background: "var(--penn-blue-dark)"
+    textureImage: "backgrounds/line_texture_white_bg-3_small.png"
+    textureOpacity: 0.1
+    darkModeTextureInvert: true
+    
+  # Penn blue footer
+  penn-blue:
+    background: "var(--penn-blue)"
+    
+  # Gradient footer
+  gradient-footer:
+    background: "linear-gradient(180deg, var(--penn-blue-dark), var(--penn-blue))"
+    textureImage: "backgrounds/line_texture_white_bg-3_small.png"
+    textureOpacity: 0.05

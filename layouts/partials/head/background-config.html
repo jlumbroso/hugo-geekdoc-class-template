@@ -1,0 +1,181 @@
+{{/* Background System Configuration
+     Loads presets and applies overrides for header and body backgrounds */}}
+
+{{/* Process Header Style */}}
+{{ $headerConfig := dict }}
+{{ if .Site.Params.headerStyle }}
+  {{/* Load preset if specified */}}
+  {{ if .Site.Params.headerStyle.preset }}
+    {{ $presetName := .Site.Params.headerStyle.preset }}
+    {{ if isset .Site.Data.backgrounds.presets.header $presetName }}
+      {{ $headerConfig = index .Site.Data.backgrounds.presets.header $presetName }}
+    {{ end }}
+  {{ end }}
+  
+  {{/* Merge with explicit configuration (overrides preset) */}}
+  {{ $headerConfig = merge $headerConfig .Site.Params.headerStyle }}
+{{ end }}
+
+{{/* Process Body Background Style */}}
+{{ $bodyConfig := dict }}
+{{ if .Site.Params.bodyBackgroundStyle }}
+  {{/* Load preset if specified */}}
+  {{ if .Site.Params.bodyBackgroundStyle.preset }}
+    {{ $presetName := .Site.Params.bodyBackgroundStyle.preset }}
+    {{ if isset .Site.Data.backgrounds.presets.body $presetName }}
+      {{ $bodyConfig = index .Site.Data.backgrounds.presets.body $presetName }}
+    {{ end }}
+  {{ end }}
+  
+  {{/* Merge with explicit configuration */}}
+  {{ $bodyConfig = merge $bodyConfig .Site.Params.bodyBackgroundStyle }}
+{{ end }}
+
+{{/* Process Footer Background Style */}}
+{{ $footerConfig := dict }}
+{{ if .Site.Params.footerBackgroundStyle }}
+  {{/* Load preset if specified */}}
+  {{ if .Site.Params.footerBackgroundStyle.preset }}
+    {{ $presetName := .Site.Params.footerBackgroundStyle.preset }}
+    {{ if isset .Site.Data.backgrounds.presets.footer $presetName }}
+      {{ $footerConfig = index .Site.Data.backgrounds.presets.footer $presetName }}
+    {{ end }}
+  {{ end }}
+  
+  {{/* Merge with explicit configuration */}}
+  {{ $footerConfig = merge $footerConfig .Site.Params.footerBackgroundStyle }}
+{{ end }}
+
+{{/* Only output styles if we have configuration */}}
+{{ if or $headerConfig $bodyConfig $footerConfig }}
+<link rel="stylesheet" href="{{ "backgrounds/background-system.css" | absURL }}">
+<style>
+  :root {
+    {{/* Header Dimensions */}}
+    {{ with $headerConfig.height }}--header-height: {{ . }};{{ end }}
+    {{ with $headerConfig.heightMobile }}--header-height-mobile: {{ . }};{{ end }}
+    
+    {{/* Header Background Color */}}
+    {{ with $headerConfig.background }}--header-bg-color: {{ . | safeCSS }};{{ end }}
+    
+    {{/* Header Background Image */}}
+    {{ with $headerConfig.image }}
+      --header-bg-image: url('{{ . | absURL }}');
+    {{ end }}
+    {{ with $headerConfig.imageOpacity }}--header-bg-image-opacity: {{ . }};{{ end }}
+    {{ with $headerConfig.imagePosition }}--header-bg-image-position: {{ . }};{{ end }}
+    {{ with $headerConfig.imagePositionMobile }}--header-bg-image-position-mobile: {{ . }};{{ end }}
+    {{ with $headerConfig.imageSize }}--header-bg-image-size: {{ . }};{{ end }}
+    
+    {{/* Header Texture Overlay */}}
+    {{ with $headerConfig.textureImage }}
+      --header-texture-image: url('{{ . | absURL }}');
+    {{ end }}
+    {{ with $headerConfig.textureOpacity }}--header-texture-opacity: {{ . }};{{ end }}
+    {{ with $headerConfig.textureRepeat }}--header-texture-repeat: {{ . }};{{ end }}
+    {{ with $headerConfig.textureSize }}--header-texture-size: {{ . }};{{ end }}
+    {{ with $headerConfig.textureBlendMode }}--header-texture-blend: {{ . }};{{ end }}
+    
+    {{/* Texture Layer Z-Index Control */}}
+    {{ if eq $headerConfig.textureLayer "background" }}
+      --header-texture-layer-z: 0;
+    {{ else if eq $headerConfig.textureLayer "between" }}
+      --header-texture-layer-z: 1;
+    {{ else }}
+      --header-texture-layer-z: 2; {{/* foreground is default */}}
+    {{ end }}
+    
+    {{/* Dark Mode Settings for Header */}}
+    {{ with $headerConfig.darkModeImageOpacity }}--header-bg-image-opacity-dark: {{ . }};{{ end }}
+    {{ with $headerConfig.darkModeTextureOpacity }}--header-texture-opacity-dark: {{ . }};{{ end }}
+    {{ if $headerConfig.darkModeImageInvert }}--header-image-filter-dark: invert(1);{{ end }}
+    {{ if $headerConfig.darkModeTextureInvert }}--header-texture-filter-dark: invert(1);{{ end }}
+    
+    {{/* Header Logo Styles */}}
+    {{ with $headerConfig.logo }}
+      {{ with .background }}--header-logo-bg: {{ . | safeCSS }};{{ end }}
+      {{ with .color }}--header-logo-color: {{ . | safeCSS }};{{ end }}
+      {{ with .padding }}--header-logo-padding: {{ . }};{{ end }}
+      {{ with .borderRadius }}--header-logo-radius: {{ . }};{{ end }}
+      {{ with .opacity }}--header-logo-opacity: {{ . }};{{ end }}
+    {{ end }}
+    
+    {{/* Header Title Styles */}}
+    {{ with $headerConfig.title }}
+      {{ with .background }}--header-title-bg: {{ . | safeCSS }};{{ end }}
+      {{ with .color }}--header-title-color: {{ . | safeCSS }};{{ end }}
+      {{ with .padding }}--header-title-padding: {{ . }};{{ end }}
+      {{ with .borderRadius }}--header-title-radius: {{ . }};{{ end }}
+      {{ with .opacity }}--header-title-opacity: {{ . }};{{ end }}
+    {{ end }}
+    
+    {{/* Header Toolbar Styles */}}
+    {{ with $headerConfig.toolbar }}
+      {{ with .background }}--header-toolbar-bg: {{ . | safeCSS }};{{ end }}
+      {{ with .color }}--header-toolbar-color: {{ . | safeCSS }};{{ end }}
+      {{ with .darkModeColor }}--header-toolbar-color-dark: {{ . | safeCSS }};{{ end }}
+      {{ with .padding }}--header-toolbar-padding: {{ . }};{{ end }}
+      {{ with .borderRadius }}--header-toolbar-radius: {{ . }};{{ end }}
+      {{ with .opacity }}--header-toolbar-opacity: {{ . }};{{ end }}
+    {{ end }}
+    
+    {{/* Body Background Color */}}
+    {{ with $bodyConfig.color }}--body-bg-color: {{ . | safeCSS }};{{ end }}
+    {{ with $bodyConfig.background }}--body-bg-color: {{ . | safeCSS }};{{ end }}
+    
+    {{/* Body Background Image */}}
+    {{ with $bodyConfig.image }}
+      --body-bg-image: url('{{ . | absURL }}');
+    {{ end }}
+    {{ with $bodyConfig.imageOpacity }}--body-bg-image-opacity: {{ . }};{{ end }}
+    {{ with $bodyConfig.imagePosition }}--body-bg-image-position: {{ . }};{{ end }}
+    {{ with $bodyConfig.imageSize }}--body-bg-image-size: {{ . }};{{ end }}
+    {{ with $bodyConfig.imageAttachment }}--body-bg-image-attachment: {{ . }};{{ end }}
+    {{ with $bodyConfig.imageRepeat }}--body-bg-image-repeat: {{ . }};{{ end }}
+    
+    {{/* Body Texture Overlay */}}
+    {{ with $bodyConfig.textureImage }}
+      --body-texture-image: url('{{ . | absURL }}');
+    {{ end }}
+    {{ with $bodyConfig.textureOpacity }}--body-texture-opacity: {{ . }};{{ end }}
+    {{ with $bodyConfig.textureRepeat }}--body-texture-repeat: {{ . }};{{ end }}
+    {{ with $bodyConfig.textureSize }}--body-texture-size: {{ . }};{{ end }}
+    {{ with $bodyConfig.texturePosition }}--body-texture-position: {{ . }};{{ end }}
+    {{ with $bodyConfig.textureAttachment }}--body-texture-attachment: {{ . }};{{ end }}
+    {{ with $bodyConfig.textureBlendMode }}--body-texture-blend: {{ . }};{{ end }}
+    
+    {{/* Dark Mode Settings for Body */}}
+    {{ with $bodyConfig.darkModeColor }}--body-bg-color-dark: {{ . | safeCSS }};{{ end }}
+    {{ with $bodyConfig.darkModeImageOpacity }}--body-bg-image-opacity-dark: {{ . }};{{ end }}
+    {{ with $bodyConfig.darkModeTextureOpacity }}--body-texture-opacity-dark: {{ . }};{{ end }}
+    {{ if $bodyConfig.darkModeTextureInvert }}--body-texture-filter-dark: invert(1);{{ end }}
+    
+    {{/* Footer Dimensions and Background */}}
+    {{ with $footerConfig.height }}--footer-height: {{ . }};{{ end }}
+    {{ with $footerConfig.padding }}--footer-padding: {{ . }};{{ end }}
+    {{ with $footerConfig.background }}--footer-bg-color: {{ . | safeCSS }};{{ end }}
+    
+    {{/* Footer Background Image */}}
+    {{ with $footerConfig.image }}
+      --footer-bg-image: url('{{ . | absURL }}');
+    {{ end }}
+    {{ with $footerConfig.imageOpacity }}--footer-bg-image-opacity: {{ . }};{{ end }}
+    {{ with $footerConfig.imagePosition }}--footer-bg-image-position: {{ . }};{{ end }}
+    {{ with $footerConfig.imageSize }}--footer-bg-image-size: {{ . }};{{ end }}
+    
+    {{/* Footer Texture Overlay */}}
+    {{ with $footerConfig.textureImage }}
+      --footer-texture-image: url('{{ . | absURL }}');
+    {{ end }}
+    {{ with $footerConfig.textureOpacity }}--footer-texture-opacity: {{ . }};{{ end }}
+    {{ with $footerConfig.textureRepeat }}--footer-texture-repeat: {{ . }};{{ end }}
+    {{ with $footerConfig.textureSize }}--footer-texture-size: {{ . }};{{ end }}
+    {{ with $footerConfig.textureBlendMode }}--footer-texture-blend: {{ . }};{{ end }}
+    
+    {{/* Dark Mode Settings for Footer */}}
+    {{ with $footerConfig.darkModeImageOpacity }}--footer-bg-image-opacity-dark: {{ . }};{{ end }}
+    {{ with $footerConfig.darkModeTextureOpacity }}--footer-texture-opacity-dark: {{ . }};{{ end }}
+    {{ if $footerConfig.darkModeTextureInvert }}--footer-texture-filter-dark: invert(1);{{ end }}
+  }
+</style>
+{{ end }}

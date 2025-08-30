@@ -109,3 +109,19 @@ themeColor: "#011F5B"
 # Available options: evergreen, teal, warwick, violet, orange, red
 # Leave empty or comment out for default Penn blue
 courseAccent: ""
+
+# Header background customization
+headerStyle:
+  preset: "subtle-texture"  # Options: none, minimal, subtle-texture, engineering-lab, campus-hero, gradient-modern
+  # Override any preset values here:
+  textureOpacity: 0.50  # Slightly more visible texture
+
+# Body background customization  
+# bodyBackgroundStyle:
+#   preset: "penn-official"  # Options: none, subtle-texture, penn-official, gradient-soft
+
+# Footer background customization
+footerBackgroundStyle:
+  preset: "subtle-texture"  # Options: none, subtle-texture, penn-blue, gradient-footer
+  # Override preset values:
+  textureOpacity: 0.15  # Subtle texture on footer

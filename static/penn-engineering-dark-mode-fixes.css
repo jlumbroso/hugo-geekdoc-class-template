@@ -1,0 +1,372 @@
+/* Dark Mode Fixes for Penn Engineering Theme */
+
+/* =========================================================================
+   Schedule Dark Mode Fixes
+   ========================================================================= */
+
+/* Main schedule container in dark mode */
+@media (prefers-color-scheme: dark) {
+  .schedule {
+    background: #2a2a2a !important;
+    color: #e0e0e0 !important;
+  }
+  
+  /* Schedule timeline (times on left) */
+  .schedule-timeline,
+  .schedule-time {
+    background: #2a2a2a !important;
+    color: #e0e0e0 !important;
+  }
+  
+  /* Schedule day headers */
+  .schedule-header {
+    color: #ffffff !important;
+  }
+  
+  /* Schedule events container */
+  .schedule-events {
+    background: #2a2a2a !important;
+  }
+}
+
+:root[color-theme="dark"] .schedule {
+  background: #2a2a2a !important;
+  color: #e0e0e0 !important;
+}
+
+:root[color-theme="dark"] .schedule-timeline,
+:root[color-theme="dark"] .schedule-time {
+  background: #2a2a2a !important;
+  color: #e0e0e0 !important;
+}
+
+:root[color-theme="dark"] .schedule-header {
+  color: #ffffff !important;
+}
+
+:root[color-theme="dark"] .schedule-events {
+  background: #2a2a2a !important;
+}
+
+/* =========================================================================
+   Announcement Dark Mode Fixes  
+   ========================================================================= */
+
+@media (prefers-color-scheme: dark) {
+  /* Announcement boxes in list view - target all possible structures */
+  .announcement,
+  div.announcement,
+  article .announcement,
+  article > div.announcement,
+  .gdoc-markdown .announcement,
+  .announcement-box,
+  article.announcement,
+  .gdoc-post.announcement,
+  article.gdoc-markdown.gdoc-post {
+    background: #2a2a2a !important;
+    border-left-color: #63C7FF !important;
+  }
+  
+  /* Override any inline styles or backgrounds */
+  article[style*="background"],
+  .gdoc-post[style*="background"],
+  div.announcement[style*="background"] {
+    background: #2a2a2a !important;
+  }
+  
+  /* Target the actual announcement divs on the announcements page */
+  #main-content .announcement,
+  .container .announcement {
+    background: #2a2a2a !important;
+    border-left: 4px solid #63C7FF !important;
+  }
+  
+  .announcement h2,
+  .announcement h3,
+  div.announcement h2,
+  div.announcement h3,
+  .gdoc-markdown .announcement h2,
+  .gdoc-markdown .announcement h3,
+  .announcement-box h2,
+  .announcement-box h3,
+  article.announcement h2,
+  article.announcement h3 {
+    color: #63C7FF !important;
+  }
+  
+  /* Announcement title links */
+  .announcement h2 a,
+  .announcement h3 a,
+  div.announcement h2 a,
+  div.announcement h3 a {
+    color: #63C7FF !important;
+  }
+  
+  .gdoc-markdown .announcement p,
+  .announcement-box p,
+  article.announcement p {
+    color: #e0e0e0 !important;
+  }
+  
+  .announcement-meta,
+  .gdoc-page__meta {
+    color: #9e9e9e !important;
+  }
+}
+
+:root[color-theme="dark"] .announcement,
+:root[color-theme="dark"] div.announcement,
+:root[color-theme="dark"] article .announcement,
+:root[color-theme="dark"] article > div.announcement,
+:root[color-theme="dark"] .gdoc-markdown .announcement,
+:root[color-theme="dark"] .announcement-box,
+:root[color-theme="dark"] article.announcement {
+  background: #2a2a2a !important;
+  border-left-color: #63C7FF !important;
+}
+
+:root[color-theme="dark"] #main-content .announcement,
+:root[color-theme="dark"] .container .announcement {
+  background: #2a2a2a !important;
+  border-left: 4px solid #63C7FF !important;
+}
+
+:root[color-theme="dark"] .gdoc-markdown .announcement h2,
+:root[color-theme="dark"] .gdoc-markdown .announcement h3,
+:root[color-theme="dark"] .announcement-box h2,
+:root[color-theme="dark"] .announcement-box h3,
+:root[color-theme="dark"] article.announcement h2,
+:root[color-theme="dark"] article.announcement h3 {
+  color: #63C7FF !important;
+}
+
+:root[color-theme="dark"] .gdoc-markdown .announcement p,
+:root[color-theme="dark"] .announcement-box p,
+:root[color-theme="dark"] article.announcement p {
+  color: #e0e0e0 !important;
+}
+
+:root[color-theme="dark"] .announcement-meta,
+:root[color-theme="dark"] .gdoc-page__meta {
+  color: #9e9e9e !important;
+}
+
+/* =========================================================================
+   Module Dark Mode Fixes
+   ========================================================================= */
+
+@media (prefers-color-scheme: dark) {
+  /* Module containers */
+  .module,
+  .gdoc-markdown .module,
+  dl.module {
+    background: #2a2a2a !important;
+    border-color: #3a3a3a !important;
+  }
+  
+  /* Module dates (dt elements) */
+  .module dt,
+  .gdoc-markdown .module dt,
+  dl.module dt {
+    color: #63C7FF !important; /* Electric blue for readability */
+  }
+  
+  /* Module descriptions */
+  .module dd,
+  .gdoc-markdown .module dd,
+  dl.module dd {
+    color: #e0e0e0 !important;
+    border-left-color: #3a3a3a !important;
+  }
+}
+
+:root[color-theme="dark"] .module,
+:root[color-theme="dark"] .gdoc-markdown .module,
+:root[color-theme="dark"] dl.module {
+  background: #2a2a2a !important;
+  border-color: #3a3a3a !important;
+}
+
+:root[color-theme="dark"] .module dt,
+:root[color-theme="dark"] .gdoc-markdown .module dt,
+:root[color-theme="dark"] dl.module dt {
+  color: #63C7FF !important;
+}
+
+:root[color-theme="dark"] .module dd,
+:root[color-theme="dark"] .gdoc-markdown .module dd,
+:root[color-theme="dark"] dl.module dd {
+  color: #e0e0e0 !important;
+  border-left-color: #3a3a3a !important;
+}
+
+/* =========================================================================
+   Navigation Dark Mode Fixes
+   ========================================================================= */
+
+@media (prefers-color-scheme: dark) {
+  /* Active navigation item */
+  .gdoc-nav__entry.is-active {
+    background-color: rgba(99, 199, 255, 0.15) !important;
+    color: #ffffff !important;
+  }
+  
+  .gdoc-nav__entry.is-active a {
+    color: #ffffff !important;
+  }
+  
+  /* Hover state */
+  .gdoc-nav__entry:hover {
+    background-color: rgba(99, 199, 255, 0.1) !important;
+  }
+}
+
+:root[color-theme="dark"] .gdoc-nav__entry.is-active {
+  background-color: rgba(99, 199, 255, 0.15) !important;
+  color: #ffffff !important;
+}
+
+:root[color-theme="dark"] .gdoc-nav__entry.is-active a {
+  color: #ffffff !important;
+}
+
+:root[color-theme="dark"] .gdoc-nav__entry:hover {
+  background-color: rgba(99, 199, 255, 0.1) !important;
+}
+
+/* =========================================================================
+   Blog Post Title Dark Mode Fixes
+   ========================================================================= */
+
+@media (prefers-color-scheme: dark) {
+  /* Force ALL h1-h6 headings to be visible */
+  h1, h2, h3, h4, h5, h6,
+  .gdoc-markdown h1,
+  .gdoc-markdown h2,
+  .gdoc-markdown h3,
+  .gdoc-markdown h4,
+  .gdoc-markdown h5,
+  .gdoc-markdown h6,
+  .gdoc-page__title,
+  .gdoc-page h1,
+  .gdoc-page h2,
+  .gdoc-page h3 {
+    color: #ffffff !important;
+  }
+  
+  /* Special styling for h1 - electric blue */
+  h1,
+  .gdoc-markdown h1,
+  .gdoc-page__title,
+  .gdoc-page h1 {
+    color: #63C7FF !important;
+  }
+  
+  /* Post headers - ALL possible selectors */
+  .gdoc-post h1,
+  .gdoc-post h2,
+  .gdoc-post__header h1,
+  .gdoc-post__header h2,
+  .gdoc-post__title,
+  .gdoc-post__title a,
+  .gdoc-post__header h1 a,
+  article.gdoc-post h1,
+  article.gdoc-post h2,
+  article.gdoc-markdown h1,
+  article.gdoc-markdown h2,
+  article.gdoc-markdown.gdoc-post h1,
+  article.gdoc-markdown.gdoc-post h2 {
+    color: #63C7FF !important;
+  }
+  
+  /* Ensure ALL links in post titles are visible */
+  .gdoc-post h1 a,
+  .gdoc-post h2 a,
+  article.gdoc-post h1 a,
+  article.gdoc-post h2 a,
+  .gdoc-markdown.gdoc-post h1 a,
+  .gdoc-markdown.gdoc-post h2 a,
+  .gdoc-post__title a,
+  h1.gdoc-post__title a {
+    color: #63C7FF !important;
+  }
+}
+
+/* Manual dark mode toggle */
+:root[color-theme="dark"] h1,
+:root[color-theme="dark"] h2,
+:root[color-theme="dark"] h3,
+:root[color-theme="dark"] h4,
+:root[color-theme="dark"] h5,
+:root[color-theme="dark"] h6,
+:root[color-theme="dark"] .gdoc-markdown h1,
+:root[color-theme="dark"] .gdoc-markdown h2,
+:root[color-theme="dark"] .gdoc-markdown h3,
+:root[color-theme="dark"] .gdoc-markdown h4,
+:root[color-theme="dark"] .gdoc-markdown h5,
+:root[color-theme="dark"] .gdoc-markdown h6,
+:root[color-theme="dark"] .gdoc-page__title {
+  color: #ffffff !important;
+}
+
+:root[color-theme="dark"] h1,
+:root[color-theme="dark"] .gdoc-markdown h1,
+:root[color-theme="dark"] .gdoc-page__title,
+:root[color-theme="dark"] .gdoc-page h1 {
+  color: #63C7FF !important;
+}
+
+:root[color-theme="dark"] .gdoc-post h1,
+:root[color-theme="dark"] .gdoc-post h2,
+:root[color-theme="dark"] .gdoc-post__header h1,
+:root[color-theme="dark"] .gdoc-post__header h2,
+:root[color-theme="dark"] .gdoc-post__title,
+:root[color-theme="dark"] .gdoc-post__title a,
+:root[color-theme="dark"] .gdoc-post__header h1 a,
+:root[color-theme="dark"] article.gdoc-post h1,
+:root[color-theme="dark"] article.gdoc-post h2,
+:root[color-theme="dark"] article.gdoc-markdown h1,
+:root[color-theme="dark"] article.gdoc-markdown h2,
+:root[color-theme="dark"] article.gdoc-markdown.gdoc-post h1,
+:root[color-theme="dark"] article.gdoc-markdown.gdoc-post h2,
+:root[color-theme="dark"] .gdoc-post h1 a,
+:root[color-theme="dark"] .gdoc-post h2 a,
+:root[color-theme="dark"] article.gdoc-post h1 a,
+:root[color-theme="dark"] article.gdoc-post h2 a,
+:root[color-theme="dark"] .gdoc-markdown.gdoc-post h1 a,
+:root[color-theme="dark"] .gdoc-markdown.gdoc-post h2 a,
+:root[color-theme="dark"] h1.gdoc-post__title a {
+  color: #63C7FF !important;
+}
+
+/* =========================================================================
+   Additional Dark Mode Fixes
+   ========================================================================= */
+
+@media (prefers-color-scheme: dark) {
+  /* Fix any remaining white backgrounds */
+  .gdoc-markdown > div[style*="background: white"],
+  .gdoc-markdown > div[style*="background:#fff"],
+  .gdoc-markdown > div[style*="background:#ffffff"] {
+    background: #2a2a2a !important;
+  }
+  
+  /* Fix inline styles that might have white backgrounds */
+  [style*="background: white"],
+  [style*="background:#fff"],
+  [style*="background:#ffffff"] {
+    background: #2a2a2a !important;
+  }
+}
+
+:root[color-theme="dark"] .gdoc-markdown > div[style*="background: white"],
+:root[color-theme="dark"] .gdoc-markdown > div[style*="background:#fff"],
+:root[color-theme="dark"] .gdoc-markdown > div[style*="background:#ffffff"] {
+  background: #2a2a2a !important;
+}
+
+:root[color-theme="dark"] [style*="background: white"],
+:root[color-theme="dark"] [style*="background:#fff"],
+:root[color-theme="dark"] [style*="background:#ffffff"] {
+  background: #2a2a2a !important;
+}
