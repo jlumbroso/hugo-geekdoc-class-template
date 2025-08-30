@@ -125,3 +125,6 @@ footerBackgroundStyle:
   preset: "subtle-texture"  # Options: none, subtle-texture, penn-blue, gradient-footer
   # Override preset values:
   textureOpacity: 0.15  # Subtle texture on footer
+
+# Claude AI attribution in footer
+claudeInFooter: true  # Set to false to hide Claude logo

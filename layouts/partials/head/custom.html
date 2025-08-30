@@ -3,6 +3,11 @@
 <!-- Dark mode fixes for Penn Engineering theme -->
 <link rel="stylesheet" href="{{ "penn-engineering-dark-mode-fixes.css" | absURL }}">
 
+<!-- Claude AI footer attribution styles -->
+{{ if .Site.Params.claudeInFooter }}
+<link rel="stylesheet" href="{{ "claude-footer.css" | absURL }}">
+{{ end }}
+
 <!-- MathJax for LaTeX rendering (only activated when frontmatter has "latex: true") -->
 {{ if .Params.latex }}
   <script type="text/javascript"
