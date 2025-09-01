@@ -8,19 +8,16 @@
         <span class="gdoc-footer__item gdoc-footer__item--row">
           {{ i18n "footer_build_with" | safeHTML }}
           {{ if .Site.Params.claudeInFooter }}
-            <span class="gdoc-footer__claude">
-              <span class="gdoc-footer__claude-text">with assistance from</span>
-              <img 
+            <span class="gdoc-footer__claude claude-attribution">with thoughtful assistance from <img 
                 src="{{ "img/Claude_AI_logo_white_letters.svg" | absURL }}" 
                 alt="Claude AI" 
                 class="gdoc-footer__claude-logo gdoc-footer__claude-logo--light"
-              />
-              <img 
+              /><img 
                 src="{{ "img/Claude_AI_logo_black_letters.svg" | absURL }}" 
                 alt="Claude AI" 
                 class="gdoc-footer__claude-logo gdoc-footer__claude-logo--dark"
-              />
-            </span>
+              /></span>
+            <script src="{{ "js/claude-footer.js" | absURL }}" defer></script>
           {{ end }}
         </span>
         {{ with .Site.Params.geekdocLegalNotice }}
