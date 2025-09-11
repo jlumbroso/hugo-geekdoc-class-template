@@ -1171,5 +1171,56 @@ blockquote {
 }
 
 /* =========================================================================
+   Module Update Divider - Penn Engineering Theme Override
+   
+   Penn-specific styling for the moduleUpdate shortcode
+   - HR with Penn gradient (red to blue)
+   - Message with Penn electric blue background and white text
+   ========================================================================= */
+
+.module-update-container {
+    margin: 30px 0 !important;
+    padding: 0 !important;
+}
+
+.module-update-divider {
+    /* Penn gradient from red to blue - mimicking PennGradient */
+    background: linear-gradient(90deg, var(--penn-red) 0%, var(--penn-blue) 100%) !important;
+    height: 10px !important;
+    border: none !important;
+    margin: 0 0 -2px 0 !important;
+}
+
+.module-update-message {
+    /* Penn electric blue background with white text for visibility */
+    background: var(--penn-electric-blue) !important;
+    color: var(--penn-white) !important;
+    padding: 14px 24px !important;
+    margin-top: 0 !important;
+    /*border-radius: 6px !important;*/
+    font-weight: 600 !important;
+    text-align: center !important;
+    font-size: 0.95em !important;
+    letter-spacing: 0.5px !important;
+    box-shadow: 0 3px 6px rgba(99, 199, 255, 0.25) !important; /* Subtle glow with electric blue */
+    font-family: var(--font-family-primary) !important; /* Use Penn typography */
+}
+
+/* Dark mode adjustments */
+@media (prefers-color-scheme: dark) {
+    .module-update-divider {
+        /* Reverse gradient in dark mode for better visibility */
+        background: linear-gradient(90deg, var(--penn-bright-red) 0%, var(--penn-electric-blue) 100%) !important;
+    }
+    
+    .module-update-message {
+        /* Darker blue with adjusted opacity for dark mode */
+        background: rgba(99, 199, 255, 0.9) !important;
+        color: var(--penn-blue-dark) !important;
+        box-shadow: 0 3px 8px rgba(99, 199, 255, 0.35) !important;
+    }
+}
+
+/* =========================================================================
    End of Penn Engineering Theme
    ========================================================================= */
