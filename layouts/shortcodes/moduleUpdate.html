@@ -1,0 +1,27 @@
+{{/* 
+    moduleUpdate Shortcode
+    
+    Purpose: Creates a visual divider in module content to indicate where content 
+    has not been updated yet for the current semester.
+    
+    Usage: {{< moduleUpdate >}} or {{< moduleUpdate "Custom message" >}}
+    
+    The divider consists of:
+    1. A horizontal rule with gradient styling (Penn colors in Penn theme)
+    2. A message banner with contextual information
+    
+    CSS Classes:
+    - module-update-container: Outer container for spacing
+    - module-update-divider: The horizontal rule element
+    - module-update-message: The message banner
+*/}}
+{{- $message := .Get 0 -}}
+{{- if not $message -}}
+    {{- $message = "⚠️ Content below this line has not been updated yet" -}}
+{{- end -}}
+<div class="module-update-container">
+    <hr class="module-update-divider">
+    <div class="module-update-message">
+        {{ $message }}
+    </div>
+</div>
